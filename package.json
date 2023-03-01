@@ -12,7 +12,11 @@
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "format": "prettier --write .",
-    "test-all": "npm run check-format && npm run check-lint && npm run check-types && npm run build"
+    "test-all": "npm run check-format && npm run check-lint && npm run check-types && npm run build",
+    "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
+    "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
+    "component": "cypress open --component",
+    "component:headless": "cypress run --component"
   },
   "dependencies": {
     "@next/font": "13.2.1",
@@ -28,6 +32,7 @@
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
     "autoprefixer": "^10.4.13",
+    "cypress": "^12.7.0",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard-with-typescript": "^34.0.0",
@@ -42,6 +47,7 @@
     "postcss": "^8.4.21",
     "prettier": "2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.3",
+    "start-server-and-test": "^2.0.0",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5"
   },

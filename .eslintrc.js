@@ -27,7 +27,6 @@ module.exports = {
     quotes: [2, 'single', { avoidEscape: true }],
     'comma-dangle': 'off',
     semi: ['error', 'always'],
-    // uncomment this if you want to prevent error "Require statement not part of import statement."
-    // '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/no-var-requires': 0,
   },
 };

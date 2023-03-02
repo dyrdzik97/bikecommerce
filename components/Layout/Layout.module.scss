@@ -1,0 +1,16 @@
+.layout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__append {
+    position: sticky;
+    left: 0;
+    bottom: env(safe-area-inset-bottom);
+    right: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+  }
+}

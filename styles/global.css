@@ -111,13 +111,14 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  color: #000;
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+  background-color: white;
 }
 
 a {
@@ -190,12 +191,6 @@ a {
     @apply font-primary text-sm md:text-base;
   }
   /* #endregion  /**======== Typography =========== */
-
-  .layout {
-    /* 1100px */
-    max-width: 68.75rem;
-    @apply mx-auto w-11/12;
-  }
 
   .bg-dark a.custom-link {
     @apply border-gray-200 hover:border-gray-200/0;

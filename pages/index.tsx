@@ -1,4 +1,7 @@
 import Head from 'next/head';
+import Image from 'next/image';
+
+import Page from '../components/Page/PAge';
 
 const Home = (): JSX.Element => {
   return (
@@ -9,7 +12,18 @@ const Home = (): JSX.Element => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main className='layout mt-8 p-5'>
+      <Page size='wide'>
+        <Image
+          src='https://images6.alphacoders.com/549/549198.jpg'
+          alt={'hero-bg'}
+          objectFit={'cover'}
+          fill
+        />
+      </Page>
+      <Page>
+        <div className='bg-gray'>content of my super page</div>
+      </Page>
+      {/* <main className='layout mt-8 p-5'>
         <div className='grid grid-cols-2 place-content-center gap-5'>
           <div className='rounded-md bg-primary-900 p-2 font-primary'>
             Light font
@@ -27,7 +41,7 @@ const Home = (): JSX.Element => {
             </div>
           </div>
         </div>
-      </main>
+      </main> */}
     </>
   );
 };

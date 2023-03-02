@@ -27,6 +27,7 @@ module.exports = {
         900: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
       },
       dark: '#222222',
+      gray: '#f8f8f8',
     },
     spacing: {
       px: '10px',

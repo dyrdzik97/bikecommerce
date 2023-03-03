@@ -1,6 +1,6 @@
 const Footer = (): JSX.Element => {
   return (
-    <footer className='dark:bg-gray-900 bg-gray bg-gray md:px-36'>
+    <footer className='dark:bg-gray-900 bg-gray bg-gray md:px-36' id='footer'>
       <div className='grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4'>
         <div>
           <h2 className='text-gray-500 dark:text-gray-400 mb-6 text-sm font-semibold uppercase'>

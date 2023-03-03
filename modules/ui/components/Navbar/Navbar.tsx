@@ -1,6 +1,7 @@
 const Navbar = ({}): JSX.Element => {
+  // manipulowac hiddenem przez swoje funkcje onclick
   return (
-    <nav className='dark:bg-gray-900 border-gray-200 rounde sticky border-b-2 bg-gray px-2 py-2.5 opacity-80 sm:px-4'>
+    <nav className='dark:bg-gray-900 border-gray-200 rounde fixed inset-x-0 top-0 top-0 z-50 border-b-2 bg-gray px-2 py-2.5 opacity-80 sm:px-4'>
       <div className='container mx-auto flex flex-wrap items-center justify-between'>
         <a href='#' className='flex items-center'>
           <img

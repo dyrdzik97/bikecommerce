@@ -1,5 +1,3 @@
-const { fontFamily } = require('tailwindcss/defaultTheme');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,9 +7,40 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      primary: ['Manrope Light', ...fontFamily.mono],
-      secondary: ['Manrope Regular', ...fontFamily.mono],
-      tertiary: ['Manrope Bold', ...fontFamily.mono],
+      body: [
+        'Montserrat',
+        'ui-sans-serif',
+        'system-ui',
+        '-apple-system',
+        'system-ui',
+        'Segoe UI',
+        'Roboto',
+        'Helvetica Neue',
+        'Arial',
+        'Noto Sans',
+        'sans-serif',
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        'Noto Color Emoji',
+      ],
+      sans: [
+        'Montserrat',
+        'ui-sans-serif',
+        'system-ui',
+        '-apple-system',
+        'system-ui',
+        'Segoe UI',
+        'Roboto',
+        'Helvetica Neue',
+        'Arial',
+        'Noto Sans',
+        'sans-serif',
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        'Noto Color Emoji',
+      ],
     },
     colors: {
       primary: {
@@ -28,6 +57,7 @@ module.exports = {
       },
       dark: '#222222',
       gray: '#f8f8f8',
+      darkgray: '#767e87',
     },
     spacing: {
       px: '10px',

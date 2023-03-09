@@ -3,6 +3,7 @@ module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './modules/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {},
@@ -55,9 +56,13 @@ module.exports = {
         800: 'rgb(var(--tw-color-primary-800) / <alpha-value>)',
         900: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
       },
+      white: '#fff',
+      black: '#000',
       dark: '#222222',
       gray: '#f8f8f8',
       darkgray: '#767e87',
+      red: 'red',
+      gold: '#ffc484',
     },
     spacing: {
       px: '10px',

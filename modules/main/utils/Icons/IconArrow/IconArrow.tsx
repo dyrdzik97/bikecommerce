@@ -11,6 +11,7 @@ const IconArrow: FC<IIconProps & IIconOrientationProps> = ({
   className,
 }) => {
   const classes = classNames(className, 'ml-2 -mr-1 h-4 w-4');
+
   return (
     <svg
       className={classes}

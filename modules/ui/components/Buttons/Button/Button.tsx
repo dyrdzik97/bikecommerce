@@ -25,7 +25,8 @@ const classes = {
     primary: 'bg-primary-100 hover:bg-primary-300 text-black',
     secondary: 'bg-secondary-100 hover:bg-secondary-300 text-black',
     tertiary: 'bg-tertiary-100 hover:bg-tertiary-300 text-white',
-    transparent: 'bg-transparent border border-orimary-500 ',
+    transparent:
+      'bg-transparent border border-orimary-500 hover:bg-gray hover:underline',
   },
 };
 
@@ -48,13 +49,13 @@ const Button = forwardRef<HTMLDivElement, PropsWithChildren<IButtonProps>>(
       disabled={disabled}
       type={type}
       className={classNames(`
-                ${classes.base}
-                ${classes.size[size]}
-                ${classes.variant[variant]}
-                ${pill && classes.pill}
-                ${disabled && classes.disabled}
-                ${className}
-            `)}
+            ${classes.base}
+            ${classes.size[size]}
+            ${classes.variant[variant]}
+            ${pill && classes.pill}
+            ${disabled && classes.disabled}
+            ${className}
+        `)}
       {...props}
     >
       {children}

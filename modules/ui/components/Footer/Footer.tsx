@@ -1,12 +1,12 @@
 const Footer = (): JSX.Element => {
   return (
-    <footer className='dark:bg-gray-900 bg-gray bg-gray md:px-36' id='footer'>
+    <footer className='bg-gray-900 bg-gray bg-gray md:px-36' id='footer'>
       <div className='grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4'>
         <div>
-          <h2 className='text-gray-500 dark:text-gray-400 mb-6 text-sm font-semibold uppercase'>
+          <h2 className='text-gray-500 text-gray-400 mb-6 text-sm font-semibold uppercase'>
             Company
           </h2>
-          <ul className='text-gray-500 dark:text-gray-400'>
+          <ul className='text-gray-500 text-gray-400'>
             <li className='mb-4'>
               <a href='#' className=' hover:underline'>
                 About
@@ -30,10 +30,10 @@ const Footer = (): JSX.Element => {
           </ul>
         </div>
         <div>
-          <h2 className='text-gray-500 dark:text-gray-400 mb-6 text-sm font-semibold uppercase'>
+          <h2 className='text-gray-500 text-gray-400 mb-6 text-sm font-semibold uppercase'>
             Help center
           </h2>
-          <ul className='text-gray-500 dark:text-gray-400'>
+          <ul className='text-gray-500 text-gray-400'>
             <li className='mb-4'>
               <a href='#' className='hover:underline'>
                 Discord Server
@@ -57,10 +57,10 @@ const Footer = (): JSX.Element => {
           </ul>
         </div>
         <div>
-          <h2 className='text-gray-500 dark:text-gray-400 mb-6 text-sm font-semibold uppercase'>
+          <h2 className='text-gray-500 text-gray-400 mb-6 text-sm font-semibold uppercase'>
             Legal
           </h2>
-          <ul className='text-gray-500 dark:text-gray-400'>
+          <ul className='text-gray-500 text-gray-400'>
             <li className='mb-4'>
               <a href='#' className='hover:underline'>
                 Privacy Policy
@@ -79,10 +79,10 @@ const Footer = (): JSX.Element => {
           </ul>
         </div>
         <div>
-          <h2 className='text-gray-500 dark:text-gray-400 mb-6 text-sm font-semibold uppercase'>
+          <h2 className='text-gray-500 text-gray-400 mb-6 text-sm font-semibold uppercase'>
             Download
           </h2>
-          <ul className='text-gray-500 dark:text-gray-400'>
+          <ul className='text-gray-500 text-gray-400'>
             <li className='mb-4'>
               <a href='#' className='hover:underline'>
                 iOS
@@ -106,14 +106,14 @@ const Footer = (): JSX.Element => {
           </ul>
         </div>
       </div>
-      <div className='bg-gray-100 dark:bg-gray-700 px-4 py-6 md:flex md:items-center md:justify-between'>
-        <span className='text-gray-500 dark:text-gray-300 text-sm sm:text-center'>
+      <div className='bg-gray-100 bg-gray-700 px-4 py-6 md:flex md:items-center md:justify-between'>
+        <span className='text-gray-500 text-gray-300 text-sm sm:text-center'>
           © 2023 <a href='#'>Bikecommerce</a>. All Rights Reserved.
         </span>
         <div className='mt-4 flex space-x-6 sm:justify-center md:mt-0'>
           <a
             href='#'
-            className='text-gray-400 hover:text-gray-900 dark:hover:text-black'
+            className='text-gray-400 hover:text-gray-900 hover:text-black'
           >
             <svg
               className='h-5 w-5'
@@ -131,7 +131,7 @@ const Footer = (): JSX.Element => {
           </a>
           <a
             href='#'
-            className='text-gray-400 hover:text-gray-900 dark:hover:text-black'
+            className='text-gray-400 hover:text-gray-900 hover:text-black'
           >
             <svg
               className='h-5 w-5'
@@ -149,7 +149,7 @@ const Footer = (): JSX.Element => {
           </a>
           <a
             href='#'
-            className='text-gray-400 hover:text-gray-900 dark:hover:text-black'
+            className='text-gray-400 hover:text-gray-900 hover:text-black'
           >
             <svg
               className='h-5 w-5'
@@ -163,7 +163,7 @@ const Footer = (): JSX.Element => {
           </a>
           <a
             href='#'
-            className='text-gray-400 hover:text-gray-900 dark:hover:text-black'
+            className='text-gray-400 hover:text-gray-900 hover:text-black'
           >
             <svg
               className='h-5 w-5'
@@ -181,7 +181,7 @@ const Footer = (): JSX.Element => {
           </a>
           <a
             href='#'
-            className='text-gray-400 hover:text-gray-900 dark:hover:text-black'
+            className='text-gray-400 hover:text-gray-900 hover:text-black'
           >
             <svg
               className='h-5 w-5'

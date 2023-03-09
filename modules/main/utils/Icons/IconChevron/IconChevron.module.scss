@@ -1,0 +1,15 @@
+.icon-chevron {
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+  &--left {
+    transform: rotate(90deg);
+  }
+
+  &--right {
+    transform: rotate(-90deg);
+  }
+
+  &--up {
+    transform: rotate(180deg);
+  }
+}

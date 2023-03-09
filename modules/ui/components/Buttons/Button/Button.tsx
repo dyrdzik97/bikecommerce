@@ -5,7 +5,7 @@ interface IButtonProps {
   children?: ReactNode;
   type: 'button' | 'submit' | 'reset';
   className?: string;
-  variant: 'primary' | 'secondary' | 'danger';
+  variant: 'primary' | 'secondary' | 'tertiary' | 'transparent';
   size: 'small' | 'normal' | 'large';
   pill?: boolean;
   disabled: boolean;
@@ -19,13 +19,13 @@ const classes = {
   size: {
     small: 'px-2 py-1 text-sm',
     normal: 'px-5 py-3 font-medium',
-    large: 'px-6 py-3 text-lg',
+    large: 'px-6 py-3 text-xl',
   },
   variant: {
-    primary:
-      'bg-gold hover:bg-primary-200 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-black',
-    secondary: 'bg-gray hover:bg-primary-800 text-gray-900',
-    danger: 'bg-red hover:bg-redtext-black',
+    primary: 'bg-primary-100 hover:bg-primary-300 text-black',
+    secondary: 'bg-secondary-100 hover:bg-secondary-300 text-black',
+    tertiary: 'bg-tertiary-100 hover:bg-tertiary-300 text-white',
+    transparent: 'bg-transparent border border-orimary-500 ',
   },
 };
 

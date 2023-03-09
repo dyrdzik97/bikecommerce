@@ -10,47 +10,73 @@ const HomePage = (): JSX.Element => {
       <HeroSection />
       <Button
         type={'button'}
-        // className={'bg-primary-500'}
         variant={'primary'}
         size={'small'}
         pill
         disabled={false}
       >
         {' '}
-        sadskdmaslkdmlk
+        primary small
       </Button>
       <Button
         type={'button'}
-        // className={'bg-primary-500'}
+        variant={'primary'}
+        size={'normal'}
+        pill
+        disabled={false}
+      >
+        {' '}
+        primary normal
+      </Button>
+      <Button
+        type={'button'}
         variant={'secondary'}
         size={'normal'}
         pill
         disabled={false}
       >
         {' '}
-        sadskdmaslkdmlk
+        secndary normal
       </Button>
       <Button
         type={'button'}
-        // className={'bg-primary-500'}
         variant={'secondary'}
         size={'large'}
         pill
         disabled={false}
       >
         {' '}
-        sadskdmaslkdmlk
+        secondary large
       </Button>
       <Button
         type={'button'}
-        className={'bg-primary-500'}
-        variant={'primary'}
+        variant={'tertiary'}
         size={'small'}
         pill
         disabled={false}
       >
         {' '}
-        sadskdmaslkdmlk
+        tertiary small
+      </Button>
+      <Button
+        type={'button'}
+        variant={'tertiary'}
+        size={'large'}
+        pill
+        disabled={false}
+      >
+        {' '}
+        tertiary large
+      </Button>
+      <Button
+        type={'button'}
+        variant={'transparent'}
+        size={'normal'}
+        pill
+        disabled={false}
+      >
+        {' '}
+        transparent normal
       </Button>
       {/* <Button size='large' bgColor={'primary-200'} textColor={'dark'} /> */}
       <Page

@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent } from 'react';
+import { SyntheticEvent } from 'react';
 
 import Link from 'next/link';
 
@@ -11,14 +11,14 @@ export interface IDropdownListItemProps {
   action?: (event: SyntheticEvent) => void;
 }
 
-const DropdownListItem: FC<IDropdownListItemProps> = ({
+const DropdownListItem = ({
   title,
   href,
   passHref,
   target,
   dataTest,
   action,
-}) => {
+}: IDropdownListItemProps) => {
   if (href) {
     return (
       <li>

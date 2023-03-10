@@ -1,15 +1,14 @@
 import classNames from 'classnames';
-import { FC } from 'react';
 
 import { IIconOrientationProps, IIconProps } from '../../../../ui/models';
 
-const IconArrow: FC<IIconProps & IIconOrientationProps> = ({
+const IconArrow = ({
   width = 24,
   height = 24,
   fillColor = '#000',
   strokeColor = '#000',
   className,
-}) => {
+}: IIconProps & IIconOrientationProps) => {
   const classes = classNames(className, 'ml-2 -mr-1 h-4 w-4');
 
   return (

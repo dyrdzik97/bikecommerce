@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler } from 'react';
+import { MouseEventHandler } from 'react';
 import IconChevron from '../../../main/utils/Icons/IconChevron/IconChevron';
 
 interface IFloatingArrowButtonProps {
@@ -7,11 +7,11 @@ interface IFloatingArrowButtonProps {
   onClick?: MouseEventHandler<HTMLElement>;
 }
 
-const FloatingArrowButton: FC<IFloatingArrowButtonProps> = ({
+const FloatingArrowButton = ({
   left,
   right,
   onClick,
-}) => {
+}: IFloatingArrowButtonProps) => {
   return (
     <button
       className={'top-50 absolute'}

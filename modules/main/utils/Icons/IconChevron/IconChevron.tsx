@@ -1,17 +1,15 @@
-import { FC } from 'react';
-
 import classNames from 'classnames';
 import { IIconOrientationProps, IIconProps } from '../../../../ui/models';
 import styles from './IconChevron.module.scss';
 
-const IconChevron: FC<IIconProps & IIconOrientationProps> = ({
+const IconChevron = ({
   width = 24,
   height = 24,
   fillColor = 'none',
   strokeColor = '#000',
-  orientation = 'bottom',
+  orientation = 'down',
   className,
-}) => {
+}: IIconProps & IIconOrientationProps) => {
   const classes = classNames(
     className,
     styles['icon-chevron'],

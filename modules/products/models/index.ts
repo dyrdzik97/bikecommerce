@@ -1,12 +1,21 @@
 export interface IProductTile {
-    productName: string;
-    variants?: {
-        [key: string]: string[];
-    };
-    mainImage: string;
-    regularPrice: number;
-    promoPrice: number;
-    percentageDiscount: number;
-    isBestseller: boolean;
-    hasFreeShipping: boolean;
+  productName: string;
+  variants?: {
+    [key: string]: string[];
+  };
+  mainImage: string;
+  price: IPriceModel;
+  isBestseller: boolean;
+  hasFreeShipping: boolean;
+}
+
+export interface IVariantsModel {
+  [key: string]: string[];
+}
+
+export interface IPriceModel {
+  currency: string;
+  regularPrice: number;
+  promoPrice?: number | null;
+  percentageDiscount?: number | null;
 }

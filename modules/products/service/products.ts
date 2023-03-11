@@ -1,9 +1,12 @@
 import axios from 'axios';
+import { productsMock } from '../mocks/products';
 
 export const getProducts = async () => {
-    const data = await axios
-        .get('https://fakestoreapi.com/products?limit=10')
-        .then((res) => res.data);
+  const data = await axios
+    .get('https://fakestoreapi.com/products?limit=10')
+    .then((res) => res.data);
 
-    return data;
+  console.warn(data);
+
+  return productsMock;
 };

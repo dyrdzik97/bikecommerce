@@ -1,8 +1,21 @@
 import useSWRImmutable from 'swr/immutable';
+import { getSkeletonPlaceholders } from '../mappers';
 import { getProducts } from '../service/products';
 
-export const useProducts = () => {
-    const { data } = useSWRImmutable('products', getProducts);
+const defaultSkeletonItems = getSkeletonPlaceholders(0, 0);
 
-    return data || [];
+export const useProducts = () => {
+  const { data } = useSWRImmutable('products', getProducts);
+
+  //   if (!data) {
+  //     return {
+  //       items: defaultSkeletonItems,
+  //       pagination: {
+  //         total: 0,
+  //       },
+  //       isLoading: true,
+  //     };
+  //   }
+
+  return data || [];
 };

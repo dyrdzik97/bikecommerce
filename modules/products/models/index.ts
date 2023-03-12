@@ -19,3 +19,8 @@ export interface IPriceModel {
   promoPrice?: number | null;
   percentageDiscount?: number | null;
 }
+
+export interface IProductSkeletonModel {
+  productId: number;
+  isSkeleton: boolean;
+}

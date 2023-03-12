@@ -1,4 +1,8 @@
+import { getArrayBasedOnNumber } from '../../../utils/array';
 import { IProductDTO } from '../dto/productDTO';
+import { IProductSkeletonModel } from '../models';
+
+export const DEFAULT_LISTING_PER_PAGE = 10;
 
 export const getProducts = (products: IProductDTO[]) => {
   return products.map((product) => {
@@ -76,4 +80,20 @@ export const mapColorsVariantToHex = (colors?: string[]) => {
     });
 
   return colorsArray;
+};
+
+export const getSkeletonPlaceholders = (
+  current: number,
+  total: number,
+  perPage = DEFAULT_LISTING_PER_PAGE
+): Array<IProductSkeletonModel> => {
+  const number =
+    total === 0 || current === 0 || total - current === 0
+      ? perPage
+      : Math.min(total - current, perPage);
+
+  return getArrayBasedOnNumber(number).map((index) => ({
+    productId: index,
+    isSkeleton: true,
+  }));
 };

@@ -19,11 +19,13 @@ export const productsMock: IProductDTO[] = [
     },
     price: {
       currency: 'PLN',
-      regularPrice: 8000,
-      promoPrice: null,
+      price: 8000,
+      promoPrice: 5500,
       percentageDiscount: null,
     },
     categories: ['Road'],
+    mainImage:
+      'https://demo2.themelexus.com/ridez/wp-content/uploads/2022/01/h1-bannernew.jpg',
     images: [
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-srebrny_1_.webp',
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-granat_1_.webp',
@@ -31,9 +33,9 @@ export const productsMock: IProductDTO[] = [
     ],
     isBestseller: false,
     hasFreeShipping: false,
-    variants: {
-      colors: ['blue', 'red', 'green'],
-    },
+    // variants: {
+    //   color: ['blue', 'red', 'green', 'darkgray'],
+    // },
   },
   {
     id: 2,
@@ -53,11 +55,13 @@ export const productsMock: IProductDTO[] = [
     },
     price: {
       currency: 'PLN',
-      regularPrice: 10000,
+      price: 10000,
       promoPrice: 7500,
       percentageDiscount: 25,
     },
     categories: ['Road', 'Gravel'],
+    mainImage:
+      'https://demo2.themelexus.com/ridez/wp-content/uploads/2022/01/h1-bannernew.jpg',
     images: [
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-srebrny_1_.webp',
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-granat_1_.webp',
@@ -65,9 +69,9 @@ export const productsMock: IProductDTO[] = [
     ],
     isBestseller: true,
     hasFreeShipping: false,
-    variants: {
-      colors: ['blue', 'red', 'green'],
-    },
+    // variants: {
+    //   color: ['blue', 'red', 'green'],
+    // },
   },
   {
     id: 3,
@@ -85,11 +89,13 @@ export const productsMock: IProductDTO[] = [
     },
     price: {
       currency: 'PLN',
-      regularPrice: 12000,
+      price: 12000,
       promoPrice: null,
       percentageDiscount: null,
     },
     categories: ['Road', 'Gravel'],
+    mainImage:
+      'https://demo2.themelexus.com/ridez/wp-content/uploads/2022/01/h1-bannernew.jpg',
     images: [
       'https://demo2.themelexus.com/ridez/wp-content/uploads/2022/01/h1-bannernew.jpg',
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-granat_1_.webp',
@@ -97,9 +103,9 @@ export const productsMock: IProductDTO[] = [
     ],
     isBestseller: false,
     hasFreeShipping: true,
-    variants: {
-      colors: ['red'],
-    },
+    // variants: {
+    //   color: ['red'],
+    // },
   },
   {
     id: 4,
@@ -119,11 +125,13 @@ export const productsMock: IProductDTO[] = [
     },
     price: {
       currency: 'PLN',
-      regularPrice: 12000,
+      price: 12000,
       promoPrice: null,
       percentageDiscount: null,
     },
     categories: ['Road'],
+    mainImage:
+      'https://demo2.themelexus.com/ridez/wp-content/uploads/2022/01/h1-bannernew.jpg',
     images: [
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-srebrny_1_.webp',
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-granat_1_.webp',
@@ -131,9 +139,9 @@ export const productsMock: IProductDTO[] = [
     ],
     isBestseller: false,
     hasFreeShipping: false,
-    variants: {
-      colors: ['blue', 'red', 'green'],
-    },
+    // variants: {
+    //   color: ['blue', 'red', 'green'],
+    // },
   },
   {
     id: 5,
@@ -153,11 +161,13 @@ export const productsMock: IProductDTO[] = [
     },
     price: {
       currency: 'PLN',
-      regularPrice: 10000,
+      price: 10000,
       promoPrice: 7500,
       percentageDiscount: 25,
     },
     categories: ['Road'],
+    mainImage:
+      'https://demo2.themelexus.com/ridez/wp-content/uploads/2022/01/h1-bannernew.jpg',
     images: [
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-srebrny_1_.webp',
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-granat_1_.webp',
@@ -165,9 +175,9 @@ export const productsMock: IProductDTO[] = [
     ],
     isBestseller: false,
     hasFreeShipping: false,
-    variants: {
-      colors: ['blue', 'red', 'green'],
-    },
+    // variants: {
+    //   color: ['blue', 'red', 'green'],
+    // },
   },
   {
     id: 6,
@@ -187,11 +197,13 @@ export const productsMock: IProductDTO[] = [
     },
     price: {
       currency: 'PLN',
-      regularPrice: 10000,
+      price: 10000,
       promoPrice: 7500,
       percentageDiscount: 25,
     },
     categories: ['Road'],
+    mainImage:
+      'https://demo2.themelexus.com/ridez/wp-content/uploads/2022/01/h1-bannernew.jpg',
     images: [
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-srebrny_1_.webp',
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-granat_1_.webp',
@@ -199,9 +211,9 @@ export const productsMock: IProductDTO[] = [
     ],
     isBestseller: false,
     hasFreeShipping: false,
-    variants: {
-      colors: ['blue', 'red', 'green'],
-    },
+    // variants: {
+    //   color: ['blue', 'red', 'green'],
+    // },
   },
   {
     id: 7,
@@ -221,11 +233,13 @@ export const productsMock: IProductDTO[] = [
     },
     price: {
       currency: 'PLN',
-      regularPrice: 10000,
+      price: 10000,
       promoPrice: 7500,
       percentageDiscount: 25,
     },
     categories: ['Road'],
+    mainImage:
+      'https://demo2.themelexus.com/ridez/wp-content/uploads/2022/01/h1-bannernew.jpg',
     images: [
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-srebrny_1_.webp',
       'https://sprint-rowery.pl/media/catalog/product/cache/2cf98570d9f614fe7b8ae8291728e2d9/r/o/rower-szosowy-trek-emonda-sl-5-disc-2021-granat_1_.webp',
@@ -233,8 +247,8 @@ export const productsMock: IProductDTO[] = [
     ],
     isBestseller: false,
     hasFreeShipping: false,
-    variants: {
-      colors: ['blue', 'red', 'green'],
-    },
+    // variants: {
+    //   color: ['blue', 'red', 'green'],
+    // },
   },
 ];

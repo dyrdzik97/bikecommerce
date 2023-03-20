@@ -1,58 +1,66 @@
 import { FC, memo } from 'react';
 
 import Link from 'next/link';
-import { IPriceModel, IVariantsModel } from '../../../models';
+import AddToCartButton from '../../../../ui/components/Buttons/AddToCartButton/AddToCartButton';
+import { IPriceModel } from '../../../models';
 import ProductPhoto from '../../ProductPhoto/ProductPhoto';
+import ProductPrice from '../../ProductPrice/ProductPrice';
 import ListingItemTitle from '../ListingItemTitle/ListingItemTitle';
 
 export const TRACKABLE_LISTING_ITEM_KEY = 'TRACKABLE_LISTING_ITEM_KEY';
 
 interface IListingItemProps {
   size?: 'small' | 'regular';
-  productId: string;
-  href: string;
-  imageUrl: string;
-  title: string;
-  price: IPriceModel;
-  classification: string[];
-  hasFreeShipping: boolean;
-  hasFreeDelivery: boolean;
-  bestseller: boolean;
+  productId?: string;
+  href?: string;
+  mainImage?: string;
+  title?: string;
+  price?: IPriceModel;
+  classification?: string[];
+  hasFreeShipping?: boolean;
+  hasFreeDelivery?: boolean;
+  bestseller?: boolean;
   isSkeleton?: boolean;
-  variants?: IVariantsModel;
+  variants?: any; // IVariantsModel;
   height?: string;
   trackable?: boolean;
   trackableRefCallback?: (node: HTMLElement) => void;
 }
 
+//  productId, title, classification, hasFreeDelivery  = false, bestseller = false
+
+// Optional<IListingItemProps> ??
+
 const ListingItem: FC<IListingItemProps> = ({
   size = 'regular',
   height,
-  productId,
-  classification,
-  href,
-  imageUrl,
-  title,
-  price,
-  hasFreeShipping,
-  hasFreeDelivery,
-  bestseller,
+  productId = '',
+  href = '',
+  mainImage,
+  title = '',
+  price = {
+    promoPrice: 0,
+    price: 0,
+  },
+  hasFreeShipping = false,
+  hasFreeDelivery = false,
+  bestseller = false,
   isSkeleton = false,
   trackable,
   variants = [],
   trackableRefCallback,
 }) => {
-  const productPrice = price?.promoPrice || price?.regularPrice;
-
   const onClick = () => {
     if (trackable) {
       sessionStorage.setItem(TRACKABLE_LISTING_ITEM_KEY, productId);
     }
   };
 
-  if (isSkeleton) {
-    return null; // <ListingItemSkeleton height={height} size={size} />;
-  }
+  //   if (isSkeleton) {
+  //     return <ListingItemSkeleton height={height} size={size} />;
+  //   }
+
+  //   const [hoverState, setHoverState] = useState('opacity-0 h-[0px]');
 
   return (
     <Link href={href} prefetch={false} legacyBehavior>
@@ -60,80 +68,38 @@ const ListingItem: FC<IListingItemProps> = ({
         style={{
           height,
         }}
-        className={`rounded-lg border border-tertiary-100 bg-primary-100 shadow transition-shadow hover:shadow-lg ${
-          size === 'regular' ? 'h-80' : 'h-96'
-        }`}
         href={href}
         ref={trackableRefCallback}
         onClick={onClick}
-        class='group'
+        // onMouseEnter={() => setHoverState('opacity-1 h-10')}
+        // onMouseLeave={() => setHoverState('opacity-0 h-[0px]')}
       >
-        {/* {Boolean(price.percentageDiscount) && (
-          <CampaignBadge
-            floating={{
-              top: '1rem',
-              right: '1rem',
-            }}
-            label={`-${price.promoPercentage}%`}
-          />
-        )} */}
-        <ProductPhoto
-          src={imageUrl}
-          alt={title}
-          padding={size === 'small' ? 'p-1' : 'p-1-5'}
-        />
-        <div className=''>
-          <div
-            className={
-              'group-hover:opacity-1 h-0 bg-gray opacity-0 transition-all transition will-change-transform group-hover:h-10 motion-reduce:transition-none motion-reduce:hover:transform-none'
-            }
-          >
-            <p>like button</p>
-            <p>add to cart</p>
-            {/* <ProductLikeButton
-              size={size === 'small' ? 'tiny' : 'small'}
-              productId={productId}
-              gaEvent={gaEvent}
-              fab={true}
-            />
-            <AddProductToCartFab
-              productId={productId}
-              vendorId={vendor.id}
-              name={title}
-              price={productPrice}
-              currency={price.currency}
-              quantity={1}
-            /> */}
-          </div>
-          {/* <ProductBrandLink
-            size={'small'}
-            vendor={vendor}
-            classification={classification}
-          /> */}
-          <ListingItemTitle title={title} />
-          <div className={'listing-item__price'}>
-            {/* <ProductPriceBadge size={'small'} {...price} /> */}
-            {productPrice}
-            {/* {(hasFreeShipping || isFreeDeliveryPromotion) &&
-              !hasFreeDelivery && (
-                <ProductFreeDeliveryBadge {...freeDeliveryBadge} />
-              )}
-            {(hasFreeShipping || isFreeDeliveryPromotion) &&
-              hasFreeDelivery && (
-                <ProductFreeDeliveryBadge {...freeDeliveryBadge} />
-              )}
-            {!hasFreeShipping &&
-              !isFreeDeliveryPromotion &&
-              hasFreeDelivery &&
-              MOV_FREE_DELIVERY_PRICE < price.price && (
-                <ProductFreeDeliveryBadge {...freeDeliveryBadge} />
-              )} */}
-          </div>
-          {/* {variants.length > 0 && (
-            <div className={'listing-item__variants'}>
-              <ListingItemVariants variants={variants} />
+        <div className={`${size === 'regular' ? 'h-[380px]' : 'h-[480px]'}`}>
+          <div className='card flex flex-col justify-center rounded-lg bg-white p-10 shadow-md'>
+            <div className='prod-title'>
+              <p className='text-gray-900 text-2xl font-bold uppercase'>
+                <ListingItemTitle title={title} />
+              </p>
             </div>
-          )} */}
+            <div className='prod-img'>
+              <ProductPhoto
+                src={mainImage}
+                alt={title}
+                padding={size === 'small' ? 'p-1' : 'p-1-5'}
+              />
+            </div>
+            <div className='prod-info grid gap-10'>
+              {/* variants */}
+              <div>
+                {/* add variants in future */}
+                {/* {variants.length !== 0 && <ColorVariants items={variants.color} />} */}
+              </div>
+              <div className='text-gray-900 flex flex-col items-center justify-between md:flex-row'>
+                <ProductPrice {...price} />
+                <AddToCartButton onClick={() => {}} />
+              </div>
+            </div>
+          </div>
         </div>
       </a>
     </Link>

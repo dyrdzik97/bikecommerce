@@ -1,21 +1,23 @@
 import useSWRImmutable from 'swr/immutable';
-import { getSkeletonPlaceholders } from '../mappers';
+import { getProductTilesSkeleton } from '../mappers';
 import { getProducts } from '../service/products';
 
-const defaultSkeletonItems = getSkeletonPlaceholders(0, 0);
-
 export const useProducts = () => {
-  const { data } = useSWRImmutable('products', getProducts);
+  const { data } = useSWRImmutable('products', () => getProducts());
 
-  //   if (!data) {
-  //     return {
-  //       items: defaultSkeletonItems,
-  //       pagination: {
-  //         total: 0,
-  //       },
-  //       isLoading: true,
-  //     };
-  //   }
+  if (!data) {
+    return {
+      // items: getProductTiles({})
+      items: getProductTilesSkeleton(), // defaultSkeletonItems, // getProducttileskeleton
+      //   pagination: {
+      //     total: 0,
+      //   },
+      isLoading: true,
+    };
+  }
 
-  return data || [];
+  return {
+    ...data,
+    isLoading: false,
+  };
 };

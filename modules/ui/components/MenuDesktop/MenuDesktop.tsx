@@ -1,4 +1,4 @@
-import Dropdown from '../Dropdown/Dropdown';
+import DropdownMobile from '../Dropdown/Dropdown';
 
 interface IMenuDesktoProps {
   isActive: boolean;
@@ -9,6 +9,7 @@ const MenuDesktop = ({
   isActive = false,
   onHideDropdown,
 }: IMenuDesktoProps): JSX.Element => {
+  // TODO specify menu positions
   return (
     <>
       <button
@@ -27,7 +28,7 @@ const MenuDesktop = ({
           alt='user photo'
         />
       </button>
-      <Dropdown isActive={isActive} onHideDropdown={onHideDropdown} />
+      <DropdownMobile isActive={isActive} onHideDropdown={onHideDropdown} />
     </>
   );
 };

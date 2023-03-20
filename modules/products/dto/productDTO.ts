@@ -12,20 +12,38 @@ export interface IProductDTO {
   };
   price: {
     currency: string;
-    regularPrice: number;
+    price: number;
     promoPrice?: number | null;
     percentageDiscount?: number | null;
   };
   categories: string[];
   images: string[];
+  mainImage?: string;
   isBestseller: boolean;
   hasFreeShipping: boolean;
-  variants?: {
-    [key: string]: string[];
-    // color: string[];
+  //   variants?: {
+  //     [key: string]: string[];
+  // color: string[];
 
-    // in the future
-    // type: string[];
-    // size: string[];
+  // in the future
+  // type: string[];
+  // size: string[];
+  //   };
+}
+
+export interface IProductTileDTO {
+  productId: number;
+  productName: string;
+  //   variants?: {
+  //     [key: string]: string[];
+  //   };
+  mainImage: string;
+  price: {
+    currency: string;
+    price: number;
+    promoPrice?: number | null;
+    percentageDiscount?: number | null;
   };
+  isBestseller: boolean;
+  hasFreeShipping: boolean;
 }

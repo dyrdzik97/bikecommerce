@@ -7,6 +7,7 @@ const MenuMobile = ({
   isActive = false,
   onHideDropdown,
 }: IMenuMobileProps): JSX.Element => {
+  // TODO specify menu positions
   return (
     <div>
       <div>

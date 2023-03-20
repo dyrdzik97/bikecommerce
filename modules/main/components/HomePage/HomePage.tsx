@@ -8,11 +8,7 @@ const HomePage = (): JSX.Element => {
   return (
     <>
       <HeroSection />
-      <Page
-        title='Our Offer'
-        subtitle='Categories of bicycles'
-        padding='md:p-20 p-10'
-      >
+      <Page title='Our Offer' subtitle='Categories of bicycles'>
         <div className='grid gap-8 md:grid-cols-4'>
           {categories.map((category, index) => (
             <CategoryTile
@@ -29,9 +25,8 @@ const HomePage = (): JSX.Element => {
       <Page
         title='Todays Bikes'
         subtitle='Check out what interesting we have here!'
-        padding='md:p-20 p-10'
       >
-        <ProductsCarousel itemHeight='328px' />
+        <ProductsCarousel itemHeight='480px' />
       </Page>
     </>
   );

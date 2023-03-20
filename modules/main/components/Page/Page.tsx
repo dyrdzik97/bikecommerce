@@ -17,9 +17,8 @@ const Page = ({
 }: IPageProps): JSX.Element => {
   return (
     <div
-      className={`relative col-span-6 flex shrink-0 flex-col items-center justify-center gap-10 ${padding} ${
-        size !== 'narrow' ? 'w-full' : 'md:w-9/12'
-      }`}
+      className={`'md:p-20 relative col-span-6 flex shrink-0 flex-col gap-10 p-4 md:items-center md:justify-center  ${padding}
+      ${size !== 'narrow' ? 'w-full' : 'md:w-9/12'}`}
     >
       <div className={'flex flex-col items-center justify-center gap-5'}>
         {title && (

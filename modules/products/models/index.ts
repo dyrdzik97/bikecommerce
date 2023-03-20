@@ -1,12 +1,14 @@
 export interface IProductTile {
   productName: string;
-  variants?: {
-    [key: string]: string[];
-  };
+  href: string;
+  //   variants?: {
+  //     [key: string]: string[];
+  //   };
   mainImage: string;
   price: IPriceModel;
   isBestseller: boolean;
   hasFreeShipping: boolean;
+  isSkeleton: boolean;
 }
 
 export interface IVariantsModel {
@@ -15,7 +17,7 @@ export interface IVariantsModel {
 
 export interface IPriceModel {
   currency: string;
-  regularPrice: number;
+  price?: number;
   promoPrice?: number | null;
   percentageDiscount?: number | null;
 }

@@ -1,13 +1,33 @@
 import { getArrayBasedOnNumber } from '../../../utils/array';
 import { IProductDTO } from '../dto/productDTO';
-import { IProductSkeletonModel } from '../models';
+import { IProductSkeletonModel, IProductTile } from '../models';
 
 export const DEFAULT_LISTING_PER_PAGE = 10;
 
-export const getProducts = (products: IProductDTO[]) => {
+export const toKebabCase = (name: string): string => {
+  const match = name.match(
+    /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+  );
+
+  if (!match) {
+    return '';
+  }
+
+  return match.map((phrase) => phrase.toLowerCase()).join('-');
+};
+
+export const getProductHref = (name: string, id: number): string => {
+  if (!name) {
+    return '';
+  }
+
+  return `/${toKebabCase(name)}-${id}`;
+};
+
+export const getMappedProducts = (products: IProductDTO[]) => {
   return products.map((product) => {
     return {
-      id: product.id,
+      productId: product.id,
       productName: product.productName,
       productDescription: product.productDescription,
       productDetails: {
@@ -20,7 +40,7 @@ export const getProducts = (products: IProductDTO[]) => {
       },
       price: {
         currency: product.price.currency,
-        regularPrice: product.price.regularPrice,
+        price: product.price.price,
         promoPrice: product.price.promoPrice,
         percentageDiscount: product.price.percentageDiscount,
       },
@@ -28,33 +48,72 @@ export const getProducts = (products: IProductDTO[]) => {
       images: product.images,
       isBestseller: product.isBestseller,
       hasFreeShipping: product.hasFreeShipping,
-      variants: {
-        color: mapColorsVariantToHex(product.variants?.color),
-      },
+      //   variants: {
+      //     color: mapColorsVariantToHex(product.variants?.color),
+      //   },
+      // niebieski-rower?variantId=12434
     };
   });
 };
 
-export const getProductTiles = (products: IProductDTO[]) => {
+// getProductTilesSkeleton
+// isSkeleton: true
+
+export const getProductTiles = (products: IProductDTO[]): IProductTile[] => {
+  // export const getProductTiles = (products: any[]): any[] => {
   return products.map((product) => {
     return {
-      id: product.id,
-      productName: product.productName,
-      variants: {
-        color: mapColorsVariantToHex(product.variants?.color),
-      },
-      mainImage: product.images[0],
-      price: {
-        currency: product.price.currency,
-        regularPrice: product.price.regularPrice,
-        promoPrice: product.price.promoPrice,
-        percentageDiscount: product.price.percentageDiscount,
-      },
-      isBestseller: product.isBestseller,
-      hasFreeShipping: product.hasFreeShipping,
+      productId: product.id || 0,
+      href: getProductHref(product.productName, product.id),
+      productName: product.productName || '',
+      //   variants: {
+      //     color: mapColorsVariantToHex(product.variants.color),
+      //   },
+      mainImage: product.images[0] || '',
+      price:
+        {
+          currency: product.price.currency || '',
+          price: product.price.price || 0,
+          promoPrice: product.price.promoPrice || 0,
+          percentageDiscount: product.price.percentageDiscount || 0,
+        } || null,
+      isBestseller: product.isBestseller || false,
+      hasFreeShipping: product.hasFreeShipping || false,
+      isSkeleton: false,
     };
   });
 };
+
+export const getProductTilesSkeleton = (): IProductTile[] => {
+  // export const getProductTiles = (products: any[]): any[] => {
+
+  let skeletonItems: IProductTile[] = [];
+
+  for (let i = 1; i <= 30; i++) {
+    skeletonItems.push({
+      href: '',
+      productName: '',
+      //   variants: {
+      //     color: mapColorsVariantToHex(product.variants.color),
+      //   },
+      mainImage: '',
+      price:
+        {
+          currency: '',
+          price: 0,
+          promoPrice: 0,
+          percentageDiscount: 0,
+        } || null,
+      isBestseller: false,
+      hasFreeShipping: false,
+      isSkeleton: true,
+    });
+  }
+
+  return skeletonItems;
+};
+
+getProductTilesSkeleton;
 
 export const mapColorsVariantToHex = (colors?: string[]) => {
   const colorsArray =
@@ -76,10 +135,20 @@ export const mapColorsVariantToHex = (colors?: string[]) => {
             text: 'green',
             color: '#00FF00',
           };
+        case 'black':
+          return {
+            text: 'black',
+            color: '#000',
+          };
+        case 'darkgray':
+          return {
+            text: 'black',
+            color: '#bababa',
+          };
       }
     });
 
-  return colorsArray;
+  return colorsArray || {};
 };
 
 export const getSkeletonPlaceholders = (

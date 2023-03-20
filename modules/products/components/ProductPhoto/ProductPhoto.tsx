@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 interface IProductPhotoProps {
   padding?: string;
-  src: string;
+  src?: string;
   alt: string;
   children?: ReactNode;
   className?: string;
@@ -13,7 +13,7 @@ interface IProductPhotoProps {
 
 const ProductPhoto: FC<IProductPhotoProps> = ({
   padding,
-  src,
+  src = '',
   alt,
   children,
   className,
@@ -34,7 +34,7 @@ const ProductPhoto: FC<IProductPhotoProps> = ({
       ) : (
         <div
           role='status'
-          className='animate-pulse space-y-8 md:flex md:items-center md:space-y-0 md:space-x-8'
+          className='flex animate-pulse space-y-8 md:flex md:items-center md:space-y-0 md:space-x-8'
         >
           <div className='flex h-[468px] w-full items-center justify-center rounded bg-gray'>
             <svg

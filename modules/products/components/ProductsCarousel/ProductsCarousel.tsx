@@ -2,11 +2,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 
-import { useRef } from 'react';
-import { Keyboard, Mousewheel, Navigation } from 'swiper';
+import useResizeObserver from '@react-hook/resize-observer';
+import { useMemo, useRef, useState } from 'react';
+import { useBreakpoint } from '../../../main/hooks/useBreakpoint';
 import FloatingArrowButton from '../../../ui/components/FloatingArrowButton/FloatingArrowButton';
+import BrowserView from '../../../ui/components/Views/BrowserView/BrowserView';
 import { useProducts } from '../../hooks/useProducts';
-import { getProductTiles } from '../../mappers';
 import ListingItem from '../Listing/ListingItem/ListingItem';
 
 interface IProductsCarouselProps {
@@ -18,9 +19,18 @@ const ProductsCarousel = ({
   itemSize = 'regular',
   itemHeight,
 }: IProductsCarouselProps): JSX.Element => {
-  const itemsRef = useRef(null);
-  const data = useProducts();
-  const productTiles = getProductTiles(data);
+  const itemsRef = useRef<null | any>(null);
+  const { isMobile } = useBreakpoint();
+  const [itemsWidth, setItemsWidth] = useState(0);
+  const { items, isLoading } = useProducts();
+
+  const updateItemsWidth = (width: number) => {
+    setItemsWidth(width);
+  };
+
+  useResizeObserver(itemsRef, (entry) =>
+    updateItemsWidth(entry.contentRect.width)
+  );
 
   const onNext = () => {
     if (!itemsRef.current) {
@@ -38,38 +48,61 @@ const ProductsCarousel = ({
     itemsRef.current.swiper.slidePrev();
   };
 
-  // TODO - add mobile observer and handle swiper on mobile view vs browser view
+  const slidesPerView = useMemo(() => {
+    if (isMobile) {
+      return 1.2;
+    }
+    const minItems = Math.min(4, items.length);
+    const current = minItems;
+
+    const calculateItemsNumber = (size: number): number => {
+      if (itemsWidth / size < 268) {
+        return calculateItemsNumber(size - 1);
+      }
+
+      return size;
+    };
+
+    if (itemsWidth) {
+      return calculateItemsNumber(current);
+    }
+
+    return minItems;
+  }, [isMobile, items, itemsWidth]);
+
   return (
-    <div className='relative flex min-h-fit w-full items-center justify-center md:px-20'>
-      <FloatingArrowButton left='0.5rem' onClick={onPrevious} />
+    <div className='relative flex min-h-fit w-full items-center justify-center md:p-20'>
+      <BrowserView>
+        <FloatingArrowButton left='0.5rem' onClick={onPrevious} />
+      </BrowserView>
       <Swiper
         ref={itemsRef}
-        slidesPerView={4}
-        spaceBetween={30}
-        pagination={{
-          clickable: true,
-        }}
-        centeredSlides={false}
-        modules={[Navigation, Mousewheel, Keyboard]}
+        slidesPerView={slidesPerView}
+        spaceBetween={isMobile ? 16 : 32}
         loop
-        className='flex items-center justify-center'
+        className='p-20'
       >
-        {productTiles.map((product: any, index) => (
-          // TOOD type any fix
-          <SwiperSlide className='relative'>
-            <ListingItem
-              key={index}
-              href=''
-              height={itemHeight}
-              size={itemSize}
-              imageUrl={product.mainImage}
-              title={product.productName}
-              {...product}
-            />
-          </SwiperSlide>
-        ))}
+        {items &&
+          items.map((item, index) => {
+            return (
+              <SwiperSlide
+                className='relative'
+                key={index}
+                style={{ height: '480px' }}
+              >
+                <ListingItem
+                  productId={`${item.productName}-${index}`}
+                  size={isMobile ? 'small' : 'regular'}
+                  height={'480px'}
+                  {...item}
+                />
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
-      <FloatingArrowButton right='0.5rem' onClick={onNext} />
+      <BrowserView>
+        <FloatingArrowButton right='0.5rem' onClick={onNext} />
+      </BrowserView>
     </div>
   );
 };

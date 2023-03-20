@@ -5,6 +5,7 @@ import AddToCartButton from '../../../../ui/components/Buttons/AddToCartButton/A
 import { IPriceModel } from '../../../models';
 import ProductPhoto from '../../ProductPhoto/ProductPhoto';
 import ProductPrice from '../../ProductPrice/ProductPrice';
+import ListingItemSkeleton from '../ListingItemSkeleton/ListingItemSkeleton';
 import ListingItemTitle from '../ListingItemTitle/ListingItemTitle';
 
 export const TRACKABLE_LISTING_ITEM_KEY = 'TRACKABLE_LISTING_ITEM_KEY';
@@ -56,9 +57,9 @@ const ListingItem: FC<IListingItemProps> = ({
     }
   };
 
-  //   if (isSkeleton) {
-  //     return <ListingItemSkeleton height={height} size={size} />;
-  //   }
+  if (isSkeleton) {
+    return <ListingItemSkeleton height={height} size={size} />;
+  }
 
   //   const [hoverState, setHoverState] = useState('opacity-0 h-[0px]');
 

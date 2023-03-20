@@ -11,7 +11,7 @@ export const TRACKABLE_LISTING_ITEM_KEY = 'TRACKABLE_LISTING_ITEM_KEY';
 
 interface IListingItemProps {
   size?: 'small' | 'regular';
-  productId?: string;
+  productId: string;
   href?: string;
   mainImage?: string;
   title?: string;
@@ -34,7 +34,7 @@ interface IListingItemProps {
 const ListingItem: FC<IListingItemProps> = ({
   size = 'regular',
   height,
-  productId = '',
+  productId,
   href = '',
   mainImage,
   title = '',
@@ -65,22 +65,15 @@ const ListingItem: FC<IListingItemProps> = ({
   return (
     <Link href={href} prefetch={false} legacyBehavior>
       <a
-        style={{
-          height,
-        }}
         href={href}
         ref={trackableRefCallback}
         onClick={onClick}
+        className={`m-2 h-[${height}]`}
         // onMouseEnter={() => setHoverState('opacity-1 h-10')}
         // onMouseLeave={() => setHoverState('opacity-0 h-[0px]')}
       >
         <div className={`${size === 'regular' ? 'h-[380px]' : 'h-[480px]'}`}>
-          <div className='card flex flex-col justify-center rounded-lg bg-white p-10 shadow-md'>
-            <div className='prod-title'>
-              <p className='text-gray-900 text-2xl font-bold uppercase'>
-                <ListingItemTitle title={title} />
-              </p>
-            </div>
+          <div className='card flex flex-col justify-center rounded-lg border-lightgray bg-white p-10 shadow-2xl transition duration-200 ease-in-out hover:border'>
             <div className='prod-img'>
               <ProductPhoto
                 src={mainImage}
@@ -88,13 +81,18 @@ const ListingItem: FC<IListingItemProps> = ({
                 padding={size === 'small' ? 'p-1' : 'p-1-5'}
               />
             </div>
-            <div className='prod-info grid gap-10'>
+            <div className='prod-info grid gap-3'>
               {/* variants */}
               <div>
                 {/* add variants in future */}
                 {/* {variants.length !== 0 && <ColorVariants items={variants.color} />} */}
               </div>
-              <div className='text-gray-900 flex flex-col items-center justify-between md:flex-row'>
+              <div className='prod-title'>
+                <p className='text-gray-900 text-2xl font-bold uppercase'>
+                  <ListingItemTitle title={title} />
+                </p>
+              </div>
+              <div className='text-gray-900 flex flex-row items-center justify-between md:flex-row'>
                 <ProductPrice {...price} />
                 <AddToCartButton onClick={() => {}} />
               </div>

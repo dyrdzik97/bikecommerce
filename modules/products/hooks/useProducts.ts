@@ -5,13 +5,12 @@ import { getProducts } from '../service/products';
 export const useProducts = () => {
   const { data } = useSWRImmutable('products', () => getProducts());
 
+  // filling database
+  // addDoc(collection(db, 'products'), productsMock[5]);
+
   if (!data) {
     return {
-      // items: getProductTiles({})
-      items: getProductTilesSkeleton(), // defaultSkeletonItems, // getProducttileskeleton
-      //   pagination: {
-      //     total: 0,
-      //   },
+      items: getProductTilesSkeleton(),
       isLoading: true,
     };
   }

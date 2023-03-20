@@ -1,5 +1,6 @@
 export interface IProductTile {
-  productName: string;
+  productId: string;
+  title: string;
   href: string;
   //   variants?: {
   //     [key: string]: string[];
@@ -23,6 +24,6 @@ export interface IPriceModel {
 }
 
 export interface IProductSkeletonModel {
-  productId: number;
+  productId: string;
   isSkeleton: boolean;
 }

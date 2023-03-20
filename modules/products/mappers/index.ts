@@ -16,7 +16,7 @@ export const toKebabCase = (name: string): string => {
   return match.map((phrase) => phrase.toLowerCase()).join('-');
 };
 
-export const getProductHref = (name: string, id: number): string => {
+export const getProductHref = (name: string, id: number | string): string => {
   if (!name) {
     return '';
   }
@@ -63,9 +63,9 @@ export const getProductTiles = (products: IProductDTO[]): IProductTile[] => {
   // export const getProductTiles = (products: any[]): any[] => {
   return products.map((product) => {
     return {
-      productId: product.id || 0,
+      productId: product.id || '',
       href: getProductHref(product.productName, product.id),
-      productName: product.productName || '',
+      title: product.productName || '',
       //   variants: {
       //     color: mapColorsVariantToHex(product.variants.color),
       //   },
@@ -91,8 +91,9 @@ export const getProductTilesSkeleton = (): IProductTile[] => {
 
   for (let i = 1; i <= 30; i++) {
     skeletonItems.push({
+      productId: '',
+      title: '',
       href: '',
-      productName: '',
       //   variants: {
       //     color: mapColorsVariantToHex(product.variants.color),
       //   },
@@ -162,7 +163,7 @@ export const getSkeletonPlaceholders = (
       : Math.min(total - current, perPage);
 
   return getArrayBasedOnNumber(number).map((index) => ({
-    productId: index,
+    productId: index.toString(),
     isSkeleton: true,
   }));
 };

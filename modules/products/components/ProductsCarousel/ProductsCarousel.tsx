@@ -91,7 +91,6 @@ const ProductsCarousel = ({
                 style={{ height: '480px' }}
               >
                 <ListingItem
-                  productId={`${item.productName}-${index}`}
                   size={isMobile ? 'small' : 'regular'}
                   height={'480px'}
                   {...item}

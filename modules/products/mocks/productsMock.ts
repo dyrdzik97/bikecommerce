@@ -1,8 +1,9 @@
+import { uuid } from 'uuidv4';
 import { IProductDTO } from '../dto/productDTO';
 
 export const productsMock: IProductDTO[] = [
   {
-    id: 1,
+    id: uuid(),
     productName: 'Trek Madone',
     productDescription: `Trek Emonda to zaawansowana linia wielokrotnie nagradzanych profesjonalnych rowerów szosowych. 
         Najnowszy model Trek Emonda SL 5 Disc 2021 cechuje się zrównoważoną geometrią, która pozwoli Ci jednocześnie rozwijać zawrotne prędkości i zachować pełną kontrolę w każdych warunkach. 
@@ -38,7 +39,7 @@ export const productsMock: IProductDTO[] = [
     // },
   },
   {
-    id: 2,
+    id: uuid(),
     productName: 'Specialized XS',
     productDescription: `Trek Emonda to zaawansowana linia wielokrotnie nagradzanych profesjonalnych rowerów szosowych. 
         Najnowszy model Trek Emonda SL 5 Disc 2021 cechuje się zrównoważoną geometrią, która pozwoli Ci jednocześnie rozwijać zawrotne prędkości i zachować pełną kontrolę w każdych warunkach. 
@@ -74,7 +75,7 @@ export const productsMock: IProductDTO[] = [
     // },
   },
   {
-    id: 3,
+    id: uuid(),
     productName: 'Titan Racing',
     productDescription: `Trek Emonda to zaawansowana linia wielokrotnie nagradzanych profesjonalnych rowerów szosowych. 
         Najnowszy model Trek Emonda SL 5 Disc 2021 cechuje się zrównoważoną geometrią, która pozwoli Ci jednocześnie rozwijać zawrotne prędkości i zachować pełną kontrolę w każdych warunkach. 
@@ -108,7 +109,7 @@ export const productsMock: IProductDTO[] = [
     // },
   },
   {
-    id: 4,
+    id: uuid(),
     productName: 'Trek Madone',
     productDescription: `Trek Emonda to zaawansowana linia wielokrotnie nagradzanych profesjonalnych rowerów szosowych. 
         Najnowszy model Trek Emonda SL 5 Disc 2021 cechuje się zrównoważoną geometrią, która pozwoli Ci jednocześnie rozwijać zawrotne prędkości i zachować pełną kontrolę w każdych warunkach. 
@@ -144,7 +145,7 @@ export const productsMock: IProductDTO[] = [
     // },
   },
   {
-    id: 5,
+    id: uuid(),
     productName: 'Trek Madone',
     productDescription: `Trek Emonda to zaawansowana linia wielokrotnie nagradzanych profesjonalnych rowerów szosowych. 
         Najnowszy model Trek Emonda SL 5 Disc 2021 cechuje się zrównoważoną geometrią, która pozwoli Ci jednocześnie rozwijać zawrotne prędkości i zachować pełną kontrolę w każdych warunkach. 
@@ -180,7 +181,7 @@ export const productsMock: IProductDTO[] = [
     // },
   },
   {
-    id: 6,
+    id: uuid(),
     productName: 'Trek Madone',
     productDescription: `Trek Emonda to zaawansowana linia wielokrotnie nagradzanych profesjonalnych rowerów szosowych. 
         Najnowszy model Trek Emonda SL 5 Disc 2021 cechuje się zrównoważoną geometrią, która pozwoli Ci jednocześnie rozwijać zawrotne prędkości i zachować pełną kontrolę w każdych warunkach. 
@@ -216,7 +217,7 @@ export const productsMock: IProductDTO[] = [
     // },
   },
   {
-    id: 7,
+    id: uuid(),
     productName: 'Trek Madone',
     productDescription: `Trek Emonda to zaawansowana linia wielokrotnie nagradzanych profesjonalnych rowerów szosowych. 
         Najnowszy model Trek Emonda SL 5 Disc 2021 cechuje się zrównoważoną geometrią, która pozwoli Ci jednocześnie rozwijać zawrotne prędkości i zachować pełną kontrolę w każdych warunkach. 

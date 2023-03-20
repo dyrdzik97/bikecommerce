@@ -1,5 +1,5 @@
 export interface IProductDTO {
-  id: number;
+  id: string;
   productName: string;
   productDescription: string;
   productDetails: {
@@ -32,7 +32,7 @@ export interface IProductDTO {
 }
 
 export interface IProductTileDTO {
-  productId: number;
+  productId: string;
   productName: string;
   //   variants?: {
   //     [key: string]: string[];

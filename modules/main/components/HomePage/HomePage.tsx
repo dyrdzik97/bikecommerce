@@ -1,8 +1,15 @@
+import dynamic from 'next/dynamic';
 import { categories } from '../../../../utils/categories';
 import ProductsCarousel from '../../../products/components/ProductsCarousel/ProductsCarousel';
 import CategoryTile from '../../../ui/components/CategoryTile/CategoryTile';
-import HeroSection from '../../../ui/components/HeroSection/HeroSection';
 import Page from '../Page/Page';
+
+const HeroSection = dynamic(
+  () => import('../../../ui/components/HeroSection/HeroSection'),
+  {
+    ssr: false,
+  }
+);
 
 const HomePage = (): JSX.Element => {
   return (

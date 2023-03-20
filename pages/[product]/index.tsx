@@ -58,8 +58,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   try {
     const data = await getDocs(collection(db, 'products')).then(
       (querySnapshot) => {
-        console.warn(querySnapshot);
-
         return querySnapshot.docs.map((doc) => doc.data());
       }
     );

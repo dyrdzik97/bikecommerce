@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { SWRConfig } from 'swr';
 
 import { collection, getDocs } from 'firebase/firestore';
+import ProductPage from '../../modules/products/components/Pages/ProductPage/ProductPage';
 import { IProductDTO } from '../../modules/products/dto/productDTO';
 import { useProductSWR } from '../../modules/products/hooks/useProductSWR';
 import { getProductHref } from '../../modules/products/mappers';
@@ -40,6 +41,7 @@ const Product: FC<IProductProps> = ({ product }) => {
         <BrowserView>
           <ProductPage />
         </BrowserView> */}
+      <ProductPage product={product} />
       <p>{JSON.stringify(product)}</p>
     </SWRConfig>
   );

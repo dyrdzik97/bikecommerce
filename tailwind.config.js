@@ -135,7 +135,7 @@ module.exports = {
     screens: {
       sm: '768px', // => @media (min-width: 768px)
       md: '1024px', // => @media (min-width: 1024px)
-      lg: '12380px', // => @media (min-width: 1280px)
+      lg: '1280px', // => @media (min-width: 1280px)
     },
     height: { 480: '480px', screen: '100vh' },
   },

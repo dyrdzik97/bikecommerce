@@ -3,32 +3,38 @@ import { FC, useMemo } from 'react';
 import classNames from 'classnames';
 import { formatPrice } from '../../../../utils/formatters';
 
-export interface IPriceBadgeProps {
+export interface IProductPriceProps {
   currency?: string;
   price?: number;
   promoPrice?: number | null;
   negotiation?: boolean;
+  size?: 'regular' | 'small';
 }
 
-const ProductPrice: FC<IPriceBadgeProps> = ({
+const ProductPrice: FC<IProductPriceProps> = ({
   currency,
   price,
   promoPrice,
   negotiation,
+  size = 'small',
 }) => {
   const hasPromotion =
-    Boolean(promoPrice !== null || promoPrice > 0) && promoPrice !== price;
+    Boolean(promoPrice !== null && promoPrice! > 0) && promoPrice !== price;
 
   const formattedPrice = useMemo(
     () => formatPrice(price, currency),
     [price, currency]
   );
+
   const formattedPromoPrice = useMemo(
-    () => formatPrice(promoPrice, currency),
+    () => formatPrice(promoPrice!, currency),
     [promoPrice, currency]
   );
+
   const classes = classNames('flex gap-2', {
     'text-promo': hasPromotion,
+    'text-base': size === 'small',
+    'text-3xl': size === 'regular',
   });
 
   return (

@@ -40,8 +40,8 @@ const ListingItem: FC<IListingItemProps> = ({
   mainImage,
   title = '',
   price = {
-    promoPrice: 0,
-    price: 0,
+    promoPrice: null,
+    price: null,
   },
   hasFreeShipping = false,
   hasFreeDelivery = false,

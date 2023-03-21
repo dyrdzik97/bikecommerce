@@ -18,9 +18,9 @@ export interface IVariantsModel {
 
 export interface IPriceModel {
   currency: string;
-  price?: number;
-  promoPrice?: number | null;
-  percentageDiscount?: number | null;
+  price: number;
+  promoPrice?: number;
+  percentageDiscount?: number;
 }
 
 export interface IProductSkeletonModel {

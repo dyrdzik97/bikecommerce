@@ -1,6 +1,7 @@
 import Breadcrumbs from '../../../../ui/components/Breadcrumbs/Breadcrumbs';
 import { IProductDTO } from '../../../dto/productDTO';
 import AddProductToCartButton from '../../Buttons/AddProductToCartButton/AddProductToCartButton';
+import CollapsedSection from '../../CollapsedSection/CollapsedSection';
 import DeliveryInfo from '../../DeliveryInfo/DeliveryInfo';
 import ProductPrice from '../../ProductPrice/ProductPrice';
 import ProductRating from '../../ProductRating/ProductRating';
@@ -54,6 +55,9 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
                 </div>
 
                 <DeliveryInfo />
+                <CollapsedSection title={'Details'} collapsed={true}>
+                  <p>childrens</p>
+                </CollapsedSection>
               </div>
 
               {/* details */}

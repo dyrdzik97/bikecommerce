@@ -2,8 +2,8 @@ import useSWRImmutable from 'swr/immutable';
 import { getProductTilesSkeleton } from '../mappers';
 import { getProducts } from '../service/products';
 
-export const useProducts = () => {
-  const { data } = useSWRImmutable('products', () => getProducts());
+export const useProducts = (category?: string | string[] | undefined) => {
+  const { data } = useSWRImmutable('products', () => getProducts(category));
 
   // filling database
   // addDoc(collection(db, 'products'), productsMock[5]);

@@ -26,6 +26,7 @@ const Navbar = ({
           </span>
         </a>
         <div className='flex items-center gap-8'>
+          {/* add here navbaritem with link */}
           <p>Products</p>
           <p>Categories</p>
           <p>Brands</p>

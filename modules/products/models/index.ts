@@ -2,6 +2,7 @@ export interface IProductTile {
   productId: string;
   title: string;
   href: string;
+  categories: string[];
   //   variants?: {
   //     [key: string]: string[];
   //   };

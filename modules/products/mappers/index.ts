@@ -56,14 +56,12 @@ export const getMappedProducts = (products: IProductDTO[]) => {
   });
 };
 
-// getProductTilesSkeleton
-// isSkeleton: true
-
 export const getProductTiles = (products: IProductDTO[]): IProductTile[] => {
   // export const getProductTiles = (products: any[]): any[] => {
   return products.map((product) => {
     return {
       productId: product.id || '',
+      categories: product.categories,
       href: getProductHref(product.productName, product.id),
       title: product.productName || '',
       //   variants: {
@@ -85,8 +83,6 @@ export const getProductTiles = (products: IProductDTO[]): IProductTile[] => {
 };
 
 export const getProductTilesSkeleton = (): IProductTile[] => {
-  // export const getProductTiles = (products: any[]): any[] => {
-
   let skeletonItems: IProductTile[] = [];
 
   for (let i = 1; i <= 30; i++) {
@@ -94,6 +90,7 @@ export const getProductTilesSkeleton = (): IProductTile[] => {
       productId: '',
       title: '',
       href: '',
+      categories: [''],
       //   variants: {
       //     color: mapColorsVariantToHex(product.variants.color),
       //   },

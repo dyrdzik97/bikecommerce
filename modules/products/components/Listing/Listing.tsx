@@ -14,8 +14,9 @@ let trackableId: string | null = '';
 
 const Listing: FC<IListingProps> = ({}) => {
   const router = useRouter();
-  //   const isBackToTopVisible = useVisibilityOnScrollTrigger('bottom');
-  const { items, isLoading } = useProducts();
+  const categoryPath = router.query.category;
+
+  const { items, isLoading } = useProducts(categoryPath);
 
   const itemSize = useSize();
 

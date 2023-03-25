@@ -6,13 +6,21 @@ import DeliveryInfo from '../../DeliveryInfo/DeliveryInfo';
 import ProductPrice from '../../ProductPrice/ProductPrice';
 import ProductRating from '../../ProductRating/ProductRating';
 import ProductTitle from '../../ProductTitle/ProductTitle';
+import SpecificationItem from '../../SpecificationItem/SpecificationItem';
 
 interface IProductPageProps {
   product: IProductDTO;
 }
 
 const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
-  const { images, productName, price } = product;
+  const { images, productName, price, productDetails } = product;
+
+  const specification = Object.entries(productDetails).map((item, index) => {
+    return {
+      title: item[0],
+      value: item[1],
+    };
+  });
 
   return (
     <div
@@ -56,7 +64,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
 
                 <DeliveryInfo />
                 <CollapsedSection title={'Details'} collapsed={true}>
-                  <p>childrens</p>
+                  <SpecificationItem items={specification} />
                 </CollapsedSection>
               </div>
 

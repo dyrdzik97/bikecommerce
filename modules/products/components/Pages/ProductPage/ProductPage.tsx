@@ -28,7 +28,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
       className='flex w-full'
     >
       <section style={{ height: 'min-content' }} className='w-full'>
-        <section className='flex items-center justify-center py-12 sm:py-16'>
+        <section className='flex items-center justify-center sm:py-4'>
           <div className='max-w-screen-2xl  px-4'>
             <Breadcrumbs />
             <div className='md:col-gap-12 md:col-gap-16 mt-8 grid grid-cols-1 gap-12 md:mt-12 md:grid-cols-2 lg:gap-16'>
@@ -51,7 +51,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
               </div>
 
               <div
-                className='sticky top-0 w-[416px] lg:col-span-2 lg:row-span-2 lg:row-end-2'
+                className='sticky top-0 lg:col-span-2 lg:row-span-2 lg:row-end-2 lg:w-[416px]'
                 style={{ height: 'min-content' }}
               >
                 <ProductTitle title={productName} />

@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import { IIconOrientationProps, IIconProps } from '../../../../ui/models';
 
 const IconCart = ({
-  width = 24,
-  height = 24,
+  width = 32,
+  height = 32,
   fillColor = '#000',
   strokeColor = '#000',
   className,

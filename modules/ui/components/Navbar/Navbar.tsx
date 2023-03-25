@@ -13,8 +13,8 @@ const Navbar = ({
   isDropdownActive,
 }: INavbarProps): JSX.Element => {
   return (
-    <nav className='navbar rounde fixed inset-x-0 top-0 z-50 border-b-2 bg-gray px-2 py-2 sm:px-4'>
-      <div className='container mx-auto flex flex-wrap items-center justify-between'>
+    <nav className='bg-gray-50 text-gray-500 body-font fixed top-0 z-50 mb-4 w-full bg-[#fff] shadow-md'>
+      <div className='container mx-auto flex items-center justify-between py-7 px-5'>
         <a href='#' className='flex items-center'>
           <img
             src='https://flowbite.com/docs/images/logo.svg'
@@ -25,6 +25,11 @@ const Navbar = ({
             Bikecommerce
           </span>
         </a>
+        <div className='flex items-center gap-8'>
+          <p>Products</p>
+          <p>Categories</p>
+          <p>Brands</p>
+        </div>
         <div className='flex items-center md:order-2'>
           <MobileView>
             <MenuMobile
@@ -33,10 +38,7 @@ const Navbar = ({
             />
           </MobileView>
           <BrowserView>
-            <MenuDesktop
-              isActive={isDropdownActive}
-              onHideDropdown={onActivateDropdown}
-            />
+            <MenuDesktop />
           </BrowserView>
         </div>
       </div>

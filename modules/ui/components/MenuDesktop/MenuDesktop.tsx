@@ -1,35 +1,28 @@
-import DropdownMobile from '../Dropdown/Dropdown';
+import Link from 'next/link';
+import IconBasket from '../../../main/utils/Icons/IconBasket/IconBasket';
+import IconUser from '../../../main/utils/Icons/IconUser/IconUser';
 
-interface IMenuDesktoProps {
-  isActive: boolean;
-  onHideDropdown: () => void;
-}
+interface IMenuDesktoProps {}
 
-const MenuDesktop = ({
-  isActive = false,
-  onHideDropdown,
-}: IMenuDesktoProps): JSX.Element => {
-  // TODO specify menu positions
+const MenuDesktop = ({}: IMenuDesktoProps): JSX.Element => {
+  // values from cart context in future
+  const itemsInCart = false;
+  const itemsCount = 0;
+
   return (
-    <>
-      <button
-        type='button'
-        className='bg-gray-800 focus:ring-gray-300 focus:ring-gray-600 mr-3 flex rounded-full text-sm focus:ring-4 md:mr-0'
-        id='user-menu-button'
-        aria-expanded='false'
-        data-dropdown-toggle='user-dropdown'
-        data-dropdown-placement='bottom'
-        onClick={onHideDropdown}
-      >
-        <span className='sr-only'>Open user menu</span>
-        <img
-          className='h-8 w-8 rounded-full'
-          src='/docs/images/people/profile-picture-3.jpg'
-          alt='user photo'
-        />
-      </button>
-      <DropdownMobile isActive={isActive} onHideDropdown={onHideDropdown} />
-    </>
+    <div className='flex gap-4'>
+      <Link href='/cart' className='relative'>
+        <IconBasket />
+        {itemsInCart && (
+          <p className='absolute top-0 right-0 flex h-[10px] w-[10px] items-center justify-center rounded-full bg-[#FFA500] p-2 text-[8px]'>
+            {itemsCount}
+          </p>
+        )}
+      </Link>
+      <Link href='/user'>
+        <IconUser />
+      </Link>
+    </div>
   );
 };
 

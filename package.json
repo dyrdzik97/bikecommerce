@@ -19,6 +19,7 @@
     "component:headless": "cypress run --component"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.0.0",
     "@next/font": "13.2.1",
     "@react-hook/resize-observer": "^1.2.6",
     "@types/node": "18.14.1",
@@ -32,9 +33,11 @@
     "react": "18.2.0",
     "react-content-loader": "^6.2.1",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.8",
     "swiper": "^9.1.0",
     "swr": "^2.1.0",
-    "uuidv4": "^6.2.13"
+    "uuidv4": "^6.2.13",
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.53.0",

@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { useAuth } from '../../../../context/AuthContext';
 import { categories } from '../../../../utils/categories';
 import ProductsCarousel from '../../../products/components/ProductsCarousel/ProductsCarousel';
 import CategoryTile from '../../../ui/components/CategoryTile/CategoryTile';
@@ -12,6 +13,9 @@ const HeroSection = dynamic(
 );
 
 const HomePage = (): JSX.Element => {
+  const { user } = useAuth();
+  console.warn('rrr', user);
+
   return (
     <>
       <HeroSection />

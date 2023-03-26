@@ -69,12 +69,16 @@ const ListingItem: FC<IListingItemProps> = ({
         href={href}
         ref={trackableRefCallback}
         onClick={onClick}
-        className={`m-2 h-[${height}]`}
+        // className={`m-2 h-[${height}]`}
         // onMouseEnter={() => setHoverState('opacity-1 h-10')}
         // onMouseLeave={() => setHoverState('opacity-0 h-[0px]')}
       >
-        <div className={`${size === 'regular' ? 'h-[380px]' : 'h-[480px]'}`}>
-          <div className='card flex flex-col justify-center rounded-lg border-lightgray bg-white p-10 shadow-2xl transition duration-200 ease-in-out hover:border'>
+        <div>
+          <div
+            className={`${
+              size === 'regular' ? 'h-[480px]' : 'h-[380px]'
+            } card flex flex-col justify-center rounded-lg border-lightgray bg-white p-10 shadow-2xl transition duration-200 ease-in-out hover:border`}
+          >
             <div className='prod-img'>
               <ProductPhoto
                 src={mainImage}

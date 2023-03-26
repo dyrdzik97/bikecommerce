@@ -47,7 +47,7 @@ const Listing: FC<IListingProps> = ({}) => {
       {/* <ListingHeader tags={tags} vendor={vendor}> */}
 
       <ListingTotalInfo total={items.length} />
-      <div className='grid grid-cols-4 gap-10'>
+      <div className='grid grid-cols-1 gap-2 md:grid-cols-4 md:gap-10'>
         {items.map((item, index) => (
           <ListingItem
             key={`${item.title}-${index}`}

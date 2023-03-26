@@ -14,7 +14,7 @@ const Catalog = (): JSX.Element => {
   const router = useRouter();
 
   return (
-    <Page title='Bikes listing'>
+    <Page title='Bikes listing' size='wide'>
       {/* TODO add breadcrumbs */}
       <Listing />
     </Page>

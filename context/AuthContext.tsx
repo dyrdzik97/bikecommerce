@@ -56,6 +56,7 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
 
   const logout = () => {
     auth.signOut();
+    router.push('/');
   };
 
   const signInWithGoogle = () => {

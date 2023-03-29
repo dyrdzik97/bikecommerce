@@ -6,11 +6,7 @@ interface IMainProps {
 
 const Main = ({ children }: IMainProps): JSX.Element => {
   return (
-    <main
-      className={
-        'relative flex flex flex-col items-center justify-center md:mt-[100px]'
-      }
-    >
+    <main className={'relative flex flex flex-col items-center justify-center'}>
       {children}
     </main>
   );

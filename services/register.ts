@@ -29,7 +29,7 @@ const registerDatabase = async ({ id, email, name, surname }: IDataBase) => {
     addresses: [],
     cart: {},
     favorites: [],
-    orders: [],
+    orders: [], // do wywalenia
     phoneNumber: '',
     photoUrl: null,
   });

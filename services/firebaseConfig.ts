@@ -22,3 +22,11 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 
 export const storage = getStorage(app, process.env.STORAGE_BUCKET);
+// bikecommerce/config
+
+// services/user/register/index.ts
+// services/user/register/types.ts
+// user/login
+
+// services/products/index.ts
+// services/products/categories

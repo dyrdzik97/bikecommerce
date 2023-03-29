@@ -9,6 +9,7 @@ import { firebaseConfig } from '../../services/firebaseConfig';
 import { emailRegister, registerDatabase } from '../../services/register';
 
 const schema = yup.object().shape({
+  // stringValidation("Name", minLength)
   name: yup
     .string()
     .required('* Name is required.')
@@ -33,9 +34,12 @@ const RegisterForm = () => {
   });
 
   const onSubmit = (data: any) => {
+    // IDataBase
     console.warn(data);
     const { email, password, name, surname } = data;
 
+    // registerUser
+    // { message: "...", success: true / false }
     emailRegister(email, password)
       .then((response) => {
         console.warn('res', response);

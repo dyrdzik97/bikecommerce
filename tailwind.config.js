@@ -93,6 +93,7 @@ module.exports = {
       gray: '#f8f8f8',
       darkgray: '#767e87',
       lightgray: '#BABABA',
+      hoverbg: '#F6F6F6',
       promo: '#EE6013',
     },
     spacing: {

@@ -77,7 +77,7 @@ const ListingItem: FC<IListingItemProps> = ({
           <div
             className={`${
               size === 'regular' ? 'h-[480px]' : 'h-[380px]'
-            } card flex flex-col justify-center rounded-lg border-lightgray bg-white p-10 shadow-2xl transition duration-200 ease-in-out hover:border`}
+            } card flex flex-col justify-center rounded-lg border-white bg-white p-10 shadow-2xl transition duration-200 ease-in-out md:hover:scale-105`}
           >
             <div className='prod-img'>
               <ProductPhoto
@@ -93,9 +93,9 @@ const ListingItem: FC<IListingItemProps> = ({
                 {/* {variants.length !== 0 && <ColorVariants items={variants.color} />} */}
               </div>
               <div className='prod-title'>
-                <p className='text-gray-900 text-2xl font-bold uppercase'>
+                <div className='text-gray-900 text-2xl font-bold uppercase'>
                   <ListingItemTitle title={title} />
-                </p>
+                </div>
               </div>
               <div className='text-gray-900 flex flex-row items-center justify-between md:flex-row'>
                 <ProductPrice {...price} />

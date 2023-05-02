@@ -1,6 +1,10 @@
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { SWRConfig } from 'swr';
+import PageLoader from '../modules/ui/components/PageLoader/PageLoader';
+import { setCurrentLocale } from '../utils/localeDetection';
 
 const HomePage = dynamic(
   () => import('../modules/main/components/HomePage/HomePage'),
@@ -10,19 +14,44 @@ const HomePage = dynamic(
 );
 
 const Home = (): JSX.Element => {
+  const { isFallback } = useRouter();
+
+  if (isFallback) {
+    return <PageLoader />;
+  }
+
   return (
-    <>
-      <Head>
-        <title>Bikecommerce - shop now!</title>
-        <meta name='description' content='Shop with all sort of bikes' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      <SWRConfig>
-        <HomePage />
-      </SWRConfig>
-    </>
+    <SWRConfig>
+      <HomePage />
+    </SWRConfig>
   );
+};
+
+export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {
+  try {
+    setCurrentLocale(locale);
+
+    const [translations] = await Promise.all([
+      serverSideTranslations(locale, [
+        'common',
+        'auth',
+        'nav',
+        'routes',
+        'validations',
+      ]),
+    ]);
+
+    return {
+      props: {
+        ...translations,
+      },
+      revalidate: 1800,
+    };
+  } catch (e) {
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export default Home;

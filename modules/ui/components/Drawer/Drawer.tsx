@@ -3,11 +3,18 @@ import { ReactNode } from 'react';
 interface IDrawerProps {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
-  children: ReactNode;
+  children?: ReactNode;
+  append?: ReactNode;
   header: string;
 }
 
-const Drawer = ({ isOpen, setIsOpen, children, header }: IDrawerProps) => {
+const Drawer = ({
+  isOpen,
+  setIsOpen,
+  children,
+  header,
+  append,
+}: IDrawerProps) => {
   return (
     <main
       className={
@@ -19,13 +26,16 @@ const Drawer = ({ isOpen, setIsOpen, children, header }: IDrawerProps) => {
     >
       <section
         className={
-          ' h-full delay-400 absolute right-0 w-screen w-[500px] max-w-lg transform bg-white shadow-xl transition-all duration-500 ease-in-out  ' +
+          'delay-400 absolute right-0 w-screen w-[500px] max-w-lg transform bg-white shadow-xl transition-all duration-500 ease-in-out  ' +
           (isOpen ? ' translate-x-0 ' : ' translate-x-full ')
         }
       >
-        <article className='h-full relative flex max-w-lg flex-col gap-10 space-y-6 overflow-y-scroll px-4 py-10'>
-          <header className='text-lg font-bold'>{header}</header>
-          {children}
+        <article className='relative flex h-screen max-w-lg flex-col gap-10 space-y-6 overflow-y-scroll px-4 py-10'>
+          <div className='flex items-center justify-between'>
+            <header className='text-lg font-bold'>{header}</header>
+            <div>{append}</div>
+          </div>
+          <div className='relative h-[100%] w-full'>{children}</div>
         </article>
       </section>
       <section
@@ -33,7 +43,7 @@ const Drawer = ({ isOpen, setIsOpen, children, header }: IDrawerProps) => {
         onClick={() => {
           setIsOpen(false);
         }}
-      ></section>
+      />
     </main>
   );
 };

@@ -8,19 +8,19 @@ import { auth, db } from './firebaseConfig';
 
 import 'firebase/firestore';
 import { addDoc, collection } from 'firebase/firestore';
-
-interface IDataBase {
-  id: string;
-  email: string;
-  name: string;
-  surname: string;
-}
+import { IRegisterFormValues } from '../modules/main/models';
 
 const emailRegister = async (email: string, password: string) => {
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 
-const registerDatabase = async ({ id, email, name, surname }: IDataBase) => {
+const registerDatabase = async ({
+  id,
+  email,
+  name,
+  surname,
+  password,
+}: IRegisterFormValues) => {
   await addDoc(collection(db, 'users'), {
     id,
     name,
@@ -32,6 +32,7 @@ const registerDatabase = async ({ id, email, name, surname }: IDataBase) => {
     orders: [], // do wywalenia
     phoneNumber: '',
     photoUrl: null,
+    password,
   });
 
   const auth = getAuth();

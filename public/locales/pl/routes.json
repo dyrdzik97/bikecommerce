@@ -1,0 +1,15 @@
+{
+  "checkout": "checkout",
+  "cart": "koszyk",
+  "favorites": "ulubione",
+  "login": "logowanie",
+  "register": "rejestracja",
+  "userProfile": "konto/ustawienia",
+  "orderHistory": "konto/historia-zamowien",
+  "forgotPassword": "przypomij-haslo",
+  "catalog": "katalog",
+  "vendor": "butik",
+  "regulamin": "regulamin",
+  "privacyPolicy": "polityka-prywatnosci",
+  "thankYou": "thank-you"
+}

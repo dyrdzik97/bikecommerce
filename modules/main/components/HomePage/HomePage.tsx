@@ -1,9 +1,7 @@
+import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import { useAuth } from '../../../../context/AuthContext';
 import { categories } from '../../../../utils/categories';
-import ProductsCarousel from '../../../products/components/ProductsCarousel/ProductsCarousel';
-import CategoryTile from '../../../ui/components/CategoryTile/CategoryTile';
-import Page from '../Page/Page';
 
 const HeroSection = dynamic(
   () => import('../../../ui/components/HeroSection/HeroSection'),
@@ -12,9 +10,28 @@ const HeroSection = dynamic(
   }
 );
 
+const Page = dynamic(() => import('../LayoutPage/LayoutPage'), {
+  ssr: false,
+});
+
+const CategoryTile = dynamic(
+  () => import('../../../ui/components/CategoryTile/CategoryTile'),
+  {
+    ssr: false,
+  }
+);
+const ProductsCarousel = dynamic(
+  () =>
+    import('../../../products/components/ProductsCarousel/ProductsCarousel'),
+  {
+    ssr: false,
+  }
+);
+
 const HomePage = (): JSX.Element => {
   const { user } = useAuth();
-  console.warn('rrr', user);
+
+  const { t } = useTranslation('common');
 
   return (
     <>

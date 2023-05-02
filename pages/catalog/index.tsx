@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
-import Page from '../../modules/main/components/Page/Page';
+import Page from '../../modules/main/components/LayoutPage/LayoutPage';
 
 const Listing = dynamic(
   () => import('../../modules/products/components/Listing/Listing'),
@@ -11,21 +11,31 @@ const Listing = dynamic(
 );
 
 const Catalog = (): JSX.Element => {
-  const router = useRouter();
-
   return (
-    <Page title='Bikes listing' size='wide'>
+    <Page size='wide'>
       {/* TODO add breadcrumbs */}
       <Listing />
     </Page>
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({}) => {
-  return {
-    props: {},
-    revalidate: 1800,
-  };
+export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {
+  try {
+    const [translations] = await Promise.all([
+      serverSideTranslations(locale, ['common', 'nav', 'routes', 'listing']),
+    ]);
+
+    return {
+      props: {
+        ...translations,
+      },
+      revalidate: 1800,
+    };
+  } catch (e) {
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export default Catalog;

@@ -1,8 +1,10 @@
 import { FC, useCallback, useEffect } from 'react';
 
+import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useSize } from '../../../main/hooks/useSize';
 import { useProducts } from '../../hooks/useProducts';
+import ListingHeader from './ListingHeader/ListingHeader';
 import ListingItem from './ListingItem/ListingItem';
 import ListingTotalInfo from './ListingTotalInfo/ListingTotalInfo';
 
@@ -15,6 +17,7 @@ let trackableId: string | null = '';
 const Listing: FC<IListingProps> = ({}) => {
   const router = useRouter();
   const categoryPath = router.query.category;
+  const { t } = useTranslation('common');
 
   const { items, isLoading } = useProducts(categoryPath);
 
@@ -43,9 +46,11 @@ const Listing: FC<IListingProps> = ({}) => {
   }, []);
 
   return (
-    <div className={'flex flex-col items-center justify-center gap-10'}>
-      {/* <ListingHeader tags={tags} vendor={vendor}> */}
-
+    <div
+      className={'flex flex-col items-center justify-center gap-10 pt-[100px]'}
+    >
+      <ListingHeader />
+      {t('dupa')}
       <ListingTotalInfo total={items.length} />
       <div className='grid grid-cols-1 gap-2 md:grid-cols-4 md:gap-10'>
         {items.map((item, index) => (

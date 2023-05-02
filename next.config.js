@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const { i18n } = require('./next-i18next.config');
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -18,6 +20,27 @@ const nextConfig = {
     MESSAGING_SENDER_ID: process.env.MESSAGING_SENDER_ID,
     APP_ID: process.env.APP_ID,
     MEASUREMENT_ID: process.env.MEASUREMENT_ID,
+  },
+  i18n,
+  async rewrites() {
+    return [
+      {
+        source: '/katalog',
+        destination: '/catalog',
+      },
+      {
+        source: '/rejestracja',
+        destination: '/register',
+      },
+      {
+        source: '/logowanie',
+        destination: '/login',
+      },
+      {
+        source: '/przypomnij-haslo',
+        destination: '/forgot-password',
+      },
+    ];
   },
 };
 

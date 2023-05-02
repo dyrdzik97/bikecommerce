@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-interface IPageProps {
+interface ILayoutPageProps {
   size?: 'narrow' | 'wide';
   children: ReactNode;
   padding?: string;
@@ -8,13 +8,13 @@ interface IPageProps {
   subtitle?: string;
 }
 
-const Page = ({
+const LayoutPage = ({
   size = 'narrow',
   children,
   padding,
   title,
   subtitle,
-}: IPageProps): JSX.Element => {
+}: ILayoutPageProps): JSX.Element => {
   return (
     <div
       className={`'md:p-20 relative col-span-6 flex shrink-0 flex-col gap-10 p-4 md:items-center md:justify-center  ${padding}
@@ -35,4 +35,4 @@ const Page = ({
   );
 };
 
-export default Page;
+export default LayoutPage;

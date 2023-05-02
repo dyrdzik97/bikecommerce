@@ -1,0 +1,10 @@
+{
+  "requiredErrorMessage": "Field is required",
+  "passwordLengthErrorMessage": "Password should have at least 8 characters",
+  "incorrectEmailErrorMessage": "Enter valid e-mail address format",
+  "emailNotExistMessage": "The given e-mail address does not exist. Enter the email address of an existing user",
+  "incorrectPhoneErrorMessage": "Incorrect phone number",
+  "charactersNumberErrorMessage": "Input {{number}} characters",
+  "minCharactersNumberErrorMessage": "Input min {{number}} characters",
+  "maxCharactersNumberErrorMessage": "Input max {{number}} characters"
+}

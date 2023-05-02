@@ -1,0 +1,7 @@
+{
+  "listingTitle": "Bikes: {{category}}",
+  "wrongCategoryInfo": "Wrong products category, all products below",
+  "emptyListing": "There is no given products you are looking for",
+  "checkOurSuggestions": "check our suggestions",
+  "allProducts": "All products"
+}

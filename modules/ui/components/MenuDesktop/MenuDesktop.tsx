@@ -4,6 +4,7 @@ import CartPreviewPanel from '../../../main/components/Panels/CartPreviewPanel/C
 import UserPreviewPanel from '../../../main/components/Panels/UserPreviewPanel/UserPreviewPanel';
 import IconBasket from '../../../main/utils/Icons/IconBasket/IconBasket';
 import IconUser from '../../../main/utils/Icons/IconUser/IconUser';
+import LangSwitcher from '../LangSwitcher/LangSwitcher';
 
 interface IMenuDesktoProps {}
 
@@ -18,7 +19,7 @@ const MenuDesktop = (): JSX.Element => {
   const { user, logout } = useAuth();
 
   return (
-    <div className='flex gap-4'>
+    <div className='flex items-center gap-4'>
       <div
         onClick={() => setIsOpenCartDrawer(true)}
         className='relative cursor-pointer'
@@ -41,6 +42,7 @@ const MenuDesktop = (): JSX.Element => {
           </p>
         )}
       </div>
+      <LangSwitcher />
       <CartPreviewPanel
         isOpen={isOpenCartDrawer}
         setIsOpen={setIsOpenCartDrawer}

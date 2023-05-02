@@ -1,27 +1,21 @@
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../../services/firebaseConfig';
-import { getProductTiles } from '../mappers';
+import { getProductTiles, isProductBelongsToGivenCategory } from '../mappers';
 
 // wyciągnac do góry i na listingu sprawdzac -> potem dostepne katergorie jestli query złe
-enum Categories {
-  gravel = 'gravel',
-  city = 'city',
-  road = 'road',
-  cross = 'cross',
-}
 
-export const getProducts = async (category?: string | string[] | undefined) => {
+export const getProductsFromDatabase = async (
+  category?: string | string[] | undefined
+) => {
   const data: any = await getDocs(collection(db, 'products')).then(
     (querySnapshot) => {
       return querySnapshot.docs.map((doc) => doc.data());
     }
   );
-  // getProductsFromDatabase()
-  // getProductsFromDatabaseWithCategory(category: string)
 
   // when query will be wrong - always will return all of products
   // dodac na UI ze query jest zle i wyswietlamy wszystkie produkty i np dostepne kategorie
-  const results = Object.values(Categories).includes(category as Categories)
+  const results = isProductBelongsToGivenCategory(category)
     ? getProductTiles(data).filter((item) =>
         item.categories.includes(category as string)
       )

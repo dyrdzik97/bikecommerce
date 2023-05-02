@@ -1,5 +1,6 @@
 import { getArrayBasedOnNumber } from '../../../utils/array';
 import { IProductDTO } from '../dto/productDTO';
+import { Categories } from '../enums';
 import { IProductSkeletonModel, IProductTile } from '../models';
 
 export const DEFAULT_LISTING_PER_PAGE = 10;
@@ -163,4 +164,10 @@ export const getSkeletonPlaceholders = (
     productId: index.toString(),
     isSkeleton: true,
   }));
+};
+
+export const isProductBelongsToGivenCategory = (
+  category?: string | string[] | undefined
+) => {
+  return Object.values(Categories).includes(category as Categories);
 };

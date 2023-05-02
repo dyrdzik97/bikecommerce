@@ -1,10 +1,22 @@
+import dynamic from 'next/dynamic';
 import { ReactNode, useEffect, useState } from 'react';
 import useCloseOnRouteChange from '../../../main/hooks/useCloseOnRouteChange';
-import Footer from '../Footer/Footer';
-import Layout from '../Layout/Layout';
-import Main from '../Main/Main';
-import Navbar from '../Navbar/Navbar';
-import Navbar2 from '../Navbar2';
+
+const Navbar = dynamic(() => import('../Navbar/Navbar'), {
+  ssr: false,
+});
+
+const Layout = dynamic(() => import('../Layout/Layout'), {
+  ssr: false,
+});
+
+const Footer = dynamic(() => import('../Footer/Footer'), {
+  ssr: false,
+});
+
+const Main = dynamic(() => import('../Main/Main'), {
+  ssr: false,
+});
 
 interface IDefaultLayoutProps {
   children: ReactNode;
@@ -47,7 +59,7 @@ const DefaultLayout = ({ children }: IDefaultLayoutProps): JSX.Element => {
 
   return (
     <Layout>
-      <Navbar2 />
+      {/* <Navbar2 /> */}
       <Navbar
         isDropdownActive={isDropdownActive}
         onActivateDropdown={onActivateDropdown}

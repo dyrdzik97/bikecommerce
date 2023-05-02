@@ -41,16 +41,19 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
   const router = useRouter();
 
   const signUp = async (email: string, password: string): Promise<void> => {
+    setLoading(true);
     await createUserWithEmailAndPassword(auth, email, password);
     router.push('/');
   };
 
   const signIn = async (email: string, password: string): Promise<void> => {
+    setLoading(true);
     await signInWithEmailAndPassword(auth, email, password);
     router.push('/');
   };
 
   const resetPassword = (email: string): Promise<void> => {
+    setLoading(true);
     return sendPasswordResetEmail(auth, email);
   };
 

@@ -5,10 +5,12 @@ import { useRouter } from 'next/router';
 import { SWRConfig } from 'swr';
 
 import { collection, getDocs } from 'firebase/firestore';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ProductPage from '../../modules/products/components/Pages/ProductPage/ProductPage';
 import { IProductDTO } from '../../modules/products/dto/productDTO';
 import { useProductSWR } from '../../modules/products/hooks/useProductSWR';
 import { getProductHref } from '../../modules/products/mappers';
+import PageLoader from '../../modules/ui/components/PageLoader/PageLoader';
 import { db } from '../../services/firebaseConfig';
 
 interface IProductProps {
@@ -21,8 +23,7 @@ const Product: FC<IProductProps> = ({ product }) => {
   const { isFallback, query } = useRouter();
 
   if (isFallback) {
-    // return <PageLoader />;
-    return <p>loading</p>;
+    return <PageLoader />;
   }
 
   return (
@@ -41,8 +42,7 @@ const Product: FC<IProductProps> = ({ product }) => {
         <BrowserView>
           <ProductPage />
         </BrowserView> */}
-      <ProductPage product={product} />
-      <p>{JSON.stringify(product)}</p>
+      <ProductPage product={product} key={product.id} />
     </SWRConfig>
   );
 };
@@ -55,9 +55,13 @@ export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { params = {} } = ctx;
+  const { params = {}, locale = '' } = ctx;
 
   try {
+    const [translations] = await Promise.all([
+      serverSideTranslations(locale, ['common', 'nav', 'routes', 'listing']),
+    ]);
+
     const data = await getDocs(collection(db, 'products')).then(
       (querySnapshot) => {
         return querySnapshot.docs.map((doc) => doc.data());
@@ -72,6 +76,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     return {
       props: {
         product,
+        ...translations,
       },
       // simulate loading of page - remove to being faster
       revalidate: 1800,

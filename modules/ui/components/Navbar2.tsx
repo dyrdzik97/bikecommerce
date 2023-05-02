@@ -744,12 +744,12 @@ const Navbar2 = () => {
                 >
                   Sign up
                 </a>
-                <p className='text-gray-500 mt-6 text-center text-base font-medium'>
+                <div className='text-gray-500 mt-6 text-center text-base font-medium'>
                   Existing customer?
                   <a href='#' className='text-indigo-600 hover:text-indigo-500'>
                     Sign in
                   </a>
-                </p>
+                </div>
               </div>
             </div>
           </div>

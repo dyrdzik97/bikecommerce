@@ -1,0 +1,15 @@
+{
+  "allProducts": "Wszystkie rowery",
+  "allProductsSubText": "Kazdy rodzaj, kazda marka",
+  "bikes": "Rowery",
+  "gravel": "Gravel",
+  "road": "Szosa",
+  "street": "Miejskie",
+  "cross": "Cross",
+  "gravelSubText": "Gravel sub text",
+  "roadSubText": "Road sub text",
+  "streetSubText": "Street sub text",
+  "crossSubText": "Cross sub text",
+  "accesories": "Akcesoria",
+  "blog": "Blog"
+}

@@ -47,9 +47,15 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
   };
 
   const signIn = async (email: string, password: string): Promise<void> => {
-    setLoading(true);
-    await signInWithEmailAndPassword(auth, email, password);
-    router.push('/');
+    try {
+      setLoading(true);
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push('/');
+    } catch (error) {
+      new Error('error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const resetPassword = (email: string): Promise<void> => {

@@ -48,7 +48,7 @@ const GenericButton = ({
           disabled={isLoading}
         >
           {icon}
-          {isLoading && <IconLoading />}
+          {isLoading && <IconLoading width={32} height={32} />}
           {label}
         </button>
       ) : (

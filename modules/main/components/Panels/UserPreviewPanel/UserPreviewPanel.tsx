@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 import { useAuth } from '../../../../../context/AuthContext';
 import GenericButton from '../../../../ui/components/Buttons/GenericButton/GenericButton';
 import Drawer from '../../../../ui/components/Drawer/Drawer';
@@ -54,6 +55,10 @@ const UserPreviewPanel = ({ isOpen, setIsOpen }: IUserPreviewPanelProps) => {
             setLoading(true);
             setIsOpen(false);
             await logout();
+            toast(t('logoutSuccess'), {
+              hideProgressBar: true,
+              type: 'success',
+            });
             setLoading(false);
           }}
           className='absolute bottom-0 left-0'

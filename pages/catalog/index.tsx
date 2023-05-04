@@ -22,7 +22,13 @@ const Catalog = (): JSX.Element => {
 export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {
   try {
     const [translations] = await Promise.all([
-      serverSideTranslations(locale, ['common', 'nav', 'routes', 'listing']),
+      serverSideTranslations(locale, [
+        'common',
+        'nav',
+        'routes',
+        'listing',
+        'auth',
+      ]),
     ]);
 
     return {

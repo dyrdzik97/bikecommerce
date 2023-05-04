@@ -1,6 +1,14 @@
+import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { uuid } from 'uuidv4';
+import { useAuth } from '../../../../../context/AuthContext';
+import { useCart } from '../../../../../context/CartContext';
+import { useProduct } from '../../../../../context/ProductContext';
+import IconCart from '../../../../main/utils/Icons/IconCart/IconCart';
 import Breadcrumbs from '../../../../ui/components/Breadcrumbs/Breadcrumbs';
+import GenericButton from '../../../../ui/components/Buttons/GenericButton/GenericButton';
 import { IProductDTO } from '../../../dto/productDTO';
-import AddProductToCartButton from '../../Buttons/AddProductToCartButton/AddProductToCartButton';
 import CollapsedSection from '../../CollapsedSection/CollapsedSection';
 import DeliveryInfo from '../../DeliveryInfo/DeliveryInfo';
 import ProductPrice from '../../ProductPrice/ProductPrice';
@@ -14,6 +22,13 @@ interface IProductPageProps {
 
 const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
   const { images, productName, price, productDetails } = product;
+  const router = useRouter();
+  const { t } = useTranslation('product');
+  const { t: tRoutes } = useTranslation('routes');
+  const { user } = useAuth();
+  const [isAddingProduct, setIsAddingProduct] = useState(false);
+  const { quantity, setQuantity } = useProduct();
+  const { addToCart, cartDetails, setItems } = useCart();
 
   const specification = Object.entries(productDetails).map((item, index) => {
     return {
@@ -21,6 +36,28 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
       value: item[1],
     };
   });
+
+  const onAddToCart = async () => {
+    try {
+      if (!user) {
+        router.push(`/${tRoutes('login')}`);
+      }
+
+      setIsAddingProduct(true);
+      addToCart({
+        orderId: uuid(),
+        cartId: uuid(),
+        userId: user?.uid,
+        status: 'processing',
+        items: [product],
+      });
+      setItems(product);
+    } catch (error) {
+      throw new Error('error');
+    } finally {
+      setIsAddingProduct(false);
+    }
+  };
 
   return (
     <div
@@ -60,7 +97,13 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
 
                 <div className='mt-10 flex flex-col items-start justify-between gap-10 space-y-4 border-t border-b py-4  sm:space-y-0'>
                   <ProductPrice size={'regular'} {...price} />
-                  <AddProductToCartButton />
+                  <GenericButton
+                    label={t('addToCart')}
+                    onClick={() => onAddToCart()}
+                    isLoading={isAddingProduct}
+                    filled
+                    icon={isAddingProduct ? null : <IconCart />}
+                  />
                 </div>
 
                 <DeliveryInfo />

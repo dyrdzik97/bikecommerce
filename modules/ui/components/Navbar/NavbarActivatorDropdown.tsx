@@ -49,6 +49,7 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
           className={
             'text-gray-500 group inline-flex items-center rounded-md bg-white p-2 text-base font-medium hover:bg-hoverbg focus:outline-none'
           }
+          shallow
         >
           {t(item.key)}
         </Link>
@@ -67,12 +68,15 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
             <div className='relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8'>
               {item.children.map((child: any, itemIndex: number) => (
                 // problem z linkami, nie odswieza sie po zmianie url, a jak juz to cala apka reload robi
+                // gubi się context po kliku w pozucję w dropdownie, płaska pozycja w menu nie refreshuje calej apki
                 <Link
                   key={itemIndex}
                   href={`[catalog]${child.href[interfaceCode]}`}
                   as={`${tRoutes('catalog')}${child.href[interfaceCode]}`}
                   locale={router.locale}
                   className='-m-3 flex items-start rounded-lg p-3 hover:bg-hoverbg'
+                  shallow
+                  passHref
                 >
                   <div className='ml-4'>
                     <p className='text-gray-900 text-base font-medium'>

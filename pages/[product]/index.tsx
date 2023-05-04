@@ -6,6 +6,7 @@ import { SWRConfig } from 'swr';
 
 import { collection, getDocs } from 'firebase/firestore';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { ProductContextProvider } from '../../context/ProductContext';
 import ProductPage from '../../modules/products/components/Pages/ProductPage/ProductPage';
 import { IProductDTO } from '../../modules/products/dto/productDTO';
 import { useProductSWR } from '../../modules/products/hooks/useProductSWR';
@@ -42,7 +43,11 @@ const Product: FC<IProductProps> = ({ product }) => {
         <BrowserView>
           <ProductPage />
         </BrowserView> */}
-      <ProductPage product={product} key={product.id} />
+      <ProductContextProvider>
+        {/* <CartContextProvider> */}
+        <ProductPage product={product} key={product.id} />
+        {/* </CartContextProvider> */}
+      </ProductContextProvider>
     </SWRConfig>
   );
 };
@@ -59,7 +64,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   try {
     const [translations] = await Promise.all([
-      serverSideTranslations(locale, ['common', 'nav', 'routes', 'listing']),
+      serverSideTranslations(locale, [
+        'common',
+        'nav',
+        'routes',
+        'listing',
+        'product',
+        'routes',
+      ]),
     ]);
 
     const data = await getDocs(collection(db, 'products')).then(

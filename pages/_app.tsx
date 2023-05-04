@@ -7,6 +7,7 @@ import DefaultLayout from '../modules/ui/components/DefaultLayout/DefaultLayout'
 import { setCurrentLocale } from '../utils/localeDetection';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { CartContextProvider } from '../context/CartContext';
 import '../styles/global.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -16,21 +17,23 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <AuthProvider>
-      <DefaultLayout>
-        <Component {...pageProps} />
-        <ToastContainer
-          position='bottom-right'
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme='light'
-        />
-      </DefaultLayout>
+      <CartContextProvider>
+        <DefaultLayout>
+          <Component {...pageProps} />
+          <ToastContainer
+            position='bottom-right'
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme='light'
+          />
+        </DefaultLayout>
+      </CartContextProvider>
     </AuthProvider>
   );
 };

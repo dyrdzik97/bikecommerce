@@ -21,6 +21,8 @@ export interface IProductDTO {
   mainImage?: string;
   isBestseller: boolean;
   hasFreeShipping: boolean;
+  quantity?: number;
+  availableQuantity?: number;
   //   variants?: {
   //     [key: string]: string[];
   // color: string[];

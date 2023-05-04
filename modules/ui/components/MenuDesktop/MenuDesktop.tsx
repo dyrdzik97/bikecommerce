@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../../../../context/AuthContext';
+import { useCart } from '../../../../context/CartContext';
 import CartPreviewPanel from '../../../main/components/Panels/CartPreviewPanel/CartPreviewPanel';
 import UserPreviewPanel from '../../../main/components/Panels/UserPreviewPanel/UserPreviewPanel';
 import IconBasket from '../../../main/utils/Icons/IconBasket/IconBasket';
@@ -9,14 +10,14 @@ import LangSwitcher from '../LangSwitcher/LangSwitcher';
 interface IMenuDesktoProps {}
 
 const MenuDesktop = (): JSX.Element => {
-  // values from cart context in future
-  const itemsInCart = false;
-  const itemsCount = 0;
+  const { items } = useCart();
+  const itemsInCart = items.length > 0;
+  const itemsCount = items.length;
 
   const [isOpenUserDrawer, setIsOpenUserDrawer] = useState(false);
   const [isOpenCartDrawer, setIsOpenCartDrawer] = useState(false);
 
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
   return (
     <div className='flex items-center gap-4'>

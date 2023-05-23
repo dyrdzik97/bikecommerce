@@ -19,6 +19,11 @@ const Catalog = (): JSX.Element => {
   );
 };
 
+// getStaticPaths
+// /
+// /grave
+// ...
+
 export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {
   try {
     const [translations] = await Promise.all([

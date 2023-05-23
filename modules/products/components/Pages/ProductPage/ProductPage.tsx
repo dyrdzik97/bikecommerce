@@ -1,8 +1,6 @@
 import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { uuid } from 'uuidv4';
-import { useAuth } from '../../../../../context/AuthContext';
+import { toast } from 'react-toastify';
 import { useCart } from '../../../../../context/CartContext';
 import { useProduct } from '../../../../../context/ProductContext';
 import IconCart from '../../../../main/utils/Icons/IconCart/IconCart';
@@ -22,13 +20,13 @@ interface IProductPageProps {
 
 const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
   const { images, productName, price, productDetails } = product;
-  const router = useRouter();
-  const { t } = useTranslation('product');
-  const { t: tRoutes } = useTranslation('routes');
-  const { user } = useAuth();
+  const { t, i18n } = useTranslation(['product', 'validations']);
   const [isAddingProduct, setIsAddingProduct] = useState(false);
+
+  // przemyslec kwestie ilosci produktow dodawanych do koszyka
   const { quantity, setQuantity } = useProduct();
-  const { addToCart, cartDetails, setItems } = useCart();
+
+  const { addToCart2 } = useCart();
 
   const specification = Object.entries(productDetails).map((item, index) => {
     return {
@@ -39,21 +37,14 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
 
   const onAddToCart = async () => {
     try {
-      if (!user) {
-        router.push(`/${tRoutes('login')}`);
-      }
-
-      setIsAddingProduct(true);
-      addToCart({
-        orderId: uuid(),
-        cartId: uuid(),
-        userId: user?.uid,
-        status: 'processing',
-        items: [product],
+      addToCart2(product);
+      toast(t('product:productAddedToCart'), {
+        type: 'success',
       });
-      setItems(product);
     } catch (error) {
-      throw new Error('error');
+      toast(t('validations:somethingWentWrong'), {
+        type: 'error',
+      });
     } finally {
       setIsAddingProduct(false);
     }

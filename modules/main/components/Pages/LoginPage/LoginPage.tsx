@@ -9,33 +9,52 @@ import { useAuth } from '../../../../../context/AuthContext';
 import { firebaseConfig } from '../../../../../services/firebaseConfig';
 import GenericButton from '../../../../ui/components/Buttons/GenericButton/GenericButton';
 import Input from '../../../../ui/components/Inputs/Input/Input';
-import InputErrorMessage from '../../../../ui/components/Inputs/InputErrorMessage/InputErrorMessage';
 import Separator from '../../../../ui/components/Separator/Separator';
 import { ILoginFormValues } from '../../../models';
 import IconEye from '../../../utils/Icons/IconEye/IconEye';
 import IconGoogle from '../../../utils/Icons/IconGoogle/IconGoogle';
 
+// utils
+// validations
+// index.ts
+// const emailValidation = (message: string) => yup
+// .string()
+// .email()
+// .required(message)
+// }
+
+// https://react.i18next.com/latest/usetranslation-hook#usetranslation-params
+// load a specific namespace
+// the t function will be set to that namespace as default
+// const { t, i18n } = useTranslation('ns1');
+// t('key'); // will be looked up from namespace ns1
+
+// load multiple namespaces
+// the t function will be set to first namespace as default
+// const { t, i18n } = useTranslation(['ns1', 'ns2', 'ns3']);
+// t('key'); // will be looked up from namespace ns1
+// t('key', { ns: 'ns2' }); // will be looked up from namespace ns2
+
+// zagniezdzone
+// https://stackoverflow.com/questions/57691637/react-i18next-why-arent-my-nested-keys-working
+
 const LoginPage = () => {
-  const { t } = useTranslation('auth');
-  const { t: tRoutes } = useTranslation('routes');
-  const { t: tValidations } = useTranslation('validations');
+  const { t, i18n } = useTranslation(['auth', 'routes']);
 
   const schema = yup.object().shape({
     email: yup
       .string()
       .email()
-      .required(`${tValidations('requiredErrorMessage')}`),
+      .required(`${t('validations:requiredErrorMessage')}`),
     password: yup
       .string()
-      .required(`${tValidations('requiredErrorMessage')}`)
-      .min(8, `${tValidations('incorrectEmailErrorMessage')}`),
+      .required(`${t('validations:requiredErrorMessage')}`)
+      .min(8, `${t('validations:incorrectEmailErrorMessage')}`),
   });
-  const [registerError, setRegisterError] = useState('');
   const { user, signIn, signInWithGoogle, loading } = useAuth();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -52,7 +71,12 @@ const LoginPage = () => {
           type: 'success',
         });
       })
-      .catch((error) => setRegisterError(error.message));
+      .catch((error) => {
+        toast(t('validations:somethingWentWrong'), {
+          hideProgressBar: true,
+          type: 'error',
+        });
+      });
   };
 
   useEffect(() => {
@@ -101,7 +125,6 @@ const LoginPage = () => {
               isLoading={loading}
             />
           </form>
-          {registerError && <InputErrorMessage message={registerError} />}
           <Separator label={'or'} />
           <GenericButton
             onClick={signInWithGoogle}
@@ -113,7 +136,7 @@ const LoginPage = () => {
             <GenericButton
               label={t('register')}
               linkButton
-              href={`/${tRoutes('register')}`}
+              href={`/${t('routes:register')}`}
               size='small'
             />
           </div>
@@ -123,7 +146,7 @@ const LoginPage = () => {
             <GenericButton
               label={t('remindMe')}
               linkButton
-              href={`/${tRoutes('forgotPassword')}`}
+              href={`/${t('routes:forgotPassword')}`}
               size='small'
             />
           </div>

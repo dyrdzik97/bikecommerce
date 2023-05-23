@@ -14,6 +14,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {
         'auth',
         'routes',
         'validations',
+        'nav',
       ]),
     ]);
 

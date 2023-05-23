@@ -15,6 +15,14 @@ interface IGenericButtonProps {
   isLoading?: boolean;
 }
 
+const ButtonWrapper = ({ children, linkButton, href }: any) => {
+  if (linkButton) {
+    return <Link href={href}>{children}</Link>;
+  }
+
+  return children;
+};
+
 const GenericButton = ({
   label,
   onClick,
@@ -28,11 +36,10 @@ const GenericButton = ({
   isLoading = false,
 }: IGenericButtonProps): JSX.Element => {
   return (
-    <>
-      {!linkButton ? (
-        <button
-          type={type}
-          className={`
+    <ButtonWrapper linkButton={linkButton} href={href}>
+      <button
+        type={type}
+        className={`
             flex
             ${size === 'large' ? 'w-full' : 'w-fit'}
             items-center
@@ -44,37 +51,14 @@ const GenericButton = ({
                 : 'border border-[#002D74] bg-white text-black'
             }
             p-2 duration-300 hover:scale-105 ${className ? className : ''}`}
-          onClick={onClick}
-          disabled={isLoading}
-        >
-          {icon}
-          {isLoading && <IconLoading width={32} height={32} />}
-          {label}
-        </button>
-      ) : (
-        <Link href={href}>
-          <button
-            type={type}
-            className={`
-                flex
-                    w-full
-                    items-center
-                    justify-center
-                    rounded-xl
-                ${
-                  filled
-                    ? 'border border-[#002D74] bg-[#002D74] text-white'
-                    : 'border border-[#002D74] bg-white text-black'
-                }
-                p-2 duration-300 hover:scale-105 ${className ? className : ''}`}
-            disabled={isLoading}
-          >
-            {icon}
-            {label}
-          </button>
-        </Link>
-      )}
-    </>
+        onClick={onClick}
+        disabled={isLoading}
+      >
+        {icon}
+        {isLoading && <IconLoading width={32} height={32} />}
+        {label}
+      </button>
+    </ButtonWrapper>
   );
 };
 

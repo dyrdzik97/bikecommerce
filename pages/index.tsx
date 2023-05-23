@@ -38,6 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {
         'nav',
         'routes',
         'validations',
+        'cart',
       ]),
     ]);
 

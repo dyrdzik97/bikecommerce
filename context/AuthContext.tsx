@@ -7,8 +7,10 @@ import {
   signInWithPopup,
   User,
 } from 'firebase/auth';
+import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { auth } from '../services/firebaseConfig';
 
 export interface AuthProviderProps {
@@ -39,6 +41,7 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoadingState] = useState(false);
   const router = useRouter();
+  const { t } = useTranslation('validations');
 
   const signUp = async (email: string, password: string): Promise<void> => {
     setLoading(true);
@@ -52,7 +55,7 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
       await signInWithEmailAndPassword(auth, email, password);
       router.push('/');
     } catch (error) {
-      new Error('error');
+      toast(t('somethingWentWrong'), { type: 'error' });
     } finally {
       setLoading(false);
     }
@@ -76,7 +79,7 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
         router.push('/user');
       })
       .catch((error) => {
-        throw new Error(error);
+        toast(t('somethingWentWrong'), { type: 'error' });
       });
   };
 

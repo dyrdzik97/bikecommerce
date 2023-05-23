@@ -16,56 +16,69 @@ interface ICartContextProviderProps {
 // }
 
 export interface ICart {
-  cartId: string;
-  orderId: string;
-  userId?: string;
-  status: 'processing' | 'paid' | 'deleted';
+  //   cartId: string; // ...
+  //   orderId: string;
+  //   userId?: string; // ?
+  //   status: 'processing' | 'paid' | 'deleted';
   items: IProductDTO[];
 }
 
-const CartContext = createContext({
-  cartDetails: {},
-  addToCart: (cartDetails: ICart) => {},
-  setItems: (item: any) => {},
-  items: [],
-});
+interface ICartContext {
+  //   cartDetails: {},
+  addToCart: (cartDetails: ICart) => void;
+  addToCart2: (item: any) => void;
+  setItems: (item: any) => void;
+  items: IProductDTO[];
+}
+
+const CartContext = createContext({} as ICartContext);
+
+// {} as
 
 export const CartContextProvider = ({
   children,
 }: ICartContextProviderProps) => {
   const router = useRouter();
+  // TODO cartDetails do wywalenia
   const [cartDetails, setCartDetails] = useState({}) as any;
-  const [items, setCartItems] = useState([]) as any[];
+  const [items, setCartItems] = useState<IProductDTO[]>([]);
 
-  const setItems = (item: any): any => {
-    setCartItems((prev: any) => [...prev, item]);
+  const setItems = (item: IProductDTO) => {
+    setCartItems((prev) => [...prev, item]);
   };
 
   const addToCart = (cartDetails: ICart) => {
-    console.warn('in', cartDetails);
-
     setCartDetails((prev: any) => ({
       ...prev,
       cartDetails: {
         ...cartDetails,
         items: [...cartDetails.items, ...items],
       },
-      //   cartDetails: {
-      //     items: items,
-      //   },
     }));
+    // setItems(cartDetails.items);
   };
-  console.warn({ cartDetails, items });
+
+  const addToCart2 = (item: IProductDTO) => {
+    setCartDetails((prev: any) => ({
+      ...prev,
+      cartDetails: {
+        items: [...items, item],
+      },
+    }));
+    setCartItems((prev) => [...prev, item]);
+    // setItems(cartDetails.items);
+  };
 
   //   useEffect(() => {}, [router.asPath]);
 
   return (
     <CartContext.Provider
       value={{
-        cartDetails,
+        // cartDetails,
         items,
         addToCart,
         setItems,
+        addToCart2,
       }}
     >
       {children}
@@ -76,3 +89,7 @@ export const CartContextProvider = ({
 export const useCart = () => {
   return useContext(CartContext);
 };
+
+// pokazanie koszyka
+// szczegóły użytkownika
+// płatność

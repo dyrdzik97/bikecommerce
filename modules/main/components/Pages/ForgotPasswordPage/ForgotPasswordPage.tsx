@@ -1,13 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { useAuth } from '../../../../../context/AuthContext';
 import Input from '../../../../ui/components/Inputs/Input/Input';
-import InputErrorMessage from '../../../../ui/components/Inputs/InputErrorMessage/InputErrorMessage';
 import Separator from '../../../../ui/components/Separator/Separator';
 import { ILoginFormValues } from '../../../models';
 
@@ -16,9 +14,8 @@ const schema = yup.object().shape({
 });
 
 const ForgotPasswordPage = () => {
-  const [message, setMessage] = useState('');
   const { resetPassword, setLoading } = useAuth();
-  const { t } = useTranslation('auth');
+  const { t, i18n } = useTranslation(['auth', 'validations']);
   const {
     register,
     handleSubmit,
@@ -33,7 +30,10 @@ const ForgotPasswordPage = () => {
       await resetPassword(values.email);
       toast(t('checkYourInbox'), { hideProgressBar: true, type: 'success' });
     } catch (error) {
-      setMessage(error as string);
+      toast(t('validations:somethingWentWrong', { ns: 'validations' }), {
+        hideProgressBar: true,
+        type: 'error',
+      });
     } finally {
       setLoading(false);
     }
@@ -69,7 +69,6 @@ const ForgotPasswordPage = () => {
               {t('resetPasswordTitle')}
             </button>
           </form>
-          {message && <InputErrorMessage message={message} />}
           <Separator label='or' />
           <Link href='/login' className='flex text-center'>
             <div className='w-full rounded-xl border-2 border-[#002D74] bg-white py-2 text-black duration-300 hover:scale-105'>

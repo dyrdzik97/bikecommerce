@@ -6,6 +6,15 @@ export const CATEGORY_TREE = [
       en: '/catalog',
       pl: '/katalog',
     },
+  },
+  {
+    key: 'bikesExtend',
+    imageUrl: null,
+    href: {
+      en: '/catalog',
+      pl: '/katalog',
+    },
+    // links
     children: [
       {
         key: 'allProducts',
@@ -59,7 +68,7 @@ export const CATEGORY_TREE = [
     imageUrl: null,
     href: {
       en: '/',
-      pl: '/',
+      pl: '/katalog?category=gravel',
     },
   },
   {

@@ -40,6 +40,10 @@ const nextConfig = {
         source: '/przypomnij-haslo',
         destination: '/forgot-password',
       },
+      {
+        source: '/kategoria/:slug*',
+        destination: '/category/:slug*',
+      },
     ];
   },
 };

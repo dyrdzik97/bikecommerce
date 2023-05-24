@@ -1,6 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 
-import { useRouter } from 'next/router';
 import { IProductDTO } from '../modules/products/dto/productDTO';
 
 interface ICartContextProviderProps {
@@ -16,18 +15,11 @@ interface ICartContextProviderProps {
 // }
 
 export interface ICart {
-  //   cartId: string; // ...
-  //   orderId: string;
-  //   userId?: string; // ?
-  //   status: 'processing' | 'paid' | 'deleted';
   items: IProductDTO[];
 }
 
 interface ICartContext {
-  //   cartDetails: {},
-  addToCart: (cartDetails: ICart) => void;
-  addToCart2: (item: any) => void;
-  setItems: (item: any) => void;
+  addToCart: (item: any) => void;
   items: IProductDTO[];
 }
 
@@ -38,27 +30,10 @@ const CartContext = createContext({} as ICartContext);
 export const CartContextProvider = ({
   children,
 }: ICartContextProviderProps) => {
-  const router = useRouter();
-  // TODO cartDetails do wywalenia
   const [cartDetails, setCartDetails] = useState({}) as any;
   const [items, setCartItems] = useState<IProductDTO[]>([]);
 
-  const setItems = (item: IProductDTO) => {
-    setCartItems((prev) => [...prev, item]);
-  };
-
-  const addToCart = (cartDetails: ICart) => {
-    setCartDetails((prev: any) => ({
-      ...prev,
-      cartDetails: {
-        ...cartDetails,
-        items: [...cartDetails.items, ...items],
-      },
-    }));
-    // setItems(cartDetails.items);
-  };
-
-  const addToCart2 = (item: IProductDTO) => {
+  const addToCart = (item: IProductDTO) => {
     setCartDetails((prev: any) => ({
       ...prev,
       cartDetails: {
@@ -66,19 +41,13 @@ export const CartContextProvider = ({
       },
     }));
     setCartItems((prev) => [...prev, item]);
-    // setItems(cartDetails.items);
   };
-
-  //   useEffect(() => {}, [router.asPath]);
 
   return (
     <CartContext.Provider
       value={{
-        // cartDetails,
         items,
         addToCart,
-        setItems,
-        addToCart2,
       }}
     >
       {children}

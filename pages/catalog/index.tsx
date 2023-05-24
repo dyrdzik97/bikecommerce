@@ -21,7 +21,7 @@ const Catalog = (): JSX.Element => {
 
 // getStaticPaths
 // /
-// /grave
+// /gravel
 // ...
 
 export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {

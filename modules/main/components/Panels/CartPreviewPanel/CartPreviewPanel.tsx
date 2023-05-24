@@ -24,7 +24,8 @@ const CartPreviewPanel = ({ isOpen, setIsOpen }: ICartPreviewPanelProps) => {
         />
       }
     >
-      {JSON.stringify(items)}
+      items
+      {/* {JSON.stringify(items)} */}
     </Drawer>
   );
 };

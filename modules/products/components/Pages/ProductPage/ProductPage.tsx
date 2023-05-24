@@ -26,7 +26,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
   // przemyslec kwestie ilosci produktow dodawanych do koszyka
   const { quantity, setQuantity } = useProduct();
 
-  const { addToCart2 } = useCart();
+  const { addToCart } = useCart();
 
   const specification = Object.entries(productDetails).map((item, index) => {
     return {
@@ -37,7 +37,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
 
   const onAddToCart = async () => {
     try {
-      addToCart2(product);
+      addToCart(product);
       toast(t('product:productAddedToCart'), {
         type: 'success',
       });

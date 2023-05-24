@@ -50,7 +50,6 @@ const Listing: FC<IListingProps> = ({}) => {
       className={'flex flex-col items-center justify-center gap-10 pt-[100px]'}
     >
       <ListingHeader />
-      {t('dupa')}
       <ListingTotalInfo total={items.length} />
       <div className='grid grid-cols-1 gap-2 md:grid-cols-4 md:gap-10'>
         {items.map((item, index) => (

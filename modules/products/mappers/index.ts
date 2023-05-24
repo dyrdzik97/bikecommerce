@@ -22,7 +22,7 @@ export const getProductHref = (name: string, id: number | string): string => {
     return '';
   }
 
-  return `/${toKebabCase(name)}-${id}`;
+  return `product/${toKebabCase(name)}-${id}`;
 };
 
 export const getMappedProducts = (products: IProductDTO[]) => {

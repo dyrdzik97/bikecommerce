@@ -8,6 +8,7 @@
   "orderHistory": "account/order-history",
   "forgotPassword": "forgot-password",
   "catalog": "catalog",
+  "category": "category",
   "regulamin": "regulamin",
   "privacyPolicy": "privacy-policy",
   "thankYou": "podziekowanie"

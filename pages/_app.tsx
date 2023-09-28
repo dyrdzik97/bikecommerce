@@ -19,7 +19,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <AuthProvider>
       <CartContextProvider>
         <DefaultLayout>
-          <Component {...pageProps} />
+          <Component {...pageProps} router={router.asPath} />
           <ToastContainer
             position='bottom-right'
             autoClose={5000}

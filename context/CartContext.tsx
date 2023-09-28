@@ -21,6 +21,13 @@ export interface ICart {
 interface ICartContext {
   addToCart: (item: any) => void;
   items: IProductDTO[];
+  itemsInCartCount: number;
+  totalPrice: number;
+  onChangeQuantityCart: (
+    type: 'decrease' | 'increase',
+    item: IProductDTO
+  ) => void;
+  onRemoveFromCart: (item: IProductDTO) => void;
 }
 
 const CartContext = createContext({} as ICartContext);
@@ -33,14 +40,63 @@ export const CartContextProvider = ({
   const [cartDetails, setCartDetails] = useState({}) as any;
   const [items, setCartItems] = useState<IProductDTO[]>([]);
 
+  const isItemInCart = (item: IProductDTO) => {
+    return (
+      items.find((availableItem) => {
+        return availableItem.id === item.id;
+      }) || false
+    );
+  };
+
   const addToCart = (item: IProductDTO) => {
-    setCartDetails((prev: any) => ({
-      ...prev,
-      cartDetails: {
-        items: [...items, item],
-      },
-    }));
-    setCartItems((prev) => [...prev, item]);
+    if (isItemInCart(item)) {
+      setCartItems(
+        items.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        )
+      );
+    } else {
+      setCartItems((prev) => [...prev, { ...item, quantity: 1 }]);
+    }
+  };
+
+  const onChangeQuantityCart = (
+    type: 'decrease' | 'increase',
+    item: IProductDTO
+  ): void => {
+    setCartItems(
+      items.map((cartItem) =>
+        cartItem.id === item.id
+          ? {
+              ...cartItem,
+              quantity:
+                type === 'increase'
+                  ? cartItem.quantity + 1
+                  : cartItem.quantity - 1,
+            }
+          : cartItem
+      )
+    );
+  };
+
+  const itemsInCartCount = items
+    .map((item) => item.quantity)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  const totalPrice = items.reduce((acc, item) => {
+    const { price, promoPrice } = item.price;
+    const itemPrice: number =
+      promoPrice !== null ? (promoPrice as number) : (price as number);
+
+    return acc + itemPrice * item.quantity;
+  }, 0);
+
+  const onRemoveFromCart = (item: IProductDTO): void => {
+    const itemIndex = items.findIndex((el) => el.id === item.id);
+
+    setCartItems(items.slice(0, itemIndex));
   };
 
   return (
@@ -48,6 +104,10 @@ export const CartContextProvider = ({
       value={{
         items,
         addToCart,
+        itemsInCartCount,
+        totalPrice,
+        onChangeQuantityCart,
+        onRemoveFromCart,
       }}
     >
       {children}

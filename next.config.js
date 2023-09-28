@@ -44,6 +44,10 @@ const nextConfig = {
         source: '/kategoria/:slug*',
         destination: '/category/:slug*',
       },
+      {
+        source: '/produkt/:slug*',
+        destination: '/product/:slug*',
+      },
     ];
   },
 };

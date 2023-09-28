@@ -28,7 +28,7 @@ const classes = {
     secondary: 'bg-secondary-100 hover:bg-secondary-300 text-black',
     tertiary: 'bg-tertiary-100 hover:bg-tertiary-300 text-white',
     transparent:
-      'bg-transparent border border-orimary-500 hover:bg-gray hover:underline',
+      'bg-transparent border border-primary-500 hover:bg-gray hover:underline',
   },
 };
 

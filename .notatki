@@ -1,0 +1,6 @@
+1. optymalizacja
+    - strasznie wolno chodzi
+    - nie odświeża contentu strony tylko całość
+    - problem z linkami, zwykły <a href> działa tylko znowu odświeża all zamiast tylko siatke produktową
+2. Drawer
+    - jak go globalnie gdzieś trzymać aby móc nim sterować i go odpalać np na add to cart

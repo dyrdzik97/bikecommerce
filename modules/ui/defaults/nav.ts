@@ -3,24 +3,24 @@ export const CATEGORY_TREE = [
     key: 'bikes',
     imageUrl: null,
     href: {
-      en: '/catalog',
-      pl: '/katalog',
+      en: '/category',
+      pl: '/kategoria',
     },
   },
   {
-    key: 'bikesExtend',
+    key: 'category',
     imageUrl: null,
     href: {
-      en: '/catalog',
-      pl: '/katalog',
+      en: 'category',
+      pl: 'kategoria',
     },
     // links
     children: [
       {
         key: 'allProducts',
         href: {
-          en: '/',
-          pl: '/',
+          en: '',
+          pl: '',
         },
         subText: 'allProductsSubText',
         imageUrl: null,
@@ -28,8 +28,8 @@ export const CATEGORY_TREE = [
       {
         key: 'road',
         href: {
-          en: '/?category=road',
-          pl: '/?category=road',
+          en: 'road',
+          pl: 'road',
         },
         subText: 'roadSubtext',
         imageUrl: null,
@@ -38,8 +38,8 @@ export const CATEGORY_TREE = [
         key: 'gravel',
         imageUrl: null,
         href: {
-          en: '/catalog?category=gravel',
-          pl: '/katalog?category=gravel',
+          en: 'gravel',
+          pl: 'gravel',
         },
         subText: 'gravelSubText',
       },
@@ -47,8 +47,8 @@ export const CATEGORY_TREE = [
         key: 'street',
         imageUrl: null,
         href: {
-          en: '/catalog?category=street',
-          pl: '/katalog?category=street',
+          en: 'street',
+          pl: 'street',
         },
         subText: 'streetSubText',
       },
@@ -56,27 +56,27 @@ export const CATEGORY_TREE = [
         key: 'cross',
         imageUrl: null,
         href: {
-          en: '/catalog?category=cross',
-          pl: '/katalog?category=cross',
+          en: 'cross',
+          pl: 'cross',
         },
         subText: 'crossSubText',
       },
     ],
   },
-  {
-    key: 'accesories',
-    imageUrl: null,
-    href: {
-      en: '/',
-      pl: '/katalog?category=gravel',
-    },
-  },
-  {
-    key: 'blog',
-    imageUrl: null,
-    href: {
-      en: '/',
-      pl: '/',
-    },
-  },
+  //   {
+  //     key: 'accesories',
+  //     imageUrl: null,
+  //     href: {
+  //       en: '/',
+  //       pl: '/katalog?category=gravel',
+  //     },
+  //   },
+  //   {
+  //     key: 'blog',
+  //     imageUrl: null,
+  //     href: {
+  //       en: '/',
+  //       pl: '/',
+  //     },
+  //   },
 ];

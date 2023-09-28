@@ -54,7 +54,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
     <div
       style={{ height: 'min-content', maxWidth: '1920px' }}
       className='mt-[100px] flex w-full'
-      key={product.id}
+      key={`product-${product.id}`}
     >
       <section style={{ height: 'min-content' }} className='w-full'>
         <section className='flex items-center justify-center sm:py-4'>

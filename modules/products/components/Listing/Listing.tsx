@@ -1,9 +1,9 @@
 import { FC, useCallback, useEffect } from 'react';
 
-import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useSize } from '../../../main/hooks/useSize';
 import { useProducts } from '../../hooks/useProducts';
+import { IProductTile } from '../../models';
 import ListingHeader from './ListingHeader/ListingHeader';
 import ListingItem from './ListingItem/ListingItem';
 import ListingTotalInfo from './ListingTotalInfo/ListingTotalInfo';
@@ -17,7 +17,6 @@ let trackableId: string | null = '';
 const Listing: FC<IListingProps> = ({}) => {
   const router = useRouter();
   const categoryPath = router.query.category;
-  const { t } = useTranslation('common');
 
   const { items, isLoading } = useProducts(categoryPath);
 
@@ -50,20 +49,22 @@ const Listing: FC<IListingProps> = ({}) => {
       className={'flex flex-col items-center justify-center gap-10 pt-[100px]'}
     >
       <ListingHeader />
-      <ListingTotalInfo total={items.length} />
+      <ListingTotalInfo total={isLoading ? '...' : items.length.toString()} />
       <div className='grid grid-cols-1 gap-2 md:grid-cols-4 md:gap-10'>
         {items.map((item, index) => (
           <ListingItem
-            key={`${item.title}-${index}`}
+            key={`${item.productName}-${index}`}
             trackable={true}
             size={itemSize}
             trackableRefCallback={
-              Number(trackableId) === Number(item.productId)
+              Number(trackableId) === Number(item.id)
                 ? onTrackableRefCallback
                 : undefined
             }
             height={'480px'}
             {...item}
+            // TODO to refactor, or all item or only few props
+            item={item as IProductTile}
           />
         ))}
       </div>

@@ -18,10 +18,10 @@ export interface IProductDTO {
   };
   categories: string[];
   images: string[];
-  mainImage?: string;
+  mainImage: string;
   isBestseller: boolean;
   hasFreeShipping: boolean;
-  quantity?: number;
+  quantity: number;
   availableQuantity?: number;
   //   variants?: {
   //     [key: string]: string[];

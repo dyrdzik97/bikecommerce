@@ -30,7 +30,7 @@ const Drawer = ({
           (isOpen ? ' translate-x-0 ' : ' translate-x-full ')
         }
       >
-        <article className='relative flex h-screen max-w-lg flex-col gap-10 space-y-6 overflow-y-scroll px-4 py-10'>
+        <article className='relative flex h-screen max-w-lg flex-col space-y-6 overflow-y-scroll px-4 py-10'>
           <div className='flex items-center justify-between'>
             <header className='text-lg font-bold'>{header}</header>
             <div>{append}</div>

@@ -65,7 +65,7 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
       {item.children && item.children.length !== 0 && (
         <div
           onMouseLeave={() => setFlyer(false)}
-          // wydzielic wpsolne czesci w stylach
+          // wydzielic wspolne czesci w stylach
           className={
             flyer
               ? ' absolute z-10 -ml-4 mt-3 block w-screen max-w-md translate-y-0 transform px-2 transition duration-200 ease-out sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2'
@@ -77,30 +77,37 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
               {item.children.map((child: any, itemIndex: number) => {
                 // href opcjonalny a generyczny schemat bezposrednio w linku i na podst klucza
                 // getValidLink
+                console.warn(child);
 
                 return (
                   // problem z linkami, nie odswieza sie po zmianie url, a jak juz to cala apka reload robi
                   // gubi się context po kliku w pozucję w dropdownie, płaska pozycja w menu nie refreshuje calej apki
-                  <Link
-                    key={itemIndex}
-                    href={`[catalog]${child.href[interfaceCode]}`}
-                    // href={`[catalog]${child.href[interfaceCode]}`}
-                    as={`${tRoutes('catalog')}${child.href[interfaceCode]}`}
-                    // /katalog?category=gravel
-                    locale={router.locale}
-                    className='-m-3 flex items-start rounded-lg p-3 hover:bg-hoverbg'
-                    shallow
-                    passHref
-                  >
-                    <div className='ml-4'>
-                      <p className='text-gray-900 text-base font-medium'>
-                        {t(child.key)}
-                      </p>
-                      <p className='text-gray-500 mt-1 text-sm'>
-                        {t(child.subText)}
-                      </p>
-                    </div>
-                  </Link>
+                  <>
+                    <Link
+                      legacyBehavior
+                      key={itemIndex}
+                      href={{
+                        pathname: '/category/[category]',
+                        // query: { category: child.href[interfaceCode] },
+                      }}
+                      as={`/category/${child.href[interfaceCode]}`}
+                      locale={router.locale}
+                      className='-m-3 flex items-start rounded-lg p-3 hover:bg-hoverbg'
+                      shallow
+                      passHref
+                    >
+                      <a>
+                        <div className='ml-4'>
+                          <p className='text-gray-900 text-base font-medium'>
+                            {t(child.key)}
+                          </p>
+                          <p className='text-gray-500 mt-1 text-sm'>
+                            {t(child.subText)}
+                          </p>
+                        </div>
+                      </a>
+                    </Link>
+                  </>
                 );
               })}
             </div>

@@ -10,7 +10,7 @@ const Listing = dynamic(
   }
 );
 
-const Catalog = (): JSX.Element => {
+const Category = (): JSX.Element => {
   return (
     <Page size='wide'>
       {/* TODO add breadcrumbs */}
@@ -51,4 +51,4 @@ export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {
   }
 };
 
-export default Catalog;
+export default Category;

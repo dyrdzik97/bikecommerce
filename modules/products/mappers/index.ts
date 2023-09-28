@@ -22,7 +22,8 @@ export const getProductHref = (name: string, id: number | string): string => {
     return '';
   }
 
-  return `product/${toKebabCase(name)}-${id}`;
+  // TODO dodać tłumaczenie dla product
+  return `/product/${toKebabCase(name)}-${id}`;
 };
 
 export const getMappedProducts = (products: IProductDTO[]) => {
@@ -58,13 +59,12 @@ export const getMappedProducts = (products: IProductDTO[]) => {
 };
 
 export const getProductTiles = (products: IProductDTO[]): IProductTile[] => {
-  // export const getProductTiles = (products: any[]): any[] => {
   return products.map((product) => {
     return {
-      productId: product.id || '',
+      id: product.id || '',
       categories: product.categories,
       href: getProductHref(product.productName, product.id),
-      title: product.productName || '',
+      productName: product.productName || '',
       //   variants: {
       //     color: mapColorsVariantToHex(product.variants.color),
       //   },
@@ -88,8 +88,8 @@ export const getProductTilesSkeleton = (): IProductTile[] => {
 
   for (let i = 1; i <= 30; i++) {
     skeletonItems.push({
-      productId: '',
-      title: '',
+      id: '',
+      productName: '',
       href: '',
       categories: [''],
       //   variants: {

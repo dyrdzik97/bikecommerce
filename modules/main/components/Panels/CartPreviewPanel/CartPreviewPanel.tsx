@@ -1,7 +1,9 @@
 import { useTranslation } from 'next-i18next';
 import { useCart } from '../../../../../context/CartContext';
+import ProductPreview from '../../../../products/components/ProductPreview/ProductPreview';
 import Drawer from '../../../../ui/components/Drawer/Drawer';
 import IconClose from '../../../utils/Icons/IconClose/IconClose';
+import CartPreviewSummaryPanel from '../CartPreviewSummaryPanel/CartPreviewSummaryPanel';
 
 interface ICartPreviewPanelProps {
   isOpen: boolean;
@@ -9,7 +11,7 @@ interface ICartPreviewPanelProps {
 }
 
 const CartPreviewPanel = ({ isOpen, setIsOpen }: ICartPreviewPanelProps) => {
-  const { items } = useCart();
+  const { items, totalPrice } = useCart();
   const { t } = useTranslation('cart');
   return (
     <Drawer
@@ -24,8 +26,10 @@ const CartPreviewPanel = ({ isOpen, setIsOpen }: ICartPreviewPanelProps) => {
         />
       }
     >
-      items
-      {/* {JSON.stringify(items)} */}
+      {items.map((item) => {
+        return <ProductPreview {...item} key={`key-${item.id}`} />;
+      })}
+      <CartPreviewSummaryPanel total={totalPrice} />
     </Drawer>
   );
 };

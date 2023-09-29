@@ -68,6 +68,7 @@ const RegisterPage = () => {
           name,
           surname,
           password,
+          displayName: `${name} ${surname}`,
         })
           .then(() => {
             toast(t('registerSuccess'), {

@@ -40,10 +40,12 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
       addToCart(product);
       toast(t('product:productAddedToCart'), {
         type: 'success',
+        autoClose: 2000,
       });
     } catch (error) {
       toast(t('validations:somethingWentWrong'), {
         type: 'error',
+        autoClose: 2000,
       });
     } finally {
       setIsAddingProduct(false);

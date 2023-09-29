@@ -35,7 +35,7 @@ const Drawer = ({
             <header className='text-lg font-bold'>{header}</header>
             <div>{append}</div>
           </div>
-          <div className='relative h-[100%] w-full'>{children}</div>
+          <div className='relative flex h-[100%] w-full'>{children}</div>
         </article>
       </section>
       <section

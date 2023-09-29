@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useCart } from '../../../../context/CartContext';
+import { getProductHref } from '../../mappers';
 import QuantityButton from '../Buttons/QuantityButton/QuantityButton';
 import RemoveProductButton from '../Buttons/RemoveProductButton/RemoveProductButton';
 import ProductPhoto from '../ProductPhoto/ProductPhoto';
@@ -35,23 +36,23 @@ interface IProductPreviewProps {
 const ProductPreview = (item: IProductPreviewProps): JSX.Element => {
   const { onChangeQuantityCart, onRemoveFromCart } = useCart();
 
-  const { mainImage, productName, price, quantity } = item;
-
+  const { mainImage, productName, price, quantity, id } = item;
+  const productHref = getProductHref(productName, id);
   return (
     <div>
       <div
         className={`card w-100 flex min-h-[80px] flex-row justify-between border-b border-tertiary-100 py-5`}
       >
-        <div className='prod-img card h-full '>
-          <Link href='' className='flex flex-row gap-5'>
-            <ProductPhoto
-              className='h-[62px] w-[92px] rounded-xl'
-              src={mainImage}
-              alt={productName}
-              padding={'p-1'}
-            >
-              <RemoveProductButton onClick={() => onRemoveFromCart(item)} />
-            </ProductPhoto>
+        <div className='prod-img card h-full flex flex-row gap-5'>
+          <ProductPhoto
+            className='h-[62px] w-[92px] rounded-xl'
+            src={mainImage}
+            alt={productName}
+            padding={'p-1'}
+          >
+            <RemoveProductButton onClick={() => onRemoveFromCart(item)} />
+          </ProductPhoto>
+          <Link href={productHref} className='flex flex-row gap-5'>
             <div className='text-gray-900 text-md font-bold uppercase'>
               {productName}
             </div>

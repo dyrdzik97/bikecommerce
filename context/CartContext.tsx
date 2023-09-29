@@ -32,8 +32,6 @@ interface ICartContext {
 
 const CartContext = createContext({} as ICartContext);
 
-// {} as
-
 export const CartContextProvider = ({
   children,
 }: ICartContextProviderProps) => {
@@ -118,7 +116,3 @@ export const CartContextProvider = ({
 export const useCart = () => {
   return useContext(CartContext);
 };
-
-// pokazanie koszyka
-// szczegóły użytkownika
-// płatność

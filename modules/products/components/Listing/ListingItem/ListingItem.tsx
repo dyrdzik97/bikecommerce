@@ -76,6 +76,7 @@ const ListingItem: FC<IListingItemProps> = ({
     }, 200);
     toast(t('product:productAddedToCart'), {
       type: 'success',
+      autoClose: 2000,
     });
   };
 

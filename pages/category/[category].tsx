@@ -21,6 +21,8 @@ const Category = (props: any): JSX.Element => {
     return <PageLoader />;
   }
 
+  console.warn('Listing', props);
+
   return (
     <Page size='wide'>
       {/* TODO add breadcrumbs */}
@@ -32,12 +34,13 @@ const Category = (props: any): JSX.Element => {
 export const getStaticPaths = async ({ locales }: any) => {
   const data: any = await getDocs(collection(db, 'products')).then(
     (querySnapshot) => {
+      console.warn('snapszot', querySnapshot);
+
       return querySnapshot.docs.map((doc) => doc.data());
     }
   );
 
-  // usuwanie duplikatów w services
-  //updated locales - wszystkie prócz 'default'
+  console.warn({ data });
 
   const categories = data.map((item: any) => item.categories[0]);
   const availableCategories = Array.from(new Set(categories));
@@ -46,7 +49,11 @@ export const getStaticPaths = async ({ locales }: any) => {
 
   const paths = availableCategories
     .map((category: any) => {
+      console.warn({ category });
+
       return locales.map((locale: string) => {
+        console.warn({ locale });
+
         return {
           params: {
             slug: category,

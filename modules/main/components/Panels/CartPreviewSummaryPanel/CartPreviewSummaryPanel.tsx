@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import GenericButton from '../../../../ui/components/Buttons/GenericButton/GenericButton';
 import Separator from '../../../../ui/components/Separator/Separator';
 
@@ -8,24 +9,22 @@ interface ICartPreviewSummaryPanelProps {
 const CartPreviewSummaryPanel = ({
   total,
 }: ICartPreviewSummaryPanelProps): JSX.Element => {
+  const { t } = useTranslation('cart');
+
   return (
     <div className='fixed bottom-0 right-0 box-border flex w-full flex-col p-5'>
       <div className='flex flex-row justify-between text-darkgray'>
-        <p>Shipping</p>
-        <p>Calculated in checkout</p>
+        <p>{t('shipping')}</p>
+        <p>{t('calculatedInCheckout')}</p>
       </div>
       <Separator />
       <div className='flex flex-row justify-between'>
-        <p>Summary</p>
+        <p>{t('summary')}</p>
         <p>{total} PLN</p>
         {/* TODO add currency */}
       </div>
       <Separator />
-      <GenericButton
-        label='Go to checkout'
-        size={'large'}
-        className='bg-[#002C74] text-white'
-      />
+      <GenericButton label={t('goToCheckout')} size={'large'} filled />
       <Separator />
     </div>
   );

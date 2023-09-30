@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import GenericButton from '../Buttons/GenericButton/GenericButton';
 
 interface IEmptyCartInfoProps {
@@ -5,12 +6,15 @@ interface IEmptyCartInfoProps {
 }
 
 const EmptyCartInfo = ({ onClick }: IEmptyCartInfoProps): JSX.Element => {
+  const { t } = useTranslation('routes');
+  const { t: tCart } = useTranslation('cart');
+
   return (
     <div className='align-center h-full flex w-full flex-col items-center justify-center gap-10'>
-      <span className='text-2xl font-bold'>Twój kosz jest pusty</span>
+      <span className='text-2xl font-bold'>{tCart('yourCartIsEmpty')}</span>
       <GenericButton
-        label='Buszuj!'
-        href='/category'
+        label={tCart('search')}
+        href={`/${t('category')}`}
         size='small'
         linkButton
         filled

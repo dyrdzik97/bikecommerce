@@ -19,6 +19,7 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
 }) => {
   const router = useRouter();
   const { t } = useTranslation('nav');
+  const { t: tRoutes } = useTranslation('routes');
   const [flyer, setFlyer] = useState(false);
   const { interfaceCode } = getLanguageCodes(CURRENT_LOCALE);
 
@@ -70,37 +71,27 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
         >
           <div className='overflow-hidden rounded-lg shadow-lg'>
             <div className='relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8'>
-              {item.children.map((child: any, itemIndex: number) => {
-                console.warn('child', child, itemIndex);
-
-                return (
-                  // problem z linkami, nie odswieza sie po zmianie url, a jak juz to cala apka reload robi
-                  // gubi się context po kliku w pozucję w dropdownie, płaska pozycja w menu nie refreshuje calej apki
-                  <>
-                    <Link
-                      legacyBehavior
-                      key={`${child.key}-${itemIndex}`}
-                      href={`/category/${child.href[interfaceCode]}`}
-                      // as={`/category/${child.href[interfaceCode]}`}
-                      locale={router.locale}
-                      className='flex items-start rounded-lg p-3 hover:bg-hoverbg'
-                      //   shallow
-                      passHref
-                    >
-                      <a>
-                        <div className='ml-4'>
-                          <p className='text-gray-900 text-base font-medium'>
-                            {t(child.key)}
-                          </p>
-                          <p className='text-gray-500 mt-1 text-sm'>
-                            {t(child.subText)}
-                          </p>
-                        </div>
-                      </a>
-                    </Link>
-                  </>
-                );
-              })}
+              {item.children.map((child: any, itemIndex: number) => (
+                <Link
+                  legacyBehavior
+                  key={`${child.key}-${itemIndex}`}
+                  href={`/${tRoutes('category')}/${child.href[interfaceCode]}`}
+                  locale={router.locale}
+                  className='flex items-start rounded-lg p-3 hover:bg-hoverbg'
+                  passHref
+                >
+                  <a>
+                    <div className='ml-4'>
+                      <p className='text-gray-900 text-base font-medium'>
+                        {t(child.key)}
+                      </p>
+                      <p className='text-gray-500 mt-1 text-sm'>
+                        {t(child.subText)}
+                      </p>
+                    </div>
+                  </a>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

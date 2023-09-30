@@ -2,7 +2,6 @@ import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useCart } from '../../../../../context/CartContext';
-import { useProduct } from '../../../../../context/ProductContext';
 import IconCart from '../../../../main/utils/Icons/IconCart/IconCart';
 import Breadcrumbs from '../../../../ui/components/Breadcrumbs/Breadcrumbs';
 import GenericButton from '../../../../ui/components/Buttons/GenericButton/GenericButton';
@@ -23,9 +22,6 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
   const { t, i18n } = useTranslation(['product', 'validations']);
   const [isAddingProduct, setIsAddingProduct] = useState(false);
 
-  // przemyslec kwestie ilosci produktow dodawanych do koszyka
-  const { quantity, setQuantity } = useProduct();
-
   const { addToCart } = useCart();
 
   const specification = Object.entries(productDetails).map((item, index) => {
@@ -42,13 +38,14 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
         type: 'success',
         autoClose: 2000,
       });
+      setIsAddingProduct(true);
     } catch (error) {
       toast(t('validations:somethingWentWrong'), {
         type: 'error',
         autoClose: 2000,
       });
     } finally {
-      setIsAddingProduct(false);
+      setTimeout(() => setIsAddingProduct(false), 2000);
     }
   };
 

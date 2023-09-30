@@ -35,7 +35,10 @@ const CartPreviewPanel = ({ isOpen, setIsOpen }: ICartPreviewPanelProps) => {
             return <ProductPreview {...item} key={`key-${item.id}`} />;
           })}
 
-          <CartPreviewSummaryPanel total={totalPrice} />
+          <CartPreviewSummaryPanel
+            total={totalPrice}
+            onClick={() => setIsOpen(false)}
+          />
         </div>
       )}
     </Drawer>

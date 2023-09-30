@@ -4,15 +4,22 @@ import Separator from '../../../../ui/components/Separator/Separator';
 
 interface ICartPreviewSummaryPanelProps {
   total: number;
+  onClick?: () => void;
+  className?: string;
 }
 
 const CartPreviewSummaryPanel = ({
   total,
+  onClick,
+  className,
 }: ICartPreviewSummaryPanelProps): JSX.Element => {
   const { t } = useTranslation('cart');
+  const { t: tRoutes } = useTranslation('routes');
 
   return (
-    <div className='fixed bottom-0 right-0 box-border flex w-full flex-col p-5'>
+    <div
+      className={`absolute bottom-0 right-0 box-border flex w-full flex-col p-5 ${className}`}
+    >
       <div className='flex flex-row justify-between text-darkgray'>
         <p>{t('shipping')}</p>
         <p>{t('calculatedInCheckout')}</p>
@@ -24,7 +31,14 @@ const CartPreviewSummaryPanel = ({
         {/* TODO add currency */}
       </div>
       <Separator />
-      <GenericButton label={t('goToCheckout')} size={'large'} filled />
+      <GenericButton
+        label={t('goToCheckout')}
+        size={'large'}
+        filled
+        linkButton
+        href={`/${tRoutes('checkout')}`}
+        onClick={onClick}
+      />
       <Separator />
     </div>
   );

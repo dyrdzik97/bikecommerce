@@ -19,7 +19,8 @@ export interface ICart {
 }
 
 interface ICartContext {
-  addToCart: (item: any) => void;
+  addToCart: (item: IProductDTO) => void;
+  removeFromCart: (item: IProductDTO) => void;
   items: IProductDTO[];
   itemsInCartCount: number;
   totalPrice: number;
@@ -27,7 +28,6 @@ interface ICartContext {
     type: 'decrease' | 'increase',
     item: IProductDTO
   ) => void;
-  onRemoveFromCart: (item: IProductDTO) => void;
 }
 
 const CartContext = createContext({} as ICartContext);
@@ -91,7 +91,7 @@ export const CartContextProvider = ({
     return acc + itemPrice * item.quantity;
   }, 0);
 
-  const onRemoveFromCart = (item: IProductDTO): void => {
+  const removeFromCart = (item: IProductDTO): void => {
     const itemIndex = items.findIndex((el) => el.id === item.id);
 
     setCartItems(items.slice(0, itemIndex));
@@ -102,10 +102,10 @@ export const CartContextProvider = ({
       value={{
         items,
         addToCart,
+        removeFromCart,
         itemsInCartCount,
         totalPrice,
         onChangeQuantityCart,
-        onRemoveFromCart,
       }}
     >
       {children}

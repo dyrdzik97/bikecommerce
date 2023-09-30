@@ -50,12 +50,16 @@ const GenericButton = ({
                 ? 'border border-[#002D74] bg-[#002D74] text-white'
                 : 'border border-[#002D74] bg-white text-black'
             }
-            p-2 duration-300 hover:scale-105 ${className ? className : ''}`}
+            gap-2 p-2 duration-300 hover:scale-105 ${className ? className : ''}
+            ${
+              isLoading ? 'border-tertiary-100 bg-tertiary-100' : 'bg-[#002D74]'
+            }
+            `}
         onClick={onClick}
         disabled={isLoading}
       >
         {icon}
-        {isLoading && <IconLoading width={32} height={32} />}
+        {isLoading && <IconLoading width={24} height={24} />}
         {label}
       </button>
     </ButtonWrapper>

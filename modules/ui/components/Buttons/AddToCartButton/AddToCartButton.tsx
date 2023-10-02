@@ -9,7 +9,7 @@ interface IAddToCartButtonProps {
 const AddToCartButton = ({ onClick, isLoading }: IAddToCartButtonProps) => {
   return (
     <button
-      className='border-gray-900 z-20 cursor-move items-center justify-center rounded-full border-2 p-2 transition duration-200 ease-in hover:bg-primary-100 focus:outline-none'
+      className='border-gray-900 z-20 items-center justify-center rounded-full border-2 p-2 transition duration-200 ease-in hover:bg-primary-100 focus:outline-none'
       onClick={(evt) => {
         evt.preventDefault();
         onClick();

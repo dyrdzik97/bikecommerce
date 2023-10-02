@@ -14,6 +14,7 @@ interface ICartPreviewPanelProps {
 const CartPreviewPanel = ({ isOpen, setIsOpen }: ICartPreviewPanelProps) => {
   const { items, totalPrice } = useCart();
   const { t } = useTranslation('cart');
+  const { t: tRoutes } = useTranslation('routes');
   return (
     <Drawer
       isOpen={isOpen}
@@ -38,6 +39,8 @@ const CartPreviewPanel = ({ isOpen, setIsOpen }: ICartPreviewPanelProps) => {
           <CartPreviewSummaryPanel
             total={totalPrice}
             onClick={() => setIsOpen(false)}
+            onClickButtonLabel={t('goToCheckout')}
+            buttonHref={`/${tRoutes('checkout')}`}
           />
         </div>
       )}

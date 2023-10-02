@@ -3,7 +3,7 @@ interface ISeparatorProps {
   className?: string;
 }
 
-const Separator = ({ label, className }: ISeparatorProps): JSX.Element => {
+const Separator = ({ label, className = '' }: ISeparatorProps): JSX.Element => {
   return (
     <div
       className={`text-gray-400 my-3 grid grid-cols-3 items-center ${className}`}
@@ -14,7 +14,6 @@ const Separator = ({ label, className }: ISeparatorProps): JSX.Element => {
       ) : (
         <hr className='border-gray-400' />
       )}
-
       <hr className='border-gray-400' />
     </div>
   );

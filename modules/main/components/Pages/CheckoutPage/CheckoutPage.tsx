@@ -65,6 +65,7 @@ const CheckoutPage = () => {
   });
 
   const { t } = useTranslation('auth');
+  const { t: tCart } = useTranslation('cart');
 
   const onSubmit = (data: any) => {
     console.warn('data', data);
@@ -80,13 +81,13 @@ const CheckoutPage = () => {
   }
 
   return (
-    <div className='h-fit flex w-full flex-row justify-center gap-10 p-20'>
-      <div className='relative flex'>
-        <section className='bg-gray-50 flex min-h-screen w-full justify-center'>
-          <div className='bg-gray-100 h-fit relative flex rounded-2xl p-5 shadow'>
+    <div className='flex w-full flex-row justify-center gap-10 p-20'>
+      <div className='h-fit relative flex'>
+        <section className='bg-gray-50 h-fit flex w-full justify-center'>
+          <div className='bg-gray-100 relative flex rounded-2xl p-5 shadow'>
             <div>
               <form
-                className='flex w-full flex-col gap-4'
+                className='mb-5 flex w-full flex-col gap-4'
                 onSubmit={handleSubmit((values) => onSubmit(values as any))}
               >
                 <Input
@@ -114,7 +115,7 @@ const CheckoutPage = () => {
                 </div>
                 <Input
                   name={'street'}
-                  placeholder={t('street')}
+                  placeholder={tCart('street')}
                   errors={errors}
                   register={register}
                   label='Shipping adress'
@@ -122,14 +123,14 @@ const CheckoutPage = () => {
                 <div className='flex flex-row items-end gap-2'>
                   <Input
                     name={'buildingNumber'}
-                    placeholder={t('buildingNumber')}
+                    placeholder={tCart('buildingNumber')}
                     errors={errors}
                     register={register}
                     className='w-40'
                   />
                   <Input
                     name={'flatNumber'}
-                    placeholder={t('flatNumber')}
+                    placeholder={tCart('flatNumber')}
                     errors={errors}
                     register={register}
                     className='w-60'
@@ -138,7 +139,7 @@ const CheckoutPage = () => {
                 <div className='flex flex-row items-end gap-2'>
                   <Input
                     name={'zipCode'}
-                    placeholder={t('zipCode')}
+                    placeholder={tCart('zipCode')}
                     errors={errors}
                     register={register}
                     className='w-40'
@@ -146,13 +147,12 @@ const CheckoutPage = () => {
                   />
                   <Input
                     name={'town'}
-                    placeholder={t('town')}
+                    placeholder={tCart('town')}
                     errors={errors}
                     register={register}
                     className='w-60'
                   />
                 </div>
-                <button type='submit'>ok</button>
               </form>
               <div className='flex flex-col'>
                 <label className='font-medium'>Delivery methods</label>
@@ -180,11 +180,12 @@ const CheckoutPage = () => {
         {items.map((item) => {
           return <ProductPreview {...item} key={`key-${item.id}`} />;
         })}
-
         <CartPreviewSummaryPanel
           total={totalPrice}
           deliveryPrice={deliveryPrice}
           className='relative'
+          onClickButtonLabel={tCart('pay')}
+          onClick={() => console.warn('stripe payment')}
         />
       </div>
     </div>

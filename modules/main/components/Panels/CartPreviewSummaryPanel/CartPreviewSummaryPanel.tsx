@@ -7,6 +7,8 @@ interface ICartPreviewSummaryPanelProps {
   deliveryPrice?: number;
   onClick?: () => void;
   className?: string;
+  onClickButtonLabel: string;
+  buttonHref?: string;
 }
 
 const CartPreviewSummaryPanel = ({
@@ -14,6 +16,8 @@ const CartPreviewSummaryPanel = ({
   deliveryPrice,
   onClick,
   className,
+  onClickButtonLabel,
+  buttonHref,
 }: ICartPreviewSummaryPanelProps): JSX.Element => {
   const { t } = useTranslation('cart');
   const { t: tRoutes } = useTranslation('routes');
@@ -37,11 +41,11 @@ const CartPreviewSummaryPanel = ({
       </div>
       <Separator />
       <GenericButton
-        label={t('goToCheckout')}
+        label={onClickButtonLabel}
         size={'large'}
         filled
         linkButton
-        href={`/${tRoutes('checkout')}`}
+        href={buttonHref}
         onClick={onClick}
       />
       <Separator />

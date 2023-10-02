@@ -28,6 +28,8 @@ interface ICartContext {
     type: 'decrease' | 'increase',
     item: IProductDTO
   ) => void;
+  deliveryPrice: number;
+  setDeliveryPrice: (deliveryPrice: number) => void;
 }
 
 const CartContext = createContext({} as ICartContext);
@@ -37,6 +39,7 @@ export const CartContextProvider = ({
 }: ICartContextProviderProps) => {
   const [cartDetails, setCartDetails] = useState({}) as any;
   const [items, setCartItems] = useState<IProductDTO[]>([]);
+  const [deliveryPrice, setDelivery] = useState(0);
 
   const isItemInCart = (item: IProductDTO) => {
     return (
@@ -88,13 +91,17 @@ export const CartContextProvider = ({
     const itemPrice: number =
       promoPrice !== null ? (promoPrice as number) : (price as number);
 
-    return acc + itemPrice * item.quantity;
+    return acc + itemPrice * item.quantity + deliveryPrice;
   }, 0);
 
   const removeFromCart = (item: IProductDTO): void => {
     const itemIndex = items.findIndex((el) => el.id === item.id);
 
     setCartItems(items.slice(0, itemIndex));
+  };
+
+  const setDeliveryPrice = (deliveryPrice: number) => {
+    setDelivery(deliveryPrice);
   };
 
   return (
@@ -106,6 +113,8 @@ export const CartContextProvider = ({
         itemsInCartCount,
         totalPrice,
         onChangeQuantityCart,
+        deliveryPrice,
+        setDeliveryPrice,
       }}
     >
       {children}

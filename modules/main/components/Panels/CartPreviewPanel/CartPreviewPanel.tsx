@@ -28,7 +28,7 @@ const CartPreviewPanel = ({ isOpen, setIsOpen }: ICartPreviewPanelProps) => {
       }
     >
       {items.length === 0 ? (
-        <EmptyCartInfo onClick={setIsOpen} />
+        <EmptyCartInfo onClick={() => setIsOpen(false)} />
       ) : (
         <div className='w-full'>
           {items.map((item) => {

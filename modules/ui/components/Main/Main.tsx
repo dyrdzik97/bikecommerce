@@ -8,7 +8,7 @@ const Main = ({ children }: IMainProps): JSX.Element => {
   return (
     <main
       className={
-        'relative flex flex flex-col items-center justify-center pt-[56px]'
+        'relative flex flex min-h-screen flex-col items-center justify-center pt-[56px]'
       }
     >
       {children}

@@ -39,8 +39,6 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
     );
   }
 
-  console.warn(`${index}-${item.key}`);
-
   return (
     <div className='relative' key={`${index}-${item.key}`}>
       <button

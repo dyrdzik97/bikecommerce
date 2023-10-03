@@ -20,6 +20,7 @@ const nextConfig = {
     MESSAGING_SENDER_ID: process.env.MESSAGING_SENDER_ID,
     APP_ID: process.env.APP_ID,
     MEASUREMENT_ID: process.env.MEASUREMENT_ID,
+    STRIPE_SECRET_API_KEY: process.env.STRIPE_SECRET_API_KEY,
   },
   i18n,
   async rewrites() {

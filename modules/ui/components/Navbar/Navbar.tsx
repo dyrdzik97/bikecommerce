@@ -30,7 +30,6 @@ const Navbar = ({
         <div className='flex items-center gap-8'>
           <nav className='hidden space-x-10 md:flex'>
             {CATEGORY_TREE.map((item, index) => {
-              console.warn('navbar', item, index);
               return (
                 <NavbarActivatorDropdown
                   key={`${item.key}-${index}`}

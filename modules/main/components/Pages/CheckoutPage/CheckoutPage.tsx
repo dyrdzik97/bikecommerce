@@ -3,8 +3,17 @@ import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { useAuth } from '../../../../../context/AuthContext';
 import { useCart } from '../../../../../context/CartContext';
+import { followToPaymentPage } from '../../../../../services/stripe';
+import {
+  buildingNumberValidation,
+  emailValidation,
+  flatNumberValidation,
+  nameValidation,
+  surnameValidation,
+  townValidation,
+  zipCodeValidation,
+} from '../../../../../utils/validation';
 import ProductPreview from '../../../../products/components/ProductPreview/ProductPreview';
 import DeliveryCard from '../../../../ui/components/DeliveryCard/DeliveryCard';
 import EmptyCartInfo from '../../../../ui/components/EmptyCartInfo/EmptyCartInfo';
@@ -12,49 +21,22 @@ import Input from '../../../../ui/components/Inputs/Input/Input';
 import { deliveryTypes } from '../../../../ui/defaults/deliveries';
 import CartPreviewSummaryPanel from '../../Panels/CartPreviewSummaryPanel/CartPreviewSummaryPanel';
 
+const schema = yup.object().shape({
+  name: nameValidation,
+  surname: surnameValidation,
+  town: townValidation,
+  buildingNumber: buildingNumberValidation,
+  flatNumber: flatNumberValidation,
+  email: emailValidation,
+  zipCode: zipCodeValidation,
+});
+
 const CheckoutPage = () => {
   const { items, totalPrice, setDeliveryPrice, deliveryPrice } = useCart();
-  const { user } = useAuth();
   const [activeDelivery, setActiveDelivery] = useState<{}>();
 
-  const { t: tValidations } = useTranslation('validations');
-
-  const schema = yup.object().shape({
-    name: yup
-      .string()
-      .required(`${tValidations('requiredErrorMessage')}`)
-      .min(
-        2,
-        `${tValidations('minCharactersNumberErrorMessage', { number: 2 })}`
-      ),
-    surname: yup
-      .string()
-      .required(`${tValidations('requiredErrorMessage')}`)
-      .min(
-        2,
-        `${tValidations('minCharactersNumberErrorMessage', { number: 2 })}`
-      ),
-    town: yup.string().required(`${tValidations('requiredErrorMessage')}`),
-    buildingNumber: yup
-      .number()
-      .required(`${tValidations('requiredErrorMessage')}`)
-      .min(
-        1,
-        `${tValidations('minCharactersNumberErrorMessage', { number: 1 })}`
-      ),
-    flatNumber: yup
-      .string()
-      .required(`${tValidations('requiredErrorMessage')}`)
-      .min(
-        1,
-        `${tValidations('minCharactersNumberErrorMessage', { number: 1 })}`
-      ),
-    email: yup.string().email().required('* Email is required.'),
-    zipCode: yup
-      .string()
-      .required('Zipcode is a required field')
-      .matches(/^\d{2}(?:[-\s]\d{3})?$/, 'Invalid zipcode format'),
-  });
+  const { t } = useTranslation('auth');
+  const { t: tCart } = useTranslation('cart');
 
   const {
     register,
@@ -64,13 +46,6 @@ const CheckoutPage = () => {
     resolver: yupResolver(schema),
   });
 
-  const { t } = useTranslation('auth');
-  const { t: tCart } = useTranslation('cart');
-
-  const onSubmit = (data: any) => {
-    console.warn('data', data);
-  };
-
   const onActivateDelivery = (index: number, deliveryPrice: number) => {
     setActiveDelivery(index);
     setDeliveryPrice(deliveryPrice);
@@ -79,6 +54,10 @@ const CheckoutPage = () => {
   if (items.length === 0) {
     return <EmptyCartInfo />;
   }
+
+  const onSubmit = (data?: any) => {
+    followToPaymentPage(items);
+  };
 
   return (
     <div className='flex w-full flex-row justify-center gap-10 p-20'>
@@ -97,7 +76,6 @@ const CheckoutPage = () => {
                   register={register}
                   label='Email adress'
                 />
-
                 <div className='flex flex-row items-end gap-2'>
                   <Input
                     name={'name'}
@@ -185,7 +163,7 @@ const CheckoutPage = () => {
           deliveryPrice={deliveryPrice}
           className='relative'
           onClickButtonLabel={tCart('pay')}
-          onClick={() => console.warn('stripe payment')}
+          onClick={() => onSubmit()}
         />
       </div>
     </div>

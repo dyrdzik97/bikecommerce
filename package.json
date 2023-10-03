@@ -37,6 +37,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.8",
     "react-toastify": "^9.1.2",
+    "stripe": "^13.8.0",
     "swiper": "^9.1.0",
     "swr": "^2.1.0",
     "uuidv4": "^6.2.13",

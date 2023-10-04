@@ -28,7 +28,7 @@ interface IProductPreviewProps {
   images: string[];
   mainImage: string;
   isBestseller: boolean;
-  hasFreeShipping: boolean;
+  hasFreeDelivery?: boolean;
   quantity: number;
   availableQuantity?: number;
 }

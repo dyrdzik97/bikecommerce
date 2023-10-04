@@ -22,7 +22,6 @@ interface IListingItemProps {
   productName?: string;
   price?: IPriceModel;
   classification?: string[];
-  hasFreeShipping?: boolean;
   hasFreeDelivery?: boolean;
   bestseller?: boolean;
   isSkeleton?: boolean;
@@ -32,10 +31,6 @@ interface IListingItemProps {
   trackableRefCallback?: (node: HTMLElement) => void;
   item: IProductDTO | IProductTile;
 }
-
-//  productId, title, classification, hasFreeDelivery  = false, bestseller = false
-
-// Optional<IListingItemProps> ??
 
 const ListingItem: FC<IListingItemProps> = ({
   size = 'regular',
@@ -48,7 +43,6 @@ const ListingItem: FC<IListingItemProps> = ({
     promoPrice: null,
     price: null,
   },
-  hasFreeShipping = false,
   hasFreeDelivery = false,
   bestseller = false,
   isSkeleton = false,

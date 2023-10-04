@@ -39,13 +39,17 @@ const ProductPrice: FC<IProductPriceProps> = ({
 
   return (
     <div className={classes}>
-      <span className={'product-price-badge__price'}>
+      <span className={'product-price-badge__price whitespace-nowrap'}>
         {`${hasPromotion ? formattedPromoPrice : formattedPrice}`}
       </span>
       {(hasPromotion || negotiation) && (
         <div className={'product-price-badge__append'}>
           {hasPromotion && (
-            <span className={'text-xs text-lightgray line-through'}>
+            <span
+              className={
+                'whitespace-nowrap text-xs text-lightgray line-through'
+              }
+            >
               {formattedPrice}
             </span>
           )}

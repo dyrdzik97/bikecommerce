@@ -1,18 +1,13 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 
 import { IProductDTO } from '../modules/products/dto/productDTO';
+import { useAuth } from './AuthContext';
 
 interface ICartContextProviderProps {
   children: ReactNode;
 }
 
-// cart: {
-//     cartId: 0,
-//     userId: 0,
-//     orderId, 0,
-//     status: 'processing' | 'paid' | 'deleted'
-//     items: IItem[],
-// }
+type quantityType = 'decrease' | 'increase';
 
 export interface ICart {
   items: IProductDTO[];
@@ -40,6 +35,7 @@ export const CartContextProvider = ({
   const [cartDetails, setCartDetails] = useState({}) as any;
   const [items, setCartItems] = useState<IProductDTO[]>([]);
   const [deliveryPrice, setDelivery] = useState(0);
+  const { user } = useAuth();
 
   const isItemInCart = (item: IProductDTO) => {
     return (
@@ -60,11 +56,20 @@ export const CartContextProvider = ({
       );
     } else {
       setCartItems((prev) => [...prev, { ...item, quantity: 1 }]);
+      console.warn(user);
+
+      localStorage.setItem(
+        `cart-${item.id}`,
+        JSON.stringify({
+          user: JSON.stringify(user?.uid),
+          items: JSON.stringify(items),
+        })
+      );
     }
   };
 
   const onChangeQuantityCart = (
-    type: 'decrease' | 'increase',
+    type: quantityType,
     item: IProductDTO
   ): void => {
     setCartItems(

@@ -21,8 +21,8 @@ const Input = ({
   placeholder,
   errors,
   register,
-  className,
-  inputClassName,
+  className = '',
+  inputClassName = '',
   pattern,
   maxLength,
   value,
@@ -35,7 +35,7 @@ const Input = ({
     >
       {label && <label className='font-medium'>{label}</label>}
       <input
-        className={`mt-1 rounded-xl border bg-white p-2 ${inputClassName}`}
+        className={`my-2 block w-full rounded-xl border bg-white p-2 outline-none ${inputClassName}`}
         type={type}
         placeholder={placeholder}
         {...register(name)}

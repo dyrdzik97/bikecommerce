@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
 import { ReactNode, useEffect, useState } from 'react';
-import useCloseOnRouteChange from '../../../main/hooks/useCloseOnRouteChange';
 
 const Navbar = dynamic(() => import('../Navbar/Navbar'), {
   ssr: false,
@@ -55,7 +54,8 @@ const DefaultLayout = ({ children }: IDefaultLayoutProps): JSX.Element => {
     setDropdownIsActive((prev) => !prev);
   };
 
-  useCloseOnRouteChange(onActivateDropdown);
+  // reach out of this function - mobile nav
+  //   useCloseOnRouteChange(onActivateDropdown);
 
   return (
     <Layout>

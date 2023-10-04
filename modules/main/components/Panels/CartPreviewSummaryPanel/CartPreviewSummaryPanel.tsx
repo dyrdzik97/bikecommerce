@@ -10,6 +10,7 @@ interface ICartPreviewSummaryPanelProps {
   onClickButtonLabel: string;
   buttonHref?: string;
   isLoading?: boolean;
+  deliveryType?: string;
 }
 
 const CartPreviewSummaryPanel = ({
@@ -20,16 +21,19 @@ const CartPreviewSummaryPanel = ({
   onClickButtonLabel,
   buttonHref,
   isLoading,
+  deliveryType,
 }: ICartPreviewSummaryPanelProps): JSX.Element => {
   const { t } = useTranslation('cart');
 
   return (
     <div
-      className={`absolute bottom-0 right-0 box-border flex w-full flex-col p-5 ${className}`}
+      className={`absolute bottom-0 right-0 box-border flex w-full flex-col bg-[#fff] p-5 ${className}`}
     >
       <div className='flex flex-row justify-between text-darkgray'>
         {/* TODO add currency */}
-        <p>{t('shipping')} </p>
+        <p>
+          {t('delivery')} {deliveryType && `: ${deliveryType}`}
+        </p>
         <p>
           {!deliveryPrice ? t('calculatedInCheckout') : `${deliveryPrice} PLN`}
         </p>

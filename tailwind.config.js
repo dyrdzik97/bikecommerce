@@ -9,15 +9,8 @@ module.exports = {
     opacity: true,
   },
   variants: {
-    // height: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     opacity: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
   },
-  //   extend: {
-  //     //   height: {
-  //     //     '480': '480px',
-  //     //   },
-  //     opacity: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-  //   },
   theme: {
     opacity: {
       0: '0',

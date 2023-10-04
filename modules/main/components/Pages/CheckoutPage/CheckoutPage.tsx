@@ -73,10 +73,10 @@ const CheckoutPage = () => {
 
   return (
     <form
-      className='mb-5 flex w-full flex-col gap-4'
+      className='mb-5 w-full gap-4'
       onSubmit={handleSubmit((values) => onSubmit(values as any))}
     >
-      <div className='flex w-full flex-row justify-center gap-10 p-20'>
+      <div className='flex w-full flex-col justify-center gap-10 p-0 sm:flex-row sm:p-20'>
         <div className='h-fit relative flex'>
           <section className='bg-gray-50 h-fit flex w-full justify-center'>
             <div className='bg-gray-100 relative flex rounded-2xl p-5 shadow'>
@@ -108,7 +108,7 @@ const CheckoutPage = () => {
                   placeholder={tCart('street')}
                   errors={errors}
                   register={register}
-                  label='Shipping adress'
+                  label='Delivery adress'
                 />
                 <div className='flex flex-row items-end gap-2'>
                   <Input
@@ -168,7 +168,7 @@ const CheckoutPage = () => {
             </div>
           </section>
         </div>
-        <div className='bg-gray-100 relative flex h-[100%] w-[40%] max-w-3xl flex-col items-center rounded-2xl p-5 shadow'>
+        <div className='bg-gray-100 w-100 relative flex h-[100%] max-w-xl flex-col items-center rounded-2xl p-5 shadow sm:min-w-[40%]'>
           {items.map((item) => {
             return <ProductPreview {...item} key={`key-${item.id}`} />;
           })}

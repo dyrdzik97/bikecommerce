@@ -17,7 +17,7 @@ const DeliveryCard = ({
 }: IDeliveryCardProps) => {
   return (
     <div
-      className={`my-2 flex flex-row items-center justify-between rounded-2xl border-2 border  p-5 ${
+      className={`my-2 flex flex-row items-center justify-between rounded-2xl border-2 border p-5 ${
         isDeliveryActive
           ? 'border-primary-100 shadow-xl'
           : 'border-tertiary-300'

@@ -20,7 +20,7 @@ export interface IProductDTO {
   images: string[];
   mainImage: string;
   isBestseller: boolean;
-  hasFreeShipping: boolean;
+  hasFreeDelivery?: boolean;
   quantity: number;
   availableQuantity?: number;
   //   variants?: {
@@ -47,5 +47,5 @@ export interface IProductTileDTO {
     percentageDiscount?: number | null;
   };
   isBestseller: boolean;
-  hasFreeShipping: boolean;
+  hasFreeDelivery: boolean;
 }

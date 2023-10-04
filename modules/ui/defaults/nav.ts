@@ -63,20 +63,4 @@ export const CATEGORY_TREE = [
       },
     ],
   },
-  //   {
-  //     key: 'accesories',
-  //     imageUrl: null,
-  //     href: {
-  //       en: '/',
-  //       pl: '/katalog?category=gravel',
-  //     },
-  //   },
-  //   {
-  //     key: 'blog',
-  //     imageUrl: null,
-  //     href: {
-  //       en: '/',
-  //       pl: '/',
-  //     },
-  //   },
 ];

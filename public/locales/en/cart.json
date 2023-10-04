@@ -1,7 +1,7 @@
 {
   "cart": "Cart",
   "summary": "Summary",
-  "shipping": "Shipping",
+  "delivery": "Delivery",
   "calculatedInCheckout": "In next step",
   "goToCheckout": "Go to checkout",
   "emptyCart": "Your cart is empty",

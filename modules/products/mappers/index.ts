@@ -49,7 +49,7 @@ export const getMappedProducts = (products: IProductDTO[]) => {
       categories: product.categories,
       images: product.images,
       isBestseller: product.isBestseller,
-      hasFreeShipping: product.hasFreeShipping,
+      hasFreeDelivery: product.hasFreeDelivery,
       //   variants: {
       //     color: mapColorsVariantToHex(product.variants?.color),
       //   },
@@ -77,7 +77,7 @@ export const getProductTiles = (products: IProductDTO[]): IProductTile[] => {
           percentageDiscount: product.price.percentageDiscount || 0,
         } || null,
       isBestseller: product.isBestseller || false,
-      hasFreeShipping: product.hasFreeShipping || false,
+      hasFreeDelivery: product.hasFreeDelivery || false,
       isSkeleton: false,
     };
   });
@@ -104,7 +104,7 @@ export const getProductTilesSkeleton = (): IProductTile[] => {
           percentageDiscount: 0,
         } || null,
       isBestseller: false,
-      hasFreeShipping: false,
+      hasFreeDelivery: false,
       isSkeleton: true,
     });
   }

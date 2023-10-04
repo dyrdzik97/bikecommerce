@@ -1,7 +1,7 @@
 {
   "cart": "Koszyk",
   "summary": "Podsumowanie",
-  "shipping": "Koszty wysyłki",
+  "delivery": "Dostawa",
   "calculatedInCheckout": "W następnym kroku",
   "goToCheckout": "Do koszyka",
   "emptyCart": "Twój kosz jest pusty",

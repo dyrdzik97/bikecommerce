@@ -9,7 +9,7 @@ export interface IProductTile {
   mainImage: string;
   price: IPriceModel;
   isBestseller: boolean;
-  hasFreeShipping: boolean;
+  hasFreeDelivery: boolean;
   isSkeleton: boolean;
 }
 

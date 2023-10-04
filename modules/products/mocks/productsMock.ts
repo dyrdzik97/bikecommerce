@@ -33,7 +33,8 @@ export const productsMock: IProductDTO[] = [
       'https://trek.scene7.com/is/image/TrekBicycleProducts/FXSport5Carbon_22_35786_B_Primary?$responsive-pjpg$&cache=on,on&wid=1920&hei=1440',
     ],
     isBestseller: false,
-    hasFreeShipping: false,
+    hasFreeDelivery: false,
+    quantity: 1,
     // variants: {
     //   color: ['blue', 'red', 'green', 'darkgray'],
     // },
@@ -69,7 +70,8 @@ export const productsMock: IProductDTO[] = [
       'https://trek.scene7.com/is/image/TrekBicycleProducts/FXSport5Carbon_22_35786_B_Primary?$responsive-pjpg$&cache=on,on&wid=1920&hei=1440',
     ],
     isBestseller: true,
-    hasFreeShipping: false,
+    hasFreeDelivery: false,
+    quantity: 1,
     // variants: {
     //   color: ['blue', 'red', 'green'],
     // },
@@ -103,7 +105,8 @@ export const productsMock: IProductDTO[] = [
       'https://trek.scene7.com/is/image/TrekBicycleProducts/FXSport5Carbon_22_35786_B_Primary?$responsive-pjpg$&cache=on,on&wid=1920&hei=1440',
     ],
     isBestseller: false,
-    hasFreeShipping: true,
+    hasFreeDelivery: true,
+    quantity: 1,
     // variants: {
     //   color: ['red'],
     // },
@@ -139,7 +142,8 @@ export const productsMock: IProductDTO[] = [
       'https://trek.scene7.com/is/image/TrekBicycleProducts/FXSport5Carbon_22_35786_B_Primary?$responsive-pjpg$&cache=on,on&wid=1920&hei=1440',
     ],
     isBestseller: false,
-    hasFreeShipping: false,
+    hasFreeDelivery: false,
+    quantity: 1,
     // variants: {
     //   color: ['blue', 'red', 'green'],
     // },
@@ -175,7 +179,8 @@ export const productsMock: IProductDTO[] = [
       'https://trek.scene7.com/is/image/TrekBicycleProducts/FXSport5Carbon_22_35786_B_Primary?$responsive-pjpg$&cache=on,on&wid=1920&hei=1440',
     ],
     isBestseller: false,
-    hasFreeShipping: false,
+    hasFreeDelivery: false,
+    quantity: 1,
     // variants: {
     //   color: ['blue', 'red', 'green'],
     // },
@@ -211,7 +216,8 @@ export const productsMock: IProductDTO[] = [
       'https://trek.scene7.com/is/image/TrekBicycleProducts/FXSport5Carbon_22_35786_B_Primary?$responsive-pjpg$&cache=on,on&wid=1920&hei=1440',
     ],
     isBestseller: false,
-    hasFreeShipping: false,
+    hasFreeDelivery: false,
+    quantity: 1,
     // variants: {
     //   color: ['blue', 'red', 'green'],
     // },
@@ -247,7 +253,8 @@ export const productsMock: IProductDTO[] = [
       'https://trek.scene7.com/is/image/TrekBicycleProducts/FXSport5Carbon_22_35786_B_Primary?$responsive-pjpg$&cache=on,on&wid=1920&hei=1440',
     ],
     isBestseller: false,
-    hasFreeShipping: false,
+    hasFreeDelivery: false,
+    quantity: 1,
     // variants: {
     //   color: ['blue', 'red', 'green'],
     // },

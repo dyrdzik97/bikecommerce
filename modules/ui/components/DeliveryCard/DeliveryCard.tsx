@@ -5,11 +5,9 @@ interface IDeliveryCardProps {
   promoPrice?: number;
   onClick: () => void;
   isDeliveryActive: boolean;
-  key: string;
 }
 
 const DeliveryCard = ({
-  key,
   type,
   details,
   price,
@@ -19,9 +17,10 @@ const DeliveryCard = ({
 }: IDeliveryCardProps) => {
   return (
     <div
-      key={key}
-      className={`my-2 flex flex-row items-center justify-between rounded-2xl border-2 border border-tertiary-300 p-5 ${
-        isDeliveryActive && 'border-primary-100 shadow-xl'
+      className={`my-2 flex flex-row items-center justify-between rounded-2xl border-2 border  p-5 ${
+        isDeliveryActive
+          ? 'border-primary-100 shadow-xl'
+          : 'border-tertiary-300'
       }`}
       onClick={onClick}
     >

@@ -9,6 +9,7 @@ interface ICartPreviewSummaryPanelProps {
   className?: string;
   onClickButtonLabel: string;
   buttonHref?: string;
+  isLoading?: boolean;
 }
 
 const CartPreviewSummaryPanel = ({
@@ -18,9 +19,9 @@ const CartPreviewSummaryPanel = ({
   className,
   onClickButtonLabel,
   buttonHref,
+  isLoading,
 }: ICartPreviewSummaryPanelProps): JSX.Element => {
   const { t } = useTranslation('cart');
-  const { t: tRoutes } = useTranslation('routes');
 
   return (
     <div
@@ -44,9 +45,11 @@ const CartPreviewSummaryPanel = ({
         label={onClickButtonLabel}
         size={'large'}
         filled
-        linkButton
+        linkButton={!!buttonHref && true}
         href={buttonHref}
         onClick={onClick}
+        isLoading={isLoading}
+        type='submit'
       />
       <Separator />
     </div>

@@ -4,11 +4,9 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { useCart } from '../../../../../context/CartContext';
-import { followToPaymentPage } from '../../../../../services/stripe';
+import useToStripePayment from '../../../../../services/stripe';
 import {
-  buildingNumberValidation,
   emailValidation,
-  flatNumberValidation,
   nameValidation,
   surnameValidation,
   townValidation,
@@ -25,8 +23,6 @@ const schema = yup.object().shape({
   name: nameValidation,
   surname: surnameValidation,
   town: townValidation,
-  buildingNumber: buildingNumberValidation,
-  flatNumber: flatNumberValidation,
   email: emailValidation,
   zipCode: zipCodeValidation,
 });
@@ -34,6 +30,8 @@ const schema = yup.object().shape({
 const CheckoutPage = () => {
   const { items, totalPrice, setDeliveryPrice, deliveryPrice } = useCart();
   const [activeDelivery, setActiveDelivery] = useState<{}>();
+  const [deliveryError, setDeliveryError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { t } = useTranslation('auth');
   const { t: tCart } = useTranslation('cart');
@@ -49,6 +47,7 @@ const CheckoutPage = () => {
   const onActivateDelivery = (index: number, deliveryPrice: number) => {
     setActiveDelivery(index);
     setDeliveryPrice(deliveryPrice);
+    setDeliveryError(false);
   };
 
   if (items.length === 0) {
@@ -56,19 +55,30 @@ const CheckoutPage = () => {
   }
 
   const onSubmit = (data?: any) => {
-    followToPaymentPage(items);
+    if (activeDelivery !== undefined) {
+      setIsLoading(true);
+      useToStripePayment(items)
+        .then((req: any) => {
+          router.push(req.url);
+        })
+        .catch(() => {
+          setIsLoading(false);
+        });
+    } else {
+      setDeliveryError(true);
+    }
   };
 
   return (
-    <div className='flex w-full flex-row justify-center gap-10 p-20'>
-      <div className='h-fit relative flex'>
-        <section className='bg-gray-50 h-fit flex w-full justify-center'>
-          <div className='bg-gray-100 relative flex rounded-2xl p-5 shadow'>
-            <div>
-              <form
-                className='mb-5 flex w-full flex-col gap-4'
-                onSubmit={handleSubmit((values) => onSubmit(values as any))}
-              >
+    <form
+      className='mb-5 flex w-full flex-col gap-4'
+      onSubmit={handleSubmit((values) => onSubmit(values as any))}
+    >
+      <div className='flex w-full flex-row justify-center gap-10 p-20'>
+        <div className='h-fit relative flex'>
+          <section className='bg-gray-50 h-fit flex w-full justify-center'>
+            <div className='bg-gray-100 relative flex rounded-2xl p-5 shadow'>
+              <div>
                 <Input
                   name={'email'}
                   placeholder={t('email')}
@@ -131,42 +141,45 @@ const CheckoutPage = () => {
                     className='w-60'
                   />
                 </div>
-              </form>
-              <div className='flex flex-col'>
-                <label className='font-medium'>Delivery methods</label>
-                {deliveryTypes.map((item, index) => (
-                  <DeliveryCard
-                    key={`${item.type}-${index}`}
-                    type={item.type}
-                    details={item.details}
-                    price={item.price}
-                    onClick={() =>
-                      onActivateDelivery(
-                        index,
-                        item.promoPrice ? item.promoPrice : item.price
-                      )
-                    }
-                    isDeliveryActive={activeDelivery === index}
-                  />
-                ))}
+                <div className='flex flex-col'>
+                  <label className='font-medium'>Delivery methods</label>
+                  {deliveryError && (
+                    <p className='text-primary-100'>Choose delivery method</p>
+                  )}
+                  {deliveryTypes.map((item, index) => (
+                    <DeliveryCard
+                      key={`${item.type}-${index}`}
+                      type={item.type}
+                      details={item.details}
+                      price={item.price}
+                      onClick={() =>
+                        onActivateDelivery(
+                          index,
+                          item.promoPrice ? item.promoPrice : item.price
+                        )
+                      }
+                      isDeliveryActive={activeDelivery === index}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
+        <div className='bg-gray-100 relative flex h-[100%] w-[40%] max-w-3xl flex-col items-center rounded-2xl p-5 shadow'>
+          {items.map((item) => {
+            return <ProductPreview {...item} key={`key-${item.id}`} />;
+          })}
+          <CartPreviewSummaryPanel
+            total={totalPrice}
+            deliveryPrice={deliveryPrice}
+            className='relative'
+            onClickButtonLabel={tCart('pay')}
+            isLoading={isLoading}
+          />
+        </div>
       </div>
-      <div className='bg-gray-100 relative flex h-[100%] w-[40%] max-w-3xl flex-col items-center rounded-2xl p-5 shadow'>
-        {items.map((item) => {
-          return <ProductPreview {...item} key={`key-${item.id}`} />;
-        })}
-        <CartPreviewSummaryPanel
-          total={totalPrice}
-          deliveryPrice={deliveryPrice}
-          className='relative'
-          onClickButtonLabel={tCart('pay')}
-          onClick={() => onSubmit()}
-        />
-      </div>
-    </div>
+    </form>
   );
 };
 

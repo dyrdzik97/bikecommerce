@@ -21,8 +21,6 @@ const Category = (props: any): JSX.Element => {
     return <PageLoader />;
   }
 
-  console.warn('Listing', props);
-
   return (
     <Page size='wide'>
       {/* TODO add breadcrumbs */}

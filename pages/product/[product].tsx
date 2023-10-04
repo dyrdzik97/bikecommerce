@@ -53,8 +53,25 @@ const Product: FC<IProductProps> = ({ product }) => {
 };
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
+  const data = await getDocs(collection(db, 'products')).then(
+    (querySnapshot) => {
+      return querySnapshot.docs.map((doc) => doc.data());
+    }
+  );
+
+  const paths = data.map((offer) => {
+    const offerUrl = getProductHref(offer.productName, offer.id);
+
+    return {
+      params: {
+        slug: offerUrl,
+        product: offerUrl,
+      },
+    };
+  });
+
   return {
-    paths: [],
+    paths,
     fallback: true,
   };
 };
@@ -71,6 +88,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         'listing',
         'product',
         'routes',
+        'cart',
       ]),
     ]);
 
@@ -81,8 +99,11 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     );
 
     const product = data.filter((offer) => {
-      const offerUrl = getProductHref(offer.productName, offer.id).substring(1);
-      return offerUrl === params.product;
+      const offerUrl = getProductHref(offer.productName, offer.id).replace(
+        '/product/',
+        ''
+      );
+      return offerUrl === params?.product;
     })[0];
 
     return {

@@ -2,7 +2,6 @@ import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useCart } from '../../../../../context/CartContext';
-import { useProduct } from '../../../../../context/ProductContext';
 import IconCart from '../../../../main/utils/Icons/IconCart/IconCart';
 import Breadcrumbs from '../../../../ui/components/Breadcrumbs/Breadcrumbs';
 import GenericButton from '../../../../ui/components/Buttons/GenericButton/GenericButton';
@@ -23,10 +22,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
   const { t, i18n } = useTranslation(['product', 'validations']);
   const [isAddingProduct, setIsAddingProduct] = useState(false);
 
-  // przemyslec kwestie ilosci produktow dodawanych do koszyka
-  const { quantity, setQuantity } = useProduct();
-
-  const { addToCart2 } = useCart();
+  const { addToCart } = useCart();
 
   const specification = Object.entries(productDetails).map((item, index) => {
     return {
@@ -37,16 +33,19 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
 
   const onAddToCart = async () => {
     try {
-      addToCart2(product);
+      addToCart(product);
       toast(t('product:productAddedToCart'), {
         type: 'success',
+        autoClose: 2000,
       });
+      setIsAddingProduct(true);
     } catch (error) {
       toast(t('validations:somethingWentWrong'), {
         type: 'error',
+        autoClose: 2000,
       });
     } finally {
-      setIsAddingProduct(false);
+      setTimeout(() => setIsAddingProduct(false), 2000);
     }
   };
 
@@ -54,7 +53,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
     <div
       style={{ height: 'min-content', maxWidth: '1920px' }}
       className='mt-[100px] flex w-full'
-      key={product.id}
+      key={`product-${product.id}`}
     >
       <section style={{ height: 'min-content' }} className='w-full'>
         <section className='flex items-center justify-center sm:py-4'>

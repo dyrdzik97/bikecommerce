@@ -1,3 +1,16 @@
 {
-  "cart": "Cart"
+  "cart": "Cart",
+  "summary": "Summary",
+  "shipping": "Shipping",
+  "calculatedInCheckout": "In next step",
+  "goToCheckout": "Go to checkout",
+  "emptyCart": "Your cart is empty",
+  "search": "Dive into!",
+  "deliveryMethods": "Delivery methods",
+  "buildingNumber": "Building no.",
+  "flatNumber": "Flat no.",
+  "zipCode": "12-345",
+  "street": "Street",
+  "town": "Town",
+  "pay": "Pay now"
 }

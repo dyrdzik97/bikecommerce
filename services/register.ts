@@ -46,4 +46,8 @@ const registerDatabase = async ({
   });
 };
 
+// products
+// index.ts -> produkty
+// categories.ts
+
 export { emailRegister, registerDatabase };

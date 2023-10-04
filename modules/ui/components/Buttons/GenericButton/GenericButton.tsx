@@ -35,11 +35,12 @@ const GenericButton = ({
   size = 'large',
   isLoading = false,
 }: IGenericButtonProps): JSX.Element => {
-  return (
-    <ButtonWrapper linkButton={linkButton} href={href}>
-      <button
-        type={type}
-        className={`
+  if (linkButton) {
+    return (
+      <ButtonWrapper linkButton={linkButton} href={href}>
+        <button
+          type={type}
+          className={`
             flex
             ${size === 'large' ? 'w-full' : 'w-fit'}
             items-center
@@ -50,15 +51,48 @@ const GenericButton = ({
                 ? 'border border-[#002D74] bg-[#002D74] text-white'
                 : 'border border-[#002D74] bg-white text-black'
             }
-            p-2 duration-300 hover:scale-105 ${className ? className : ''}`}
-        onClick={onClick}
-        disabled={isLoading}
-      >
-        {icon}
-        {isLoading && <IconLoading width={32} height={32} />}
-        {label}
-      </button>
-    </ButtonWrapper>
+            gap-2 p-2 duration-300 hover:scale-105 ${className ? className : ''}
+            ${
+              isLoading ? 'border-tertiary-100 bg-tertiary-100' : 'bg-[#002D74]'
+            }
+            `}
+          onClick={onClick}
+          disabled={isLoading}
+        >
+          {icon}
+          {isLoading && <IconLoading width={24} height={24} />}
+          {label}
+        </button>
+      </ButtonWrapper>
+    );
+  }
+
+  return (
+    <button
+      type={type}
+      className={`
+            flex
+            ${size === 'large' ? 'w-full' : 'w-fit'}
+            items-center
+            justify-center
+            rounded-xl
+            ${
+              filled
+                ? 'border border-[#002D74] bg-[#002D74] text-white'
+                : 'border border-[#002D74] bg-white text-black'
+            }
+            gap-2 p-2 duration-300 hover:scale-105 ${className ? className : ''}
+            ${
+              isLoading ? 'border-tertiary-100 bg-tertiary-100' : 'bg-[#002D74]'
+            }
+            `}
+      onClick={onClick}
+      disabled={isLoading}
+    >
+      {icon}
+      {isLoading && <IconLoading width={24} height={24} />}
+      {label}
+    </button>
   );
 };
 

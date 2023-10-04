@@ -29,13 +29,15 @@ const Navbar = ({
         </a>
         <div className='flex items-center gap-8'>
           <nav className='hidden space-x-10 md:flex'>
-            {CATEGORY_TREE.map((item, index) => (
-              <NavbarActivatorDropdown
-                key={`${item.key}-${index.toString()}`}
-                index={index.toString()}
-                item={item}
-              />
-            ))}
+            {CATEGORY_TREE.map((item, index) => {
+              return (
+                <NavbarActivatorDropdown
+                  key={`${item.key}-${index}`}
+                  index={index.toString()}
+                  item={item}
+                />
+              );
+            })}
           </nav>
         </div>
         <div className='flex items-center md:order-2'>

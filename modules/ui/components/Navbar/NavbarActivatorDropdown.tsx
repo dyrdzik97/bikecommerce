@@ -4,12 +4,13 @@ import { useRouter } from 'next/router';
 import { FC, useState } from 'react';
 import { CURRENT_LOCALE } from '../../../../utils/localeDetection';
 
+import classNames from 'classnames';
 import IconChevron from '../../../main/utils/Icons/IconChevron/IconChevron';
 import { getLanguageCodes } from '../../defaults/languages';
 
 export interface INavBarDropdownActivatorProps {
   item: any;
-  index: string;
+  index: string | number;
 }
 
 const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
@@ -38,12 +39,6 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
     );
   }
 
-  // /catalog?category=allproducts
-
-  // /catalog
-  // /catalog/grave?filters=...
-  // /catalog/...
-
   return (
     <div className='relative' key={`${index}-${item.key}`}>
       <button
@@ -65,33 +60,25 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
       {item.children && item.children.length !== 0 && (
         <div
           onMouseLeave={() => setFlyer(false)}
-          // wydzielic wpsolne czesci w stylach
-          className={
+          className={classNames(
+            'absolute z-10 -ml-4 mt-3 w-screen max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2',
             flyer
-              ? ' absolute z-10 -ml-4 mt-3 block w-screen max-w-md translate-y-0 transform px-2 transition duration-200 ease-out sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2'
-              : ' absolute z-10 -ml-4 mt-3 hidden w-screen max-w-md translate-y-1 transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2'
-          }
+              ? 'block translate-y-0 transition duration-200 ease-out '
+              : 'hidden translate-y-1'
+          )}
         >
           <div className='overflow-hidden rounded-lg shadow-lg'>
             <div className='relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8'>
-              {item.children.map((child: any, itemIndex: number) => {
-                // href opcjonalny a generyczny schemat bezposrednio w linku i na podst klucza
-                // getValidLink
-
-                return (
-                  // problem z linkami, nie odswieza sie po zmianie url, a jak juz to cala apka reload robi
-                  // gubi się context po kliku w pozucję w dropdownie, płaska pozycja w menu nie refreshuje calej apki
-                  <Link
-                    key={itemIndex}
-                    href={`[catalog]${child.href[interfaceCode]}`}
-                    // href={`[catalog]${child.href[interfaceCode]}`}
-                    as={`${tRoutes('catalog')}${child.href[interfaceCode]}`}
-                    // /katalog?category=gravel
-                    locale={router.locale}
-                    className='-m-3 flex items-start rounded-lg p-3 hover:bg-hoverbg'
-                    shallow
-                    passHref
-                  >
+              {item.children.map((child: any, itemIndex: number) => (
+                <Link
+                  legacyBehavior
+                  key={`${child.key}-${itemIndex}`}
+                  href={`/${tRoutes('category')}/${child.href[interfaceCode]}`}
+                  locale={router.locale}
+                  className='flex items-start rounded-lg p-3 hover:bg-hoverbg'
+                  passHref
+                >
+                  <a>
                     <div className='ml-4'>
                       <p className='text-gray-900 text-base font-medium'>
                         {t(child.key)}
@@ -100,65 +87,10 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
                         {t(child.subText)}
                       </p>
                     </div>
-                  </Link>
-                );
-              })}
+                  </a>
+                </Link>
+              ))}
             </div>
-            {/* BOTTOM section of additional socials */}
-            {/* <div className='space-y-6 bg-tertiary-100 px-5 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8'>
-              <div className='flow-root'>
-                <a
-                  href='#'
-                  className='text-gray-900 -m-3 flex items-center rounded-md p-3 text-base font-medium hover:bg-darkgray'
-                >
-                  <svg
-                    className='h-6 text-gray-400 w-6 flex-shrink-0'
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    stroke='currentColor'
-                    aria-hidden='true'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth={2}
-                      d='M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z'
-                    />
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth={2}
-                      d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-                    />
-                  </svg>
-                  <span className='ml-3'>Watch Demo</span>
-                </a>
-              </div>
-              <div className='flow-root'>
-                <a
-                  href='#'
-                  className='text-gray-900 -m-3 flex items-center rounded-md p-3 text-base font-medium hover:bg-darkgray'
-                >
-                  <svg
-                    className='h-6 text-gray-400 w-6 flex-shrink-0'
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    stroke='currentColor'
-                    aria-hidden='true'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth={2}
-                      d='M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z'
-                    />
-                  </svg>
-                  <span className='ml-3'>Contact Sales</span>
-                </a>
-              </div>
-            </div> */}
           </div>
         </div>
       )}

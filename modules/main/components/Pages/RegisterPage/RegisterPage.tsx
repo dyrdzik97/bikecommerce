@@ -45,6 +45,7 @@ const RegisterPage = () => {
       .required(`${tValidations('requiredErrorMessage')}`)
       .min(8, `${tValidations('incorrectEmailErrorMessage')}`),
   });
+
   const [registerError, setRegisterError] = useState('');
   const router = useRouter();
   const {
@@ -67,6 +68,7 @@ const RegisterPage = () => {
           name,
           surname,
           password,
+          displayName: `${name} ${surname}`,
         })
           .then(() => {
             toast(t('registerSuccess'), {

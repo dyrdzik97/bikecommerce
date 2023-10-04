@@ -1,6 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 
-import { useRouter } from 'next/router';
 import { IProductDTO } from '../modules/products/dto/productDTO';
 
 interface ICartContextProviderProps {
@@ -16,69 +15,106 @@ interface ICartContextProviderProps {
 // }
 
 export interface ICart {
-  //   cartId: string; // ...
-  //   orderId: string;
-  //   userId?: string; // ?
-  //   status: 'processing' | 'paid' | 'deleted';
   items: IProductDTO[];
 }
 
 interface ICartContext {
-  //   cartDetails: {},
-  addToCart: (cartDetails: ICart) => void;
-  addToCart2: (item: any) => void;
-  setItems: (item: any) => void;
+  addToCart: (item: IProductDTO) => void;
+  removeFromCart: (item: IProductDTO) => void;
   items: IProductDTO[];
+  itemsInCartCount: number;
+  totalPrice: number;
+  onChangeQuantityCart: (
+    type: 'decrease' | 'increase',
+    item: IProductDTO
+  ) => void;
+  deliveryPrice: number;
+  setDeliveryPrice: (deliveryPrice: number) => void;
 }
 
 const CartContext = createContext({} as ICartContext);
 
-// {} as
-
 export const CartContextProvider = ({
   children,
 }: ICartContextProviderProps) => {
-  const router = useRouter();
-  // TODO cartDetails do wywalenia
   const [cartDetails, setCartDetails] = useState({}) as any;
   const [items, setCartItems] = useState<IProductDTO[]>([]);
+  const [deliveryPrice, setDelivery] = useState(0);
 
-  const setItems = (item: IProductDTO) => {
-    setCartItems((prev) => [...prev, item]);
+  const isItemInCart = (item: IProductDTO) => {
+    return (
+      items.find((availableItem) => {
+        return availableItem.id === item.id;
+      }) || false
+    );
   };
 
-  const addToCart = (cartDetails: ICart) => {
-    setCartDetails((prev: any) => ({
-      ...prev,
-      cartDetails: {
-        ...cartDetails,
-        items: [...cartDetails.items, ...items],
-      },
-    }));
-    // setItems(cartDetails.items);
+  const addToCart = (item: IProductDTO) => {
+    if (isItemInCart(item)) {
+      setCartItems(
+        items.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        )
+      );
+    } else {
+      setCartItems((prev) => [...prev, { ...item, quantity: 1 }]);
+    }
   };
 
-  const addToCart2 = (item: IProductDTO) => {
-    setCartDetails((prev: any) => ({
-      ...prev,
-      cartDetails: {
-        items: [...items, item],
-      },
-    }));
-    setCartItems((prev) => [...prev, item]);
-    // setItems(cartDetails.items);
+  const onChangeQuantityCart = (
+    type: 'decrease' | 'increase',
+    item: IProductDTO
+  ): void => {
+    setCartItems(
+      items.map((cartItem) =>
+        cartItem.id === item.id
+          ? {
+              ...cartItem,
+              quantity:
+                type === 'increase'
+                  ? cartItem.quantity + 1
+                  : cartItem.quantity - 1,
+            }
+          : cartItem
+      )
+    );
   };
 
-  //   useEffect(() => {}, [router.asPath]);
+  const itemsInCartCount = items
+    .map((item) => item.quantity)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  const totalPrice = items.reduce((acc, item) => {
+    const { price, promoPrice } = item.price;
+    const itemPrice: number =
+      promoPrice !== null ? (promoPrice as number) : (price as number);
+
+    return acc + itemPrice * item.quantity + deliveryPrice;
+  }, 0);
+
+  const removeFromCart = (item: IProductDTO): void => {
+    const itemIndex = items.findIndex((el) => el.id === item.id);
+
+    setCartItems(items.slice(0, itemIndex));
+  };
+
+  const setDeliveryPrice = (deliveryPrice: number) => {
+    setDelivery(deliveryPrice);
+  };
 
   return (
     <CartContext.Provider
       value={{
-        // cartDetails,
         items,
         addToCart,
-        setItems,
-        addToCart2,
+        removeFromCart,
+        itemsInCartCount,
+        totalPrice,
+        onChangeQuantityCart,
+        deliveryPrice,
+        setDeliveryPrice,
       }}
     >
       {children}
@@ -89,7 +125,3 @@ export const CartContextProvider = ({
 export const useCart = () => {
   return useContext(CartContext);
 };
-
-// pokazanie koszyka
-// szczegóły użytkownika
-// płatność

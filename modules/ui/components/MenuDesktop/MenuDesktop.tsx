@@ -10,9 +10,8 @@ import LangSwitcher from '../LangSwitcher/LangSwitcher';
 interface IMenuDesktoProps {}
 
 const MenuDesktop = (): JSX.Element => {
-  const { items } = useCart();
+  const { items, itemsInCartCount } = useCart();
   const itemsInCart = items.length > 0;
-  const itemsCount = items.length;
 
   const [isOpenUserDrawer, setIsOpenUserDrawer] = useState(false);
   const [isOpenCartDrawer, setIsOpenCartDrawer] = useState(false);
@@ -28,7 +27,7 @@ const MenuDesktop = (): JSX.Element => {
         <IconBasket />
         {itemsInCart && (
           <p className='absolute top-0 right-0 flex h-[10px] w-[10px] items-center justify-center rounded-full bg-[#FFA500] p-2 text-[8px]'>
-            {itemsCount}
+            {itemsInCartCount}
           </p>
         )}
       </div>

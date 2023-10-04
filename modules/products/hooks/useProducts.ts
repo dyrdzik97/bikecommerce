@@ -3,7 +3,7 @@ import { getProductTilesSkeleton } from '../mappers';
 import { getProductsFromDatabase } from '../service/products';
 
 export const useProducts = (category?: string | string[] | undefined) => {
-  const { data } = useSWRImmutable('products', () =>
+  const { data } = useSWRImmutable(['products', category], () =>
     getProductsFromDatabase(category)
   );
 

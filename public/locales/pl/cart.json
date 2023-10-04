@@ -1,3 +1,16 @@
 {
-  "cart": "Koszyk"
+  "cart": "Koszyk",
+  "summary": "Podsumowanie",
+  "shipping": "Koszty wysyłki",
+  "calculatedInCheckout": "W następnym kroku",
+  "goToCheckout": "Do koszyka",
+  "emptyCart": "Twój kosz jest pusty",
+  "search": "Buszuj!",
+  "deliveryMethods": "Metody dostawy",
+  "buildingNumber": "Budynek nr",
+  "flatNumber": "Mieszkanie nr",
+  "zipCode": "12-345",
+  "street": "Ulica",
+  "town": "Miasto",
+  "pay": "Zapłać"
 }

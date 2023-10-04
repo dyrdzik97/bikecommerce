@@ -32,6 +32,7 @@ const CheckoutPage = () => {
   const [activeDelivery, setActiveDelivery] = useState<{}>();
   const [deliveryError, setDeliveryError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const { t } = useTranslation('auth');
   const { t: tCart } = useTranslation('cart');

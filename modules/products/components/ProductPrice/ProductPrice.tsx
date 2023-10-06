@@ -2,16 +2,14 @@ import { FC, useMemo } from 'react';
 
 import classNames from 'classnames';
 import { formatPrice } from '../../../../utils/formatters';
+import { IPriceModel } from '../../models';
 
 export interface IProductPriceProps {
-  currency?: string;
-  price?: number;
-  promoPrice?: number | null;
   negotiation?: boolean;
   size?: 'regular' | 'small';
 }
 
-const ProductPrice: FC<IProductPriceProps> = ({
+const ProductPrice: FC<IPriceModel & IProductPriceProps> = ({
   currency,
   price,
   promoPrice,
@@ -31,7 +29,7 @@ const ProductPrice: FC<IProductPriceProps> = ({
     [promoPrice, currency]
   );
 
-  const classes = classNames('flex gap-2', {
+  const classes = classNames('flex gap-1 flex-wrap', {
     'text-promo': hasPromotion,
     'text-base': size === 'small',
     'text-3xl': size === 'regular',

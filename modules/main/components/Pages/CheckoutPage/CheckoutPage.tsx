@@ -4,7 +4,9 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { useAuth } from '../../../../../context/AuthContext';
 import { useCart } from '../../../../../context/CartContext';
+import createOrder from '../../../../../services/order';
 import useToStripePayment from '../../../../../services/stripe';
 import {
   emailValidation,
@@ -16,9 +18,12 @@ import {
 import ProductPreview from '../../../../products/components/ProductPreview/ProductPreview';
 import DeliveryCard from '../../../../ui/components/DeliveryCard/DeliveryCard';
 import EmptyCartInfo from '../../../../ui/components/EmptyCartInfo/EmptyCartInfo';
+import InfoText from '../../../../ui/components/InfoText/InfoText';
 import Input from '../../../../ui/components/Inputs/Input/Input';
 import { deliveryTypes } from '../../../../ui/defaults/deliveries';
 import CartPreviewSummaryPanel from '../../Panels/CartPreviewSummaryPanel/CartPreviewSummaryPanel';
+
+const { v4: uuidv4 } = require('uuid');
 
 const schema = yup.object().shape({
   name: nameValidation,
@@ -30,13 +35,15 @@ const schema = yup.object().shape({
 
 const CheckoutPage = () => {
   const { items, totalPrice, setDeliveryPrice, deliveryPrice } = useCart();
-  const [activeDelivery, setActiveDelivery] = useState<{}>();
+  const { user } = useAuth();
+  const [activeDelivery, setActiveDelivery] = useState<number>();
   const [deliveryError, setDeliveryError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const { t } = useTranslation('auth');
   const { t: tCart } = useTranslation('cart');
+  const { t: tRoutes } = useTranslation('routes');
 
   const {
     register,
@@ -54,13 +61,32 @@ const CheckoutPage = () => {
 
   if (items.length === 0) {
     return <EmptyCartInfo />;
+  } else if (user === null) {
+    return (
+      <InfoText
+        content={t('notLoggedInUserInfo')}
+        hasButton
+        buttonTitle={t('login')}
+        onClick={() => {
+          router.push(`/${tRoutes('login')}?redirect=true`);
+        }}
+      />
+    );
   }
 
-  const onSubmit = (data?: any) => {
+  const onSubmit = async () => {
+    const orderId = uuidv4();
+
     if (activeDelivery !== undefined) {
       setIsLoading(true);
-      useToStripePayment(items)
-        .then((req: any) => {
+      await createOrder({
+        id: orderId,
+        userId: user?.uid || `guest-${uuidv4()}`,
+        items,
+        paymentStatus: 'processing',
+      });
+      await useToStripePayment(orderId, items)
+        .then((req) => {
           router.push(req.url);
         })
         .catch(() => {
@@ -74,7 +100,7 @@ const CheckoutPage = () => {
   return (
     <form
       className='mb-5 w-full gap-4'
-      onSubmit={handleSubmit((values) => onSubmit(values as any))}
+      onSubmit={handleSubmit(() => onSubmit())}
     >
       <div className='flex w-full flex-col justify-center gap-10 p-0 sm:flex-row sm:p-20'>
         <div className='h-fit relative flex'>
@@ -87,6 +113,7 @@ const CheckoutPage = () => {
                   errors={errors}
                   register={register}
                   label='Email adress'
+                  value={user?.email || undefined}
                 />
                 <div className='flex flex-row items-end gap-2'>
                   <Input

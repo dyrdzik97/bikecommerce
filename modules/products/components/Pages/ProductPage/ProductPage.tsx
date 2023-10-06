@@ -101,54 +101,6 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
                   <SpecificationItem items={specification} />
                 </CollapsedSection>
               </div>
-
-              {/* details */}
-              {/* <div className='lg:col-span-3'>
-                <div className='border-gray-300 border-b'>
-                  <nav className='flex gap-4'>
-                    <a
-                      href='#'
-                      title=''
-                      className='border-gray-900 text-gray-900 hover:border-gray-400 hover:text-gray-800 border-b-2 py-4 text-sm font-medium'
-                    >
-                      {' '}
-                      Description{' '}
-                    </a>
-
-                    <a
-                      href='#'
-                      title=''
-                      className='border-transparent text-gray-600 inline-flex items-center border-b-2 py-4 text-sm font-medium'
-                    >
-                      Reviews
-                      <span className='bg-gray-500 text-gray-100 ml-2 block rounded-full px-2 py-px text-xs font-bold'>
-                        {' '}
-                        1,209{' '}
-                      </span>
-                    </a>
-                  </nav>
-                </div>
-
-                <div className='mt-8 flow-root sm:mt-12'>
-                  <h1 className='text-3xl font-bold'>Delivered To Your Door</h1>
-                  <p className='mt-4'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quia accusantium nesciunt fuga.
-                  </p>
-                  <h1 className='mt-8 text-3xl font-bold'>
-                    From the Fine Farms of Brazil
-                  </h1>
-                  <p className='mt-4'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Optio numquam enim facere.
-                  </p>
-                  <p className='mt-4'>
-                    Amet consectetur adipisicing elit. Optio numquam enim
-                    facere. Lorem ipsum dolor sit amet consectetur, adipisicing
-                    elit. Dolore rerum nostrum eius facere, ad neque.
-                  </p>
-                </div>
-              </div> */}
             </div>
           </div>
         </section>

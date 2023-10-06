@@ -45,9 +45,7 @@ const Listing: FC<IListingProps> = ({}) => {
   }, []);
 
   return (
-    <div
-      className={'flex flex-col items-center justify-center gap-10 pt-[100px]'}
-    >
+    <div className={'flex flex-col items-center justify-center gap-10'}>
       <ListingHeader />
       <ListingTotalInfo total={isLoading ? '...' : items.length.toString()} />
       <div className='grid grid-cols-1 gap-2 md:grid-cols-4 md:gap-10'>

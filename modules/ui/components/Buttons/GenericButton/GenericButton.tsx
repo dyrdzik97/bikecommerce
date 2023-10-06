@@ -15,7 +15,13 @@ interface IGenericButtonProps {
   isLoading?: boolean;
 }
 
-const ButtonWrapper = ({ children, linkButton, href }: any) => {
+interface IButtonWrapperProps {
+  children: JSX.Element;
+  linkButton: boolean;
+  href: string;
+}
+
+const ButtonWrapper = ({ children, linkButton, href }: IButtonWrapperProps) => {
   if (linkButton) {
     return <Link href={href}>{children}</Link>;
   }

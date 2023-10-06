@@ -12,5 +12,6 @@
   "zipCode": "12-345",
   "street": "Ulica",
   "town": "Miasto",
-  "pay": "Zapłać"
+  "pay": "Zapłać",
+  "orderNumber": "Numer zamówienia:"
 }

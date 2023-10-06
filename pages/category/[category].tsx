@@ -1,4 +1,4 @@
-import { collection, getDocs } from 'firebase/firestore';
+import { DocumentData, collection, getDocs } from 'firebase/firestore';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
@@ -14,7 +14,7 @@ const Listing = dynamic(
   }
 );
 
-const Category = (props: any): JSX.Element => {
+const Category = (): JSX.Element => {
   const { isFallback } = useRouter();
 
   if (isFallback) {
@@ -23,24 +23,23 @@ const Category = (props: any): JSX.Element => {
 
   return (
     <Page size='wide'>
-      {/* TODO add breadcrumbs */}
       <Listing />
     </Page>
   );
 };
 
-export const getStaticPaths = async ({ locales }: any) => {
-  const data: any = await getDocs(collection(db, 'products')).then(
+export const getStaticPaths = async ({ locales = [''] }) => {
+  const data: DocumentData[] = await getDocs(collection(db, 'products')).then(
     (querySnapshot) => {
       return querySnapshot.docs.map((doc) => doc.data());
     }
   );
 
-  const categories = data.map((item: any) => item.categories[0]);
+  const categories = data.map((item) => item.categories[0]);
   const availableCategories = Array.from(new Set(categories));
 
   const paths = availableCategories
-    .map((category: any) => {
+    .map((category: string) => {
       return locales.map((locale: string) => {
         return {
           params: {

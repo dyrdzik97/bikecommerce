@@ -1,18 +1,26 @@
 // initial breadcrumbs - beginning
 
+import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
 const Breadcrumbs = (): JSX.Element => {
+  const router = useRouter();
+  const { t } = useTranslation('routes');
+
   return (
     <nav className='flex'>
       <ol role='list' className='flex items-center'>
         <li className='text-left'>
           <div className='-m-1'>
-            <a
-              href='#'
+            <Link
+              href='/'
+              passHref
               className='text-gray-600 focus:text-gray-900 hover:text-gray-800 rounded-md p-1 text-sm font-medium focus:shadow'
             >
               {' '}
-              Home{' '}
-            </a>
+              home{' '}
+            </Link>
           </div>
         </li>
 
@@ -20,13 +28,13 @@ const Breadcrumbs = (): JSX.Element => {
           <div className='flex items-center'>
             <span className='text-gray-400 mx-2'>/</span>
             <div className='-m-1'>
-              <a
-                href='#'
+              <Link
+                href={`/${t('category')}`}
                 className='text-gray-600 focus:text-gray-900 hover:text-gray-800 rounded-md p-1 text-sm font-medium focus:shadow'
               >
                 {' '}
-                Products{' '}
-              </a>
+                {Object.keys(router.query)}{' '}
+              </Link>
             </div>
           </div>
         </li>
@@ -35,14 +43,9 @@ const Breadcrumbs = (): JSX.Element => {
           <div className='flex items-center'>
             <span className='text-gray-400 mx-2'>/</span>
             <div className='-m-1'>
-              <a
-                href='#'
-                className='text-gray-600 focus:text-gray-900 hover:text-gray-800 rounded-md p-1 text-sm font-medium focus:shadow'
-                aria-current='page'
-              >
-                {' '}
-                Bikes{' '}
-              </a>
+              {' '}
+              {/* TODO handle only name of product without ID */}
+              {router.query.product}{' '}
             </div>
           </div>
         </li>

@@ -3,6 +3,7 @@ import { IProductDTO } from '../modules/products/dto/productDTO';
 const stripe = require('stripe')(process.env.STRIPE_SECRET_API_KEY);
 
 const useToStripePayment = async (
+  orderId: string,
   items: IProductDTO[]
 ): Promise<{ url: string }> => {
   return await stripe.checkout.sessions.create({
@@ -21,8 +22,11 @@ const useToStripePayment = async (
     })),
     mode: 'payment',
     // TODO handle backing to app to thank you page
-    success_url: 'https://localhost:3000/pl' + '/thank-you?success',
-    cancel_url: 'https://localhost:3000/pl' + '/thank-you?fail',
+    success_url:
+      'https://localhost:3000/pl' +
+      `/thank-you?order=${orderId}&status=success`,
+    cancel_url:
+      'https://localhost:3000/pl' + `/thank-you?order=${orderId}&status=fail`,
   });
 };
 

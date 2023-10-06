@@ -1,4 +1,12 @@
-export const categories: any[] = [
+interface ICategories {
+  title: string;
+  url: string;
+  subtitle: string;
+  imageSrc: string;
+  buttonText: string;
+}
+
+export const categories: ICategories[] = [
   {
     title: 'Road',
     url: '/category/road',

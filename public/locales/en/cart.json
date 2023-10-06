@@ -12,5 +12,6 @@
   "zipCode": "12-345",
   "street": "Street",
   "town": "Town",
-  "pay": "Pay now"
+  "pay": "Pay now",
+  "orderNumber": "Order number:"
 }

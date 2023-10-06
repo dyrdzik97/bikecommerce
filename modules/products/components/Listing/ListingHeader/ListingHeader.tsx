@@ -28,7 +28,7 @@ const ListingHeader = ({}: IListingHeaderProps): JSX.Element => {
     }
 
     if (isCorrectSearchedCategory) {
-      return t('listingTitle', { category: tNav(queryParams.category) });
+      return t('listingTitle', { category: tNav(`${queryParams.category}`) });
     }
 
     return t('allProducts');

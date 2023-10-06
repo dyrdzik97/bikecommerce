@@ -1,0 +1,7 @@
+{
+  "paymentSuccess": "Payment done!",
+  "paymentSuccessInfo": "Thank you for completing your secure online payment.",
+  "paymentFailed": "Payment failed :(",
+  "paymentFailedInfo": "Checkout the bank account or contact with us: info@bikecommerce.com",
+  "myOrders": "My orders"
+}

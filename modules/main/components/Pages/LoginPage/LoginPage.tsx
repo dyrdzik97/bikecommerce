@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { initializeApp } from 'firebase/app';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -39,7 +40,10 @@ import IconGoogle from '../../../utils/Icons/IconGoogle/IconGoogle';
 // https://stackoverflow.com/questions/57691637/react-i18next-why-arent-my-nested-keys-working
 
 const LoginPage = () => {
+  const { signIn, signInWithGoogle, loading } = useAuth();
+  const router = useRouter();
   const { t, i18n } = useTranslation(['auth', 'routes']);
+  const [passwordShown, setPasswordShown] = useState(false);
 
   const schema = yup.object().shape({
     email: yup
@@ -51,7 +55,7 @@ const LoginPage = () => {
       .required(`${t('validations:requiredErrorMessage')}`)
       .min(8, `${t('validations:incorrectEmailErrorMessage')}`),
   });
-  const { user, signIn, signInWithGoogle, loading } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -59,7 +63,6 @@ const LoginPage = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const [passwordShown, setPasswordShown] = useState(false);
 
   const onSubmit = (data: ILoginFormValues) => {
     const { email, password } = data;
@@ -76,6 +79,11 @@ const LoginPage = () => {
           hideProgressBar: true,
           type: 'error',
         });
+      })
+      .finally(() => {
+        if (router.query.redirect) {
+          router.push(`/${t('checkout')}`);
+        }
       });
   };
 

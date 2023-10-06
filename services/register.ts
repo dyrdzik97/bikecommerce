@@ -27,9 +27,7 @@ const registerDatabase = async ({
     surname,
     email,
     addresses: [],
-    cart: {},
     favorites: [],
-    orders: [], // do wywalenia
     phoneNumber: '',
     photoUrl: null,
     password,
@@ -45,9 +43,5 @@ const registerDatabase = async ({
       'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Face-smile.svg/1024px-Face-smile.svg.png',
   });
 };
-
-// products
-// index.ts -> produkty
-// categories.ts
 
 export { emailRegister, registerDatabase };

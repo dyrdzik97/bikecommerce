@@ -56,7 +56,6 @@ export const CartContextProvider = ({
       );
     } else {
       setCartItems((prev) => [...prev, { ...item, quantity: 1 }]);
-      console.warn(user);
 
       localStorage.setItem(
         `cart-${item.id}`,

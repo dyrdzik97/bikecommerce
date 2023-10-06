@@ -20,11 +20,12 @@ interface IListingItemProps {
   href?: string;
   mainImage?: string;
   productName?: string;
-  price?: IPriceModel;
+  price: IPriceModel;
   classification?: string[];
   hasFreeDelivery?: boolean;
   bestseller?: boolean;
   isSkeleton?: boolean;
+  // TODO add variants in the future
   variants?: any; // IVariantsModel;
   height?: string;
   trackable?: boolean;
@@ -63,7 +64,7 @@ const ListingItem: FC<IListingItemProps> = ({
 
   const onAddToCart = () => {
     setLoading(true);
-    addToCart(item);
+    addToCart(item as IProductDTO);
 
     setTimeout(() => {
       setLoading(false);
@@ -78,22 +79,13 @@ const ListingItem: FC<IListingItemProps> = ({
     return <ListingItemSkeleton height={height} size={size} />;
   }
 
-  //   const [hoverState, setHoverState] = useState('opacity-0 h-[0px]');
-
   return (
     <Link href={href} prefetch={false} legacyBehavior>
-      <a
-        href={href}
-        ref={trackableRefCallback}
-        onClick={onClick}
-        // className={`m-2 h-[${height}]`}
-        // onMouseEnter={() => setHoverState('opacity-1 h-10')}
-        // onMouseLeave={() => setHoverState('opacity-0 h-[0px]')}
-      >
+      <a href={href} ref={trackableRefCallback as undefined} onClick={onClick}>
         <div>
           <div
             className={`${
-              size === 'regular' ? 'h-[480px]' : 'h-[380px]'
+              size === 'regular' ? 'h-[350px]' : 'h-[350px]'
             } card flex flex-col justify-center rounded-lg border-white bg-white p-10 shadow-2xl transition duration-200 ease-in-out md:hover:scale-105`}
           >
             <div className='prod-img'>
@@ -115,7 +107,8 @@ const ListingItem: FC<IListingItemProps> = ({
                 </div>
               </div>
               <div className='text-gray-900 flex flex-row items-center justify-between md:flex-row'>
-                <ProductPrice {...price} />
+                {/* <ProductPrice {...price} /> */}
+                <ProductPrice price={price.price} />
                 <AddToCartButton onClick={onAddToCart} isLoading={loading} />
               </div>
             </div>

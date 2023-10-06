@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { CATEGORY_TREE } from '../../defaults/nav';
 import MenuDesktop from '../MenuDesktop/MenuDesktop';
 import MenuMobile from '../MenuMobile/MenuMobile';
@@ -17,7 +18,7 @@ const Navbar = ({
   return (
     <nav className='bg-gray-50 text-gray-500 body-font fixed top-0 z-50 w-full bg-[#fff] shadow-md'>
       <div className='container mx-auto flex items-center justify-between py-2 px-5'>
-        <a href='/' className='flex items-center'>
+        <Link href='/' passHref className='flex items-center'>
           <img
             src='https://flowbite.com/docs/images/logo.svg'
             className='h-6 sm:h-9 mr-3'
@@ -26,7 +27,7 @@ const Navbar = ({
           <span className='self-center whitespace-nowrap text-xl font-semibold text-black'>
             Bikecommerce
           </span>
-        </a>
+        </Link>
         <div className='flex items-center gap-8'>
           <nav className='hidden space-x-10 md:flex'>
             {CATEGORY_TREE.map((item, index) => {

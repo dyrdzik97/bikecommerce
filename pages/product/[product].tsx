@@ -35,18 +35,8 @@ const Product: FC<IProductProps> = ({ product }) => {
         },
       }}
     >
-      {/* <ProductContextProvider> */}
-
-      {/* <MobileView>
-          <ProductMobilePage />
-        </MobileView>
-        <BrowserView>
-          <ProductPage />
-        </BrowserView> */}
       <ProductContextProvider>
-        {/* <CartContextProvider> */}
         <ProductPage product={product} key={product.id} />
-        {/* </CartContextProvider> */}
       </ProductContextProvider>
     </SWRConfig>
   );

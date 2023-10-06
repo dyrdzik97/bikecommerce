@@ -49,6 +49,10 @@ const nextConfig = {
         source: '/produkt/:slug*',
         destination: '/product/:slug*',
       },
+      {
+        source: '/konto',
+        destination: '/user',
+      },
     ];
   },
 };

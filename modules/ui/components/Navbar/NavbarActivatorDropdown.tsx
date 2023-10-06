@@ -9,10 +9,18 @@ import IconChevron from '../../../main/utils/Icons/IconChevron/IconChevron';
 import { getLanguageCodes } from '../../defaults/languages';
 
 export interface INavBarDropdownActivatorProps {
-  item: any;
+  item: IChild;
   index: string | number;
 }
-
+export interface IChild {
+  href: {
+    [key: string]: string;
+  };
+  key: string;
+  subText: string;
+  imageUrl?: string;
+  children: IChild[];
+}
 const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
   item,
   index,
@@ -44,8 +52,8 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
       <button
         type='button'
         className='
-                  text-gray-500 group inline-flex items-center rounded-md bg-white p-2 text-base font-medium hover:bg-hoverbg focus:outline-none
-                '
+            text-gray-500 group inline-flex items-center rounded-md bg-white p-2 text-base font-medium hover:bg-hoverbg focus:outline-none
+        '
         onClick={() => setFlyer((prev) => !prev)}
       >
         <span>{t(item.key)}</span>
@@ -69,7 +77,7 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
         >
           <div className='overflow-hidden rounded-lg shadow-lg'>
             <div className='relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8'>
-              {item.children.map((child: any, itemIndex: number) => (
+              {item.children.map((child: IChild, itemIndex: number) => (
                 <Link
                   legacyBehavior
                   key={`${child.key}-${itemIndex}`}

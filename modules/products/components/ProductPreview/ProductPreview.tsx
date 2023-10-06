@@ -41,9 +41,9 @@ const ProductPreview = (item: IProductPreviewProps): JSX.Element => {
 
   return (
     <div
-      className={`card flex min-h-[80px] w-full flex-row justify-between border-b border-tertiary-100 p-5`}
+      className={`card flex min-h-[80px] w-full flex-row justify-between gap-5 border-b border-tertiary-100 p-5`}
     >
-      <div className='prod-img card h-full flex flex-row gap-5'>
+      <div className='card h-full flex flex-row gap-5'>
         <ProductPhoto
           className='h-[62px] w-[92px] rounded-xl'
           src={mainImage}
@@ -58,8 +58,8 @@ const ProductPreview = (item: IProductPreviewProps): JSX.Element => {
           </div>
         </Link>
       </div>
-      <div className='prod-info h-full flex flex-col justify-start gap-3'>
-        <div className='flex flex-row gap-4'>
+      <div className='h-full flex flex-col justify-start gap-3'>
+        <div className='text-wrap flex flex-row gap-4'>
           <ProductPrice {...price} />
         </div>
         <div className='text-gray-900 flex flex-row items-center justify-end '>

@@ -80,7 +80,7 @@ const ProductsCarousel = ({
         slidesPerView={slidesPerView}
         spaceBetween={isMobile ? 16 : 32}
         loop
-        className='p-20'
+        style={{ padding: '20px !important' }}
       >
         {items &&
           items.map((item, index) => {

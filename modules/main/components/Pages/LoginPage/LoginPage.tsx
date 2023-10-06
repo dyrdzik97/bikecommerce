@@ -82,7 +82,7 @@ const LoginPage = () => {
       })
       .finally(() => {
         if (router.query.redirect) {
-          router.push(`/${t('checkout')}`);
+          router.push(`/${t(`${router.query.redirect}`)}`);
         }
       });
   };

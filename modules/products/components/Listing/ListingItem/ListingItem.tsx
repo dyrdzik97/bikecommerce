@@ -96,7 +96,6 @@ const ListingItem: FC<IListingItemProps> = ({
               />
             </div>
             <div className='prod-info grid gap-3'>
-              {/* variants */}
               <div>
                 {/* add variants in future */}
                 {/* {variants.length !== 0 && <ColorVariants items={variants.color} />} */}

@@ -3,5 +3,9 @@
   "paymentSuccessInfo": "Dziękujemy za skorzystanie z bezpiecznych płatności!",
   "paymentFailed": "UPS! Nie udało się opłacić zamówienia :(",
   "paymentFailedInfo": "Sprawdź swoje konto bankowe lub skontaktuj się z nami: info@bikecommerce.com",
-  "myOrders": "Moje zamówienia"
+  "myOrders": "Moje zamówienia",
+  "myAccount": "Konto użytkownika",
+  "quantity": "ilość:",
+  "orderNumber": "Zamówienie nr",
+  "noOrders": "Nie masz zamówień (jeszcze 🤡)"
 }

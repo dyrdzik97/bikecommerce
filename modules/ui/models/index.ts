@@ -1,3 +1,5 @@
+import { IProductDTO } from '../../products/dto/productDTO';
+
 export interface ICategoryTileProps {
   imageSrc: string;
   title: string;
@@ -18,4 +20,11 @@ export interface IIconProps {
   height?: number;
   className?: string;
   onClick?: () => void;
+}
+
+export interface IOrderProps {
+  id: string;
+  userId: string;
+  items: IProductDTO[];
+  paymentStatus: string;
 }

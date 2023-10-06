@@ -68,7 +68,7 @@ const CheckoutPage = () => {
         hasButton
         buttonTitle={t('login')}
         onClick={() => {
-          router.push(`/${tRoutes('login')}?redirect=true`);
+          router.push(`/${tRoutes('login')}?redirect=checkout`);
         }}
       />
     );

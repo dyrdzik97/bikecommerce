@@ -3,5 +3,9 @@
   "paymentSuccessInfo": "Thank you for completing your secure online payment.",
   "paymentFailed": "Payment failed :(",
   "paymentFailedInfo": "Checkout the bank account or contact with us: info@bikecommerce.com",
-  "myOrders": "My orders"
+  "myOrders": "My orders",
+  "myAccount": "User account",
+  "quantity": "quantity:",
+  "orderNumber": "Order no. ",
+  "noOrders": "No orders (yet 🤡)"
 }

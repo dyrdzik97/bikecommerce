@@ -66,9 +66,6 @@ const Listing: FC<IListingProps> = ({}) => {
           />
         ))}
       </div>
-      {/* {!isLoading && pagination.total > 0 && (
-        <ListingPagination total={pagination.total} />
-      )} */}
     </div>
   );
 };

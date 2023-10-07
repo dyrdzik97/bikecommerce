@@ -11,6 +11,7 @@ import { getLanguageCodes } from '../../defaults/languages';
 export interface INavBarDropdownActivatorProps {
   item: IChild;
   index: string | number;
+  onClick?: () => void;
 }
 export interface IChild {
   href: {
@@ -24,12 +25,20 @@ export interface IChild {
 const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
   item,
   index,
+  onClick,
 }) => {
   const router = useRouter();
   const { t } = useTranslation('nav');
   const { t: tRoutes } = useTranslation('routes');
   const [flyer, setFlyer] = useState(false);
   const { interfaceCode } = getLanguageCodes(CURRENT_LOCALE);
+
+  const onClickItem = () => {
+    setFlyer((prev) => !prev);
+    {
+      onClick && onClick();
+    }
+  };
 
   if (!item.children || item.children.length === 0) {
     return (
@@ -54,7 +63,6 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
         className='
             text-gray-500 group inline-flex items-center rounded-md bg-white p-2 text-base font-medium hover:bg-hoverbg focus:outline-none
         '
-        onClick={() => setFlyer((prev) => !prev)}
       >
         <span>{t(item.key)}</span>
         <IconChevron
@@ -85,6 +93,7 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
                   locale={router.locale}
                   className='flex items-start rounded-lg p-3 hover:bg-hoverbg'
                   passHref
+                  onClick={onClickItem}
                 >
                   <a>
                     <div className='ml-4'>

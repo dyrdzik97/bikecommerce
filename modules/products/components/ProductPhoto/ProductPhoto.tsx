@@ -26,9 +26,9 @@ const ProductPhoto: FC<IProductPhotoProps> = ({
         <Image
           src={src}
           alt={alt}
-          width='412'
-          height='368'
-          // layout='fill'
+          width='312'
+          height='268'
+          //   layout='fill'
           objectFit='contain'
         />
       ) : (

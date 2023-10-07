@@ -85,7 +85,7 @@ const ListingItem: FC<IListingItemProps> = ({
         <div>
           <div
             className={`${
-              size === 'regular' ? 'h-[350px]' : 'h-[350px]'
+              size === 'regular' ? 'h-[410px]' : 'h-[350px]'
             } card flex flex-col justify-center rounded-lg border-white bg-white p-10 shadow-2xl transition duration-200 ease-in-out md:hover:scale-105`}
           >
             <div className='prod-img'>
@@ -106,8 +106,7 @@ const ListingItem: FC<IListingItemProps> = ({
                 </div>
               </div>
               <div className='text-gray-900 flex flex-row items-center justify-between md:flex-row'>
-                {/* <ProductPrice {...price} /> */}
-                <ProductPrice price={price.price} />
+                <ProductPrice {...price} />
                 <AddToCartButton onClick={onAddToCart} isLoading={loading} />
               </div>
             </div>

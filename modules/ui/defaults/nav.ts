@@ -14,7 +14,6 @@ export const CATEGORY_TREE = [
       en: 'category',
       pl: 'kategoria',
     },
-    // links
     children: [
       {
         key: 'allProducts',
@@ -62,5 +61,13 @@ export const CATEGORY_TREE = [
         subText: 'crossSubText',
       },
     ],
+  },
+  {
+    key: 'account',
+    imageUrl: null,
+    href: {
+      en: '/account',
+      pl: '/konto',
+    },
   },
 ];

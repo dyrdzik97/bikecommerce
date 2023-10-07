@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCart } from '../../../../context/CartContext';
 import IconBasket from '../../../main/utils/Icons/IconBasket/IconBasket';
@@ -76,52 +77,22 @@ const MenuMobile = ({
       <div
         className={`${
           isActive ? '' : 'hidden'
-        } t-0 absolute left-0 m-0 h-screen w-screen items-center justify-between overflow-hidden bg-white p-0`}
+        } t-0 absolute left-0 m-0 h-screen w-screen items-center justify-between gap-5 overflow-hidden bg-white p-2`}
         id='mobile-menu-2'
       >
-        <ul className='bg-gray-50 bg-gray-800 mt-4 flex flex-col rounded-lg p-4'>
-          <li>
-            <a
-              href='#'
-              className='bg-blue-700 block rounded py-2 pl-3 pr-4 text-black text-black hover:underline '
-              aria-current='page'
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a
-              href='#'
-              className='text-gray-700 hover:bg-gray-100 text-gray-400 hover:bg-gray-700 block rounded py-2 pl-3 pr-4 hover:text-black hover:underline'
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a
-              href='#'
-              className='text-gray-700 hover:bg-gray-100 text-gray-400 hover:bg-gray-700 block rounded py-2 pl-3 pr-4 hover:text-black hover:underline'
-            >
-              Services
-            </a>
-          </li>
-          <li>
-            <a
-              href='#'
-              className='text-gray-700 hover:bg-gray-100 text-gray-400 hover:bg-gray-700block rounded py-2 pl-3 pr-4 hover:text-black hover:underline'
-            >
-              Pricing
-            </a>
-          </li>
-          <li>
-            <a
-              href='#'
-              className='text-gray-700 hover:bg-gray-100  text-gray-400 hover:bg-gray-700 block rounded py-2 pl-3 pr-4 hover:text-black hover:underline'
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
+        {/* {CATEGORY_TREE.map((item, index) => {
+          return (
+            <NavbarActivatorDropdown
+              key={`${item.key}-${index}`}
+              index={index.toString()}
+              item={item}
+              onClick={() => onHideDropdown()}
+            />
+          );
+        })} */}
+        <Link onClick={() => onHideDropdown()} href='/'>
+          aaa
+        </Link>
       </div>
     </div>
   );

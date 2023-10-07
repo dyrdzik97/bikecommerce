@@ -1,13 +1,17 @@
-import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 interface IListingTotalInfoProps {
   total: string;
 }
 
 const ListingTotalInfo = ({ total }: IListingTotalInfoProps): JSX.Element => {
-  const { isFallback } = useRouter();
+  const { t } = useTranslation('listing');
 
-  return <span className='font-medium'>Products: {total}</span>;
+  return (
+    <span className='font-medium'>
+      {t('productsQount')} {total}
+    </span>
+  );
 };
 
 export default ListingTotalInfo;

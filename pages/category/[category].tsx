@@ -70,6 +70,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         'auth',
         'product',
         'cart',
+        'footer',
       ]),
     ]);
 

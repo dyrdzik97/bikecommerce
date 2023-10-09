@@ -79,6 +79,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         'product',
         'routes',
         'cart',
+        'footer',
       ]),
     ]);
 
@@ -98,7 +99,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
     return {
       props: {
-        product,
+        product: product || null,
         ...translations,
       },
       // simulate loading of page - remove to being faster

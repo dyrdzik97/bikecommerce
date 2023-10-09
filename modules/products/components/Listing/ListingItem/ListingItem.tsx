@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { useCart } from '../../../../../context/CartContext';
 import AddToCartButton from '../../../../ui/components/Buttons/AddToCartButton/AddToCartButton';
 import { IProductDTO } from '../../../dto/productDTO';
-import { IPriceModel, IProductTile } from '../../../models';
+import { IPriceModel } from '../../../models';
 import ProductPhoto from '../../ProductPhoto/ProductPhoto';
 import ProductPrice from '../../ProductPrice/ProductPrice';
 import ListingItemSkeleton from '../ListingItemSkeleton/ListingItemSkeleton';
@@ -30,7 +30,6 @@ interface IListingItemProps {
   height?: string;
   trackable?: boolean;
   trackableRefCallback?: (node: HTMLElement) => void;
-  item: IProductDTO | IProductTile;
 }
 
 const ListingItem: FC<IListingItemProps> = ({
@@ -48,10 +47,9 @@ const ListingItem: FC<IListingItemProps> = ({
   bestseller = false,
   isSkeleton = false,
   trackable,
+  // add variants in future
   variants = [],
   trackableRefCallback,
-  // optional to refactor
-  item,
 }) => {
   const { addToCart } = useCart();
   const { t, i18n } = useTranslation(['validations']);
@@ -60,6 +58,14 @@ const ListingItem: FC<IListingItemProps> = ({
     if (trackable) {
       sessionStorage.setItem(TRACKABLE_LISTING_ITEM_KEY, id);
     }
+  };
+
+  const item = {
+    id,
+    productName,
+    price,
+    mainImage,
+    hasFreeDelivery,
   };
 
   const onAddToCart = () => {

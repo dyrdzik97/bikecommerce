@@ -1,7 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
-import { getQueryParams } from '../../../../../utils/router';
 import { isProductBelongsToGivenCategory } from '../../../mappers';
 
 interface IListingHeaderProps {}
@@ -11,16 +10,11 @@ const ListingHeader = ({}: IListingHeaderProps): JSX.Element => {
   const { t } = useTranslation('listing');
   const { t: tNav } = useTranslation('nav');
 
-  const queryParams = useMemo(
-    () => getQueryParams(router.asPath),
-    [router.asPath]
-  );
-
   const isCorrectSearchedCategory = isProductBelongsToGivenCategory(
-    queryParams.category as string
+    router.query.category as string
   );
 
-  const hasCategoryInQuery = Object.keys(queryParams).length !== 0;
+  const hasCategoryInQuery = Object.keys(router.query).length !== 0;
 
   const title = useMemo(() => {
     if (!isCorrectSearchedCategory && hasCategoryInQuery) {
@@ -28,7 +22,7 @@ const ListingHeader = ({}: IListingHeaderProps): JSX.Element => {
     }
 
     if (isCorrectSearchedCategory) {
-      return t('listingTitle', { category: tNav(`${queryParams.category}`) });
+      return t('listingTitle', { category: tNav(`${router.query.category}`) });
     }
 
     return t('allProducts');

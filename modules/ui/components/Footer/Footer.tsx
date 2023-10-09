@@ -1,4 +1,10 @@
+import { useTranslation } from 'next-i18next';
+import Image from 'next/image';
+import { useBreakpoint } from '../../../main/hooks/useBreakpoint';
+
 const Footer = (): JSX.Element => {
+  const { t } = useTranslation('footer');
+  const { isMobile } = useBreakpoint();
   return (
     <footer
       className='bg-gray-900 mt-10 bg-gray bg-gray md:mt-20 md:px-36'
@@ -7,107 +13,86 @@ const Footer = (): JSX.Element => {
       <div className='grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4'>
         <div>
           <h2 className='text-gray-500 text-gray-400 mb-6 text-sm font-semibold uppercase'>
-            Company
+            {t('ourShop')}
           </h2>
           <ul className='text-gray-500 text-gray-400'>
             <li className='mb-4'>
-              <a href='#' className=' hover:underline'>
-                About
+              <a href='#' className=' hover:underline'></a>
+            </li>
+            <li className='mb-4'>
+              <a href='#' className='hover:underline'>
+                {t('allProducts')}
               </a>
             </li>
             <li className='mb-4'>
               <a href='#' className='hover:underline'>
-                Careers
+                {t('myProfile')}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className='text-gray-500 text-gray-400 mb-6 text-sm font-semibold uppercase'>
+            To Be Added
+          </h2>
+          <ul className='text-gray-500 text-gray-400'>
+            <li className='mb-4'>
+              <a href='#' className='hover:underline'>
+                To be Added{' '}
               </a>
             </li>
             <li className='mb-4'>
               <a href='#' className='hover:underline'>
-                Brand Center
+                To be Added
               </a>
             </li>
             <li className='mb-4'>
               <a href='#' className='hover:underline'>
-                Blog
+                To be Added{' '}
               </a>
             </li>
           </ul>
         </div>
         <div>
           <h2 className='text-gray-500 text-gray-400 mb-6 text-sm font-semibold uppercase'>
-            Help center
+            Contact us!
           </h2>
           <ul className='text-gray-500 text-gray-400'>
             <li className='mb-4'>
-              <a href='#' className='hover:underline'>
-                Discord Server
+              <p>Bikecommerce co.</p>
+            </li>
+            <li className='mb-4'>
+              <a href='mailto:bikecommerce@gmail.com' className='underline'>
+                bikecommerce@gmail.com
               </a>
             </li>
             <li className='mb-4'>
-              <a href='#' className='hover:underline'>
-                Twitter
+              <a href='tel:+48123456899' className='underline'>
+                +48 123 456 899
               </a>
             </li>
             <li className='mb-4'>
-              <a href='#' className='hover:underline'>
-                Facebook
-              </a>
-            </li>
-            <li className='mb-4'>
-              <a href='#' className='hover:underline'>
-                Contact Us
+              <a
+                href='http://maps.google.com/?q=1200 Pennsylvania Ave SE, Washington, District of Columbia, 20003'
+                target='_blank'
+                className='hover:underline'
+              >
+                Localed in Poland 🇵🇱
               </a>
             </li>
           </ul>
         </div>
-        <div>
-          <h2 className='text-gray-500 text-gray-400 mb-6 text-sm font-semibold uppercase'>
-            Legal
-          </h2>
-          <ul className='text-gray-500 text-gray-400'>
-            <li className='mb-4'>
-              <a href='#' className='hover:underline'>
-                Privacy Policy
-              </a>
-            </li>
-            <li className='mb-4'>
-              <a href='#' className='hover:underline'>
-                Licensing
-              </a>
-            </li>
-            <li className='mb-4'>
-              <a href='#' className='hover:underline'>
-                Terms &amp; Conditions
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h2 className='text-gray-500 text-gray-400 mb-6 text-sm font-semibold uppercase'>
-            Download
-          </h2>
-          <ul className='text-gray-500 text-gray-400'>
-            <li className='mb-4'>
-              <a href='#' className='hover:underline'>
-                iOS
-              </a>
-            </li>
-            <li className='mb-4'>
-              <a href='#' className='hover:underline'>
-                Android
-              </a>
-            </li>
-            <li className='mb-4'>
-              <a href='#' className='hover:underline'>
-                Windows
-              </a>
-            </li>
-            <li className='mb-4'>
-              <a href='#' className='hover:underline'>
-                MacOS
-              </a>
-            </li>
-          </ul>
-        </div>
+        {!isMobile && (
+          <div className='relative block'>
+            <Image
+              alt='footer-img'
+              src='https://wallpaperaccess.com/full/4447020.jpg'
+              fill
+              className='rounded-2xl'
+            />
+          </div>
+        )}
       </div>
       <div className='bg-gray-100 bg-gray-700 px-4 py-6 md:flex md:items-center md:justify-between'>
         <span className='text-gray-500 text-gray-300 text-sm sm:text-center'>

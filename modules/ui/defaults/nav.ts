@@ -30,7 +30,7 @@ export const CATEGORY_TREE = [
           en: 'road',
           pl: 'road',
         },
-        subText: 'roadSubtext',
+        subText: 'roadSubText',
         imageUrl: null,
       },
       {

@@ -1,6 +1,6 @@
 export const checkMobileDevice = () => {
-  if (navigator.userAgentData) {
-    return navigator.userAgentData.mobile;
+  if (navigator.userAgent) {
+    return navigator.userAgent;
   }
 
   return (

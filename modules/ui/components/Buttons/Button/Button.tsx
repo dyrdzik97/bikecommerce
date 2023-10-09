@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { forwardRef, PropsWithChildren, ReactElement, Ref } from 'react';
+import { forwardRef, PropsWithChildren, ReactElement, useRef } from 'react';
 
 interface IButtonProps {
   type?: 'button' | 'submit' | 'reset';
@@ -8,7 +8,6 @@ interface IButtonProps {
   size: 'small' | 'normal' | 'large';
   pill?: boolean;
   disabled: boolean;
-  ref: Ref<HTMLDivElement>;
   label?: string;
   icon?: ReactElement;
   onClick?: () => void;
@@ -33,26 +32,26 @@ const classes = {
 };
 
 const Button = forwardRef<HTMLDivElement, PropsWithChildren<IButtonProps>>(
-  (
-    {
-      type = 'button',
-      className,
-      variant = 'primary',
-      size = 'normal',
-      pill = false,
-      disabled = false,
-      label,
-      icon,
-      onClick,
-      ...props
-    },
-    ref
-  ) => (
-    <button
-      ref={ref}
-      disabled={disabled}
-      type={type}
-      className={classNames(`
+  ({
+    type = 'button',
+    className,
+    variant = 'primary',
+    size = 'normal',
+    pill = false,
+    disabled = false,
+    label,
+    icon,
+    onClick,
+    ...props
+  }) => {
+    const ref = useRef(null);
+
+    return (
+      <button
+        ref={ref}
+        disabled={disabled}
+        type={type}
+        className={classNames(`
             ${classes.base}
             ${classes.size[size]}
             ${classes.variant[variant]}
@@ -60,15 +59,16 @@ const Button = forwardRef<HTMLDivElement, PropsWithChildren<IButtonProps>>(
             ${disabled && classes.disabled}
             ${className}
         `)}
-      onClick={onClick}
-      {...props}
-    >
-      <>
-        {icon}
-        {label}
-      </>
-    </button>
-  )
+        onClick={onClick}
+        {...props}
+      >
+        <>
+          {icon}
+          {label}
+        </>
+      </button>
+    );
+  }
 );
 
 export default Button;

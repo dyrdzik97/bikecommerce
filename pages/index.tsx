@@ -39,6 +39,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {
         'routes',
         'validations',
         'cart',
+        'footer',
       ]),
     ]);
 

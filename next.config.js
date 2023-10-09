@@ -9,6 +9,7 @@ const nextConfig = {
       'images6.alphacoders.com',
       'sprint-rowery.pl',
       'demo2.themelexus.com',
+      'wallpaperaccess.com',
     ],
   },
   env: {

@@ -18,9 +18,9 @@ export interface IVariantsModel {
 }
 
 export interface IPriceModel {
-  currency?: string;
-  price: number | undefined | string;
-  promoPrice?: number;
+  currency: string;
+  price: number | null;
+  promoPrice?: number | null;
   percentageDiscount?: number;
 }
 

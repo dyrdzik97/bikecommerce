@@ -18,6 +18,7 @@ const MenuMobile = ({
 
   const router = useRouter();
   const { t } = useTranslation('routes');
+  const { t: tNav } = useTranslation('nav');
 
   return (
     <div>
@@ -77,21 +78,29 @@ const MenuMobile = ({
       <div
         className={`${
           isActive ? '' : 'hidden'
-        } t-0 absolute left-0 m-0 h-screen w-screen items-center justify-between gap-5 overflow-hidden bg-white p-2`}
+        } t-0 absolute left-0 m-0 flex h-screen w-screen flex-col items-start gap-5 overflow-hidden bg-white p-5`}
         id='mobile-menu-2'
       >
-        {/* {CATEGORY_TREE.map((item, index) => {
-          return (
-            <NavbarActivatorDropdown
-              key={`${item.key}-${index}`}
-              index={index.toString()}
-              item={item}
-              onClick={() => onHideDropdown()}
-            />
-          );
-        })} */}
-        <Link onClick={() => onHideDropdown()} href='/'>
-          aaa
+        <Link onClick={() => onHideDropdown()} href={`/${t('category')}`}>
+          {tNav('bikes')}
+        </Link>
+        <Link
+          onClick={() => onHideDropdown()}
+          href={`/${t('category')}/gravel`}
+        >
+          {tNav('gravel')}
+        </Link>
+        <Link onClick={() => onHideDropdown()} href={`/${t('category')}/road`}>
+          {tNav('road')}
+        </Link>
+        <Link
+          onClick={() => onHideDropdown()}
+          href={`/${t('category')}/street`}
+        >
+          {tNav('street')}
+        </Link>
+        <Link onClick={() => onHideDropdown()} href={`/${t('category')}/cross`}>
+          {tNav('cross')}
         </Link>
       </div>
     </div>

@@ -2,14 +2,16 @@ import { FC, useMemo } from 'react';
 
 import classNames from 'classnames';
 import { formatPrice } from '../../../../utils/formatters';
-import { IPriceModel } from '../../models';
 
 export interface IProductPriceProps {
+  currency?: string | undefined;
+  price: number | null;
+  promoPrice?: number | null;
   negotiation?: boolean;
   size?: 'regular' | 'small';
 }
 
-const ProductPrice: FC<IPriceModel & IProductPriceProps> = ({
+const ProductPrice: FC<IProductPriceProps> = ({
   currency,
   price,
   promoPrice,
@@ -20,7 +22,7 @@ const ProductPrice: FC<IPriceModel & IProductPriceProps> = ({
     Boolean(promoPrice !== null && promoPrice! > 0) && promoPrice !== price;
 
   const formattedPrice = useMemo(
-    () => formatPrice(price, currency),
+    () => formatPrice(price || 0, currency),
     [price, currency]
   );
 

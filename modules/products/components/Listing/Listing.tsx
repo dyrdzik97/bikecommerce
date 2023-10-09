@@ -1,9 +1,9 @@
-import { FC, useCallback, useEffect } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 
 import { useRouter } from 'next/router';
 import { useSize } from '../../../main/hooks/useSize';
 import { useProducts } from '../../hooks/useProducts';
-import { IProductTile } from '../../models';
+import ScrollToTopButton from '../Buttons/ScrollToTopButton/ScrollToTopButton';
 import ListingHeader from './ListingHeader/ListingHeader';
 import ListingItem from './ListingItem/ListingItem';
 import ListingTotalInfo from './ListingTotalInfo/ListingTotalInfo';
@@ -17,7 +17,7 @@ let trackableId: string | null = '';
 const Listing: FC<IListingProps> = ({}) => {
   const router = useRouter();
   const categoryPath = router.query.category;
-
+  const [showButton, setShowButton] = useState(false);
   const { items, isLoading } = useProducts(categoryPath);
 
   const itemSize = useSize();
@@ -44,6 +44,25 @@ const Listing: FC<IListingProps> = ({}) => {
     }
   }, []);
 
+  useEffect(() => {
+    const toggleVisibility = () => {
+      window.scrollY > 500 ? setShowButton(true) : setShowButton(false);
+    };
+    window.addEventListener('scroll', toggleVisibility);
+
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    showButton &&
+      window.scrollTo({
+        top: 0,
+        behavior: 'auto',
+      });
+  };
+
   return (
     <div className={'flex flex-col items-center justify-center gap-10'}>
       <ListingHeader />
@@ -61,11 +80,10 @@ const Listing: FC<IListingProps> = ({}) => {
             }
             height={'480px'}
             {...item}
-            // TODO to refactor, or all item or only few props
-            item={item as IProductTile}
           />
         ))}
       </div>
+      <ScrollToTopButton onClick={scrollToTop} showButton={showButton} />
     </div>
   );
 };

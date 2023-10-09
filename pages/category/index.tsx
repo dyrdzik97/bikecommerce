@@ -30,6 +30,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {
         'auth',
         'product',
         'cart',
+        'footer',
       ]),
     ]);
 

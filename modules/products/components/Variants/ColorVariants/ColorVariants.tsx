@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { mapColorsVariantToHex } from '../../../mappers';
 
 // TODO think about saving variant - with HEX color as default or only by text ex. green/red etc and then map it like now
@@ -15,7 +14,7 @@ const ColorVariants = ({ items }: IColorVariantsProps) => {
 
   return (
     <div className={`mt-2 flex items-center gap-1`}>
-      {colors?.map((item) => {
+      {/* {colors?.map((item) => {
         return (
           // think how to handle variants links
           <Link href='/' legacyBehavior>
@@ -26,7 +25,7 @@ const ColorVariants = ({ items }: IColorVariantsProps) => {
             </a>
           </Link>
         );
-      })}
+      })} */}
     </div>
   );
 };

@@ -18,9 +18,9 @@ export interface IChild {
     [key: string]: string;
   };
   key: string;
-  subText: string;
-  imageUrl?: string;
-  children: IChild[];
+  subText?: string;
+  imageUrl?: string | null;
+  children?: IChild[] | undefined;
 }
 const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
   item,
@@ -63,6 +63,7 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
         className='
             text-gray-500 group inline-flex items-center rounded-md bg-white p-2 text-base font-medium hover:bg-hoverbg focus:outline-none
         '
+        onClick={onClickItem}
       >
         <span>{t(item.key)}</span>
         <IconChevron
@@ -100,9 +101,11 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
                       <p className='text-gray-900 text-base font-medium'>
                         {t(child.key)}
                       </p>
-                      <p className='text-gray-500 mt-1 text-sm'>
-                        {t(child.subText)}
-                      </p>
+                      {child.subText && (
+                        <p className='text-gray-500 mt-1 text-sm'>
+                          {t(child.subText)}
+                        </p>
+                      )}
                     </div>
                   </a>
                 </Link>

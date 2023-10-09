@@ -1,5 +1,5 @@
-import { uuid } from 'uuidv4';
 import { IProductDTO } from '../dto/productDTO';
+const { v4: uuid } = require('uuid');
 
 export const productsMock: IProductDTO[] = [
   {

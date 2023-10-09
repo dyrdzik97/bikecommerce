@@ -68,19 +68,19 @@ const LoginPage = () => {
     const { email, password } = data;
 
     signIn(email, password)
-      .then(() => {
+      .then(() => {})
+      .catch((error) => {
+        error &&
+          toast(t('validations:somethingWentWrong'), {
+            hideProgressBar: true,
+            type: 'error',
+          });
+      })
+      .finally(() => {
         toast(t('loginSuccess'), {
           hideProgressBar: true,
           type: 'success',
         });
-      })
-      .catch((error) => {
-        toast(t('validations:somethingWentWrong'), {
-          hideProgressBar: true,
-          type: 'error',
-        });
-      })
-      .finally(() => {
         if (router.query.redirect) {
           router.push(`/${t(`${router.query.redirect}`)}`);
         }

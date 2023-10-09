@@ -9,7 +9,7 @@ const ListingTotalInfo = ({ total }: IListingTotalInfoProps): JSX.Element => {
 
   return (
     <span className='font-medium'>
-      {t('productsQount')} {total}
+      {t('productsCount')} {total}
     </span>
   );
 };

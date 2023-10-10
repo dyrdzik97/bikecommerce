@@ -28,6 +28,6 @@ module.exports = {
     'comma-dangle': 'off',
     semi: ['error', 'always'],
     '@typescript-eslint/no-var-requires': 0,
-    indent: ['error', 4],
+    indent: 'off',
   },
 };

@@ -1,7 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
-import { useAuth } from '../../../../context/AuthContext';
-import { categories } from '../../../../utils/categories';
+import { categoryTiles } from '../../../../utils/categories';
 
 const HeroSection = dynamic(
   () => import('../../../ui/components/HeroSection/HeroSection'),
@@ -29,16 +28,16 @@ const ProductsCarousel = dynamic(
 );
 
 const HomePage = (): JSX.Element => {
-  const { user } = useAuth();
-
   const { t } = useTranslation('common');
-
   return (
     <>
       <HeroSection />
-      <Page title='Our Offer' subtitle='Categories of bicycles'>
+      <Page
+        title={`${t('ourOfferTitle')}`}
+        subtitle={`${t('ourOfferSubTitle')}`}
+      >
         <div className='grid gap-8 md:grid-cols-4'>
-          {categories.map((category, index) => (
+          {categoryTiles().map((category, index) => (
             <CategoryTile
               key={index}
               title={category.title}

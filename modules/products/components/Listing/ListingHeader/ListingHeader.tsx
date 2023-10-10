@@ -30,7 +30,7 @@ const ListingHeader = ({}: IListingHeaderProps): JSX.Element => {
 
   return (
     <div>
-      <h3 className='mb-4 max-w-2xl text-4xl font-extrabold'>{title}</h3>
+      <h3 className='max-w-2xl text-4xl font-extrabold'>{title}</h3>
     </div>
   );
 };

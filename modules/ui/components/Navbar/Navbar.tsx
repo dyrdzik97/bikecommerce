@@ -16,7 +16,7 @@ const Navbar = ({
   isDropdownActive,
 }: INavbarProps): JSX.Element => {
   return (
-    <nav className='bg-gray-50 text-gray-500 body-font fixed top-0 z-50 w-full bg-[#fff] shadow-md'>
+    <nav className='text-gray-100 body-font shadow-md fixed top-0 z-50 w-full bg-[#edeef4]'>
       <div className='container mx-auto flex items-center justify-between py-2 px-5'>
         <Link href='/' passHref className='flex items-center'>
           <img

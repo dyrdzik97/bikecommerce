@@ -16,15 +16,6 @@ export const CATEGORY_TREE = [
     },
     children: [
       {
-        key: 'allProducts',
-        href: {
-          en: '',
-          pl: '',
-        },
-        subText: 'allProductsSubText',
-        imageUrl: null,
-      },
-      {
         key: 'road',
         href: {
           en: 'road',

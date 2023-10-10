@@ -1,21 +1,24 @@
+import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
+
 const HeroSection = (): JSX.Element => {
+  const { t } = useTranslation('routes');
+  const { t: tCommon } = useTranslation('common');
   return (
-    <section className='bg-gray-900 h-screen w-full bg-white bg-[url("https://images6.alphacoders.com/549/549198.jpg")] bg-cover bg-center md:p-24'>
+    <section className='bg-gray-900 h-screen w-full bg-white bg-[url("https://wallpaperaccess.com/full/1223017.jpg")] bg-cover bg-top md:p-24'>
       <div className='max-w-screen-xl xl:gap-0 mx-auto grid px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16'>
         <div className='place-self-center rounded-lg bg-gray bg-opacity-60 p-16 lg:col-span-7'>
           <h1 className='xl:text-6xl mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight text-black md:text-5xl'>
-            There are nine million bicycles in our shop!
+            {tCommon('heroTitle')}
           </h1>
           <p className='text-gray-500 text-gray-400 mb-6 max-w-2xl font-light md:text-lg lg:mb-8 lg:text-xl'>
-            From checkout to global sales tax compliance, companies around the
-            world use bicycle to travel around the world to simplify your shape
-            and life.
+            {tCommon('heroSubTitle')}
           </p>
-          <a
-            href='#'
+          <Link
+            href={`/${t('category')}`}
             className='mr-3 inline-flex items-center justify-center rounded-lg bg-tertiary-300 px-5 py-3 text-center text-base font-medium text-white outline-0 hover:bg-tertiary-100'
           >
-            Get started
+            {tCommon('heroButtonTitle')}
             <svg
               className='h-5 ml-2 -mr-1 w-5'
               fill='currentColor'
@@ -28,20 +31,8 @@ const HeroSection = (): JSX.Element => {
                 clipRule='evenodd'
               ></path>
             </svg>
-          </a>
-          <a
-            href='#'
-            className='text-gray-900 border-gray-300 hover:bg-gray-100 inline-flex items-center justify-center rounded-lg border px-5 py-3 text-center text-base font-medium '
-          >
-            Speak to Sales
-          </a>
+          </Link>
         </div>
-        {/* <div className='hidden lg:col-span-5 lg:mt-0 lg:flex'>
-            <img
-              src='https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png'
-              alt='mockup'
-            />
-          </div> */}
       </div>
     </section>
   );

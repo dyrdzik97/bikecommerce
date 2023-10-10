@@ -1,13 +1,15 @@
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useBreakpoint } from '../../../main/hooks/useBreakpoint';
 
 const Footer = (): JSX.Element => {
   const { t } = useTranslation('footer');
+  const { t: tRoutes } = useTranslation('routes');
   const { isMobile } = useBreakpoint();
   return (
     <footer
-      className='bg-gray-900 mt-10 bg-gray bg-gray md:mt-20 md:px-36'
+      className='mt-10 bg-[#edeef4] bg-gray bg-gray md:mt-20 md:px-36'
       id='footer'
     >
       <div className='grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4'>
@@ -17,17 +19,23 @@ const Footer = (): JSX.Element => {
           </h2>
           <ul className='text-gray-500 text-gray-400'>
             <li className='mb-4'>
-              <a href='#' className=' hover:underline'></a>
+              <Link href='#' className=' hover:underline'></Link>
             </li>
             <li className='mb-4'>
-              <a href='#' className='hover:underline'>
+              <Link
+                href={`/${tRoutes('category')}`}
+                className='hover:underline'
+              >
                 {t('allProducts')}
-              </a>
+              </Link>
             </li>
             <li className='mb-4'>
-              <a href='#' className='hover:underline'>
+              <Link
+                href={`/${tRoutes('userProfile')}`}
+                className='hover:underline'
+              >
                 {t('myProfile')}
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -38,48 +46,48 @@ const Footer = (): JSX.Element => {
           </h2>
           <ul className='text-gray-500 text-gray-400'>
             <li className='mb-4'>
-              <a href='#' className='hover:underline'>
+              <Link href='#' className='hover:underline'>
                 To be Added{' '}
-              </a>
+              </Link>
             </li>
             <li className='mb-4'>
-              <a href='#' className='hover:underline'>
+              <Link href='#' className='hover:underline'>
                 To be Added
-              </a>
+              </Link>
             </li>
             <li className='mb-4'>
-              <a href='#' className='hover:underline'>
+              <Link href='#' className='hover:underline'>
                 To be Added{' '}
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
         <div>
           <h2 className='text-gray-500 text-gray-400 mb-6 text-sm font-semibold uppercase'>
-            Contact us!
+            {t('contact')}
           </h2>
           <ul className='text-gray-500 text-gray-400'>
             <li className='mb-4'>
               <p>Bikecommerce co.</p>
             </li>
             <li className='mb-4'>
-              <a href='mailto:bikecommerce@gmail.com' className='underline'>
+              <Link href='mailto:bikecommerce@gmail.com' className='underline'>
                 bikecommerce@gmail.com
-              </a>
+              </Link>
             </li>
             <li className='mb-4'>
-              <a href='tel:+48123456899' className='underline'>
+              <Link href='tel:+48123456899' className='underline'>
                 +48 123 456 899
-              </a>
+              </Link>
             </li>
             <li className='mb-4'>
-              <a
+              <Link
                 href='http://maps.google.com/?q=1200 Pennsylvania Ave SE, Washington, District of Columbia, 20003'
                 target='_blank'
                 className='hover:underline'
               >
                 Localed in Poland 🇵🇱
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -96,10 +104,10 @@ const Footer = (): JSX.Element => {
       </div>
       <div className='bg-gray-100 bg-gray-700 px-4 py-6 md:flex md:items-center md:justify-between'>
         <span className='text-gray-500 text-gray-300 text-sm sm:text-center'>
-          © 2023 <a href='#'>Bikecommerce</a>. All Rights Reserved.
+          © 2023 <Link href='#'>Bikecommerce</Link>. All Rights Reserved.
         </span>
         <div className='mt-4 flex space-x-6 sm:justify-center md:mt-0'>
-          <a
+          <Link
             href='#'
             className='text-gray-400 hover:text-gray-900 hover:text-black'
           >
@@ -116,8 +124,8 @@ const Footer = (): JSX.Element => {
               />
             </svg>
             <span className='sr-only'>Facebook page</span>
-          </a>
-          <a
+          </Link>
+          <Link
             href='#'
             className='text-gray-400 hover:text-gray-900 hover:text-black'
           >
@@ -134,8 +142,8 @@ const Footer = (): JSX.Element => {
               />
             </svg>
             <span className='sr-only'>Instagram page</span>
-          </a>
-          <a
+          </Link>
+          <Link
             href='#'
             className='text-gray-400 hover:text-gray-900 hover:text-black'
           >
@@ -148,8 +156,8 @@ const Footer = (): JSX.Element => {
               <path d='M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84' />
             </svg>
             <span className='sr-only'>Twitter page</span>
-          </a>
-          <a
+          </Link>
+          <Link
             href='#'
             className='text-gray-400 hover:text-gray-900 hover:text-black'
           >
@@ -166,8 +174,8 @@ const Footer = (): JSX.Element => {
               />
             </svg>
             <span className='sr-only'>GitHub account</span>
-          </a>
-          <a
+          </Link>
+          <Link
             href='#'
             className='text-gray-400 hover:text-gray-900 hover:text-black'
           >
@@ -184,7 +192,7 @@ const Footer = (): JSX.Element => {
               />
             </svg>
             <span className='sr-only'>Dribbble account</span>
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

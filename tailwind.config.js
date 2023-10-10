@@ -12,10 +12,13 @@ module.exports = {
     opacity: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
   },
   theme: {
+    boxShadow: {
+      custom:
+        'rgba(0, 0, 0, 0.08) 0px 2px 4px 0px, rgba(0, 0, 0, 0.08) 0px 0px 2px 1px',
+    },
     opacity: {
       0: '0',
       25: '.25',
-      50: '.5',
       75: '.75',
       10: '.1',
       20: '.2',

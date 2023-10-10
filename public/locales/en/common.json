@@ -1,1 +1,15 @@
-{}
+{
+  "roadTileInfo": "Road bikes from all types of racing and world tours",
+  "roadTileButton": "Get road!",
+  "gravelTileInfo": "Gravel bikes from all types of racing",
+  "gravelTileButton": "Catch gravel",
+  "crossTileInfo": "Mountain bikes from all types of terrain",
+  "crossTileButton": "Dive mountain",
+  "streetTileInfo": "Universal bikes from all types of streets",
+  "streetTileButton": "Enjoy street",
+  "ourOfferTitle": "Our offer",
+  "ourOfferSubTitle": "check out all of categories",
+  "heroTitle": "There are nine million bicycles in our shop!",
+  "heroSubTitle": "From checkout to global sales, companies around the world use bicycle to travel around the world to simplify your shape and life",
+  "heroButtonTitle": "Get started!"
+}

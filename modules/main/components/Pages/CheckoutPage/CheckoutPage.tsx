@@ -105,7 +105,7 @@ const CheckoutPage = () => {
       <div className='flex w-full flex-col justify-center gap-10 p-0 sm:flex-row sm:p-20'>
         <div className='h-fit relative flex'>
           <section className='bg-gray-50 h-fit flex w-full justify-center'>
-            <div className='bg-gray-100 relative flex rounded-2xl p-5 shadow'>
+            <div className='bg-gray-100 shadow relative flex rounded-2xl p-5'>
               <div>
                 <Input
                   name={'email'}
@@ -195,7 +195,7 @@ const CheckoutPage = () => {
             </div>
           </section>
         </div>
-        <div className='bg-gray-100 w-100 relative flex h-[100%] max-w-xl flex-col items-center rounded-2xl p-5 shadow sm:min-w-[40%]'>
+        <div className='bg-gray-100 w-100 relative flex h-[100%] max-w-xl flex-col items-center rounded-2xl p-5 shadow-custom sm:min-w-[40%]'>
           {items.map((item) => {
             return <ProductPreview {...item} key={`key-${item.id}`} />;
           })}

@@ -30,7 +30,7 @@ const ProductPhoto: FC<IProductPhotoProps> = ({
           height='268'
           //   layout='fill'
           objectFit='contain'
-          className='rounded-2xl'
+          className='rounded-lg'
         />
       ) : (
         <div

@@ -20,9 +20,9 @@ const LayoutPage = ({
       className={`'md:p-20 relative col-span-6 flex shrink-0 flex-col gap-10 p-4 md:items-center md:justify-center  ${padding}
       ${size !== 'narrow' ? 'w-full' : 'lg::11/12 md:w-9/12'}`}
     >
-      <div className={'flex flex-col items-center justify-center gap-5'}>
+      <div className={'flex flex-col items-center justify-center'}>
         {title && (
-          <h3 className='mb-4 max-w-2xl text-4xl font-extrabold'>{title}</h3>
+          <h3 className='max-w-2xl text-4xl font-extrabold'>{title}</h3>
         )}
         {subtitle && (
           <span className={'max-w-1xl text-xl font-light text-tertiary-100'}>

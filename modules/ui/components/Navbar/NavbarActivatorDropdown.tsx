@@ -47,7 +47,7 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
         href={`${item.href[interfaceCode]}`}
         locale={router.locale}
         className={
-          'text-gray-500 group inline-flex items-center rounded-md bg-white p-2 text-base font-medium hover:bg-hoverbg focus:outline-none'
+          'text-gray-500 group inline-flex items-center rounded-md bg-[#edeef4] p-2 text-base font-medium hover:bg-hoverbg focus:outline-none'
         }
         shallow
       >
@@ -61,7 +61,7 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
       <button
         type='button'
         className='
-            text-gray-500 group inline-flex items-center rounded-md bg-white p-2 text-base font-medium hover:bg-hoverbg focus:outline-none
+            text-gray-500 group inline-flex items-center rounded-md bg-[#edeef4] p-2 text-base font-medium hover:bg-hoverbg focus:outline-none
         '
         onClick={onClickItem}
       >
@@ -84,7 +84,7 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
               : 'hidden translate-y-1'
           )}
         >
-          <div className='overflow-hidden rounded-lg shadow-lg'>
+          <div className='shadow-lg overflow-hidden rounded-lg'>
             <div className='relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8'>
               {item.children.map((child: IChild, itemIndex: number) => (
                 <Link

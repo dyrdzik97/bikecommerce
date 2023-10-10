@@ -10,6 +10,9 @@ const nextConfig = {
       'sprint-rowery.pl',
       'demo2.themelexus.com',
       'wallpaperaccess.com',
+      'images.immediate.co.uk',
+      'dqh479dn9vg99.cloudfront.net',
+      'pinupgirl.pl',
     ],
   },
   env: {

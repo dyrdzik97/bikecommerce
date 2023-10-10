@@ -47,7 +47,7 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
         href={`${item.href[interfaceCode]}`}
         locale={router.locale}
         className={
-          'text-gray-500 group inline-flex items-center rounded-md bg-[#edeef4] p-2 text-base font-medium hover:bg-hoverbg focus:outline-none'
+          'text-gray-500 group inline-flex items-center rounded-md bg-[#fefcfe] p-2 text-base font-medium hover:bg-hoverbg focus:outline-none'
         }
         shallow
       >
@@ -61,7 +61,7 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
       <button
         type='button'
         className='
-            text-gray-500 group inline-flex items-center rounded-md bg-[#edeef4] p-2 text-base font-medium hover:bg-hoverbg focus:outline-none
+            text-gray-500 group inline-flex items-center rounded-md bg-[#fefcfe] p-2 text-base font-medium hover:bg-hoverbg focus:outline-none
         '
         onClick={onClickItem}
       >

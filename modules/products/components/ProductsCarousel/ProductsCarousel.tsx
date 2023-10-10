@@ -56,7 +56,7 @@ const ProductsCarousel = ({
     const current = minItems;
 
     const calculateItemsNumber = (size: number): number => {
-      if (itemsWidth / size < 268) {
+      if (itemsWidth / size < 250) {
         return calculateItemsNumber(size - 1);
       }
 
@@ -71,28 +71,27 @@ const ProductsCarousel = ({
   }, [isMobile, items, itemsWidth]);
 
   return (
-    <div className='relative flex min-h-fit w-full items-center justify-center md:p-20'>
+    <div className='relative flex min-h-fit w-full justify-center md:p-10'>
       <BrowserView>
-        <FloatingArrowButton left='0.5rem' onClick={onPrevious} />
+        <FloatingArrowButton left='0.5rem' top='50%' onClick={onPrevious} />
       </BrowserView>
       <Swiper
         ref={itemsRef}
         slidesPerView={slidesPerView}
         spaceBetween={isMobile ? 16 : 32}
-        loop
-        style={{ padding: '20px !important' }}
+        style={{ marginRight: '0 !important' }}
       >
         {items &&
           items.map((item, index) => {
             return (
               <SwiperSlide
-                className='relative'
+                className='relative mr-0 p-2'
                 key={index}
-                style={{ height: '480px' }}
+                style={{ height: '350px', width: '250px' }}
               >
                 <ListingItem
                   size={isMobile ? 'small' : 'regular'}
-                  height={'480px'}
+                  height={'320px'}
                   {...item}
                 />
               </SwiperSlide>
@@ -100,7 +99,7 @@ const ProductsCarousel = ({
           })}
       </Swiper>
       <BrowserView>
-        <FloatingArrowButton right='0.5rem' onClick={onNext} />
+        <FloatingArrowButton right='0.5rem' top='50%' onClick={onNext} />
       </BrowserView>
     </div>
   );

@@ -91,7 +91,7 @@ const ListingItem: FC<IListingItemProps> = ({
         <div>
           <div
             className={`${
-              size === 'regular' ? 'h-[350px]' : 'h-[350px]'
+              height ? `h-[${height}]` : 'h-[350px]'
             } card md:shadow-none flex flex-col justify-start rounded-lg bg-white shadow-custom transition duration-200 ease-in-out hover:shadow-custom md:hover:scale-105`}
           >
             <div className='prod-img'>

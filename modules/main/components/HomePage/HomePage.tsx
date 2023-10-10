@@ -53,7 +53,7 @@ const HomePage = (): JSX.Element => {
         title='Todays Bikes'
         subtitle='Check out what interesting we have here!'
       >
-        <ProductsCarousel itemHeight='480px' />
+        <ProductsCarousel itemHeight='350px' />
       </Page>
     </>
   );

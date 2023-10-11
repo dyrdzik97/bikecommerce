@@ -2,6 +2,8 @@ import { IProductDTO } from '../modules/products/dto/productDTO';
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_API_KEY);
 
+const pageURL = 'https://bikecommerce-git-main-dyrdzik97.vercel.app/pl;';
+
 const useToStripePayment = async (
   orderId: string,
   items: IProductDTO[]
@@ -21,12 +23,8 @@ const useToStripePayment = async (
       quantity: item.quantity,
     })),
     mode: 'payment',
-    // TODO handle backing to app to thank you page
-    success_url:
-      'https://localhost:3000/pl' +
-      `/thank-you?order=${orderId}&status=success`,
-    cancel_url:
-      'https://localhost:3000/pl' + `/thank-you?order=${orderId}&status=fail`,
+    success_url: `${pageURL}/thank-you?order=${orderId}&status=success`,
+    cancel_url: `${pageURL}/thank-you?order=${orderId}&status=fail`,
   });
 };
 

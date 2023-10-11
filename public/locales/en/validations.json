@@ -7,5 +7,7 @@
   "charactersNumberErrorMessage": "Input {{number}} characters",
   "minCharactersNumberErrorMessage": "Input min {{number}} characters",
   "maxCharactersNumberErrorMessage": "Input max {{number}} characters",
-  "somethingWentWrong": "Ooops, something went wrong!"
+  "incorrectZipCodeErrorMessage": "Wrong zipcode format",
+  "somethingWentWrong": "Ooops, something went wrong!",
+  "chooseDelivery": "Choose delivery method"
 }

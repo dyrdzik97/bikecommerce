@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { useAuth } from '../../../../../context/AuthContext';
@@ -25,18 +25,10 @@ import CartPreviewSummaryPanel from '../../Panels/CartPreviewSummaryPanel/CartPr
 
 const { v4: uuidv4 } = require('uuid');
 
-const schema = yup.object().shape({
-  name: nameValidation,
-  surname: surnameValidation,
-  town: townValidation,
-  email: emailValidation,
-  zipCode: zipCodeValidation,
-});
-
 const CheckoutPage = () => {
   const { items, totalPrice, setDeliveryPrice, deliveryPrice } = useCart();
   const { user } = useAuth();
-  const [activeDelivery, setActiveDelivery] = useState<number>();
+  const [activeDelivery, setActiveDelivery] = useState<number>(deliveryPrice);
   const [deliveryError, setDeliveryError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -44,7 +36,15 @@ const CheckoutPage = () => {
   const { t } = useTranslation('auth');
   const { t: tCart } = useTranslation('cart');
   const { t: tRoutes } = useTranslation('routes');
+  const { t: tValidation } = useTranslation('validations');
 
+  const schema = yup.object().shape({
+    name: nameValidation(tValidation('requiredErrorMessage')),
+    surname: surnameValidation(tValidation('requiredErrorMessage')),
+    town: townValidation(tValidation('requiredErrorMessage')),
+    email: emailValidation(tValidation('incorrectEmailErrorMessage')),
+    zipCode: zipCodeValidation(tValidation('incorrectZipCodeErrorMessage')),
+  });
   const {
     register,
     handleSubmit,
@@ -58,6 +58,15 @@ const CheckoutPage = () => {
     setDeliveryPrice(deliveryPrice);
     setDeliveryError(false);
   };
+
+  useEffect(() => {
+    if (deliveryPrice) {
+      const index = deliveryTypes.findIndex(
+        (item) => item.price === deliveryPrice
+      );
+      setActiveDelivery(index);
+    }
+  }, []);
 
   if (items.length === 0) {
     return <EmptyCartInfo />;
@@ -73,6 +82,10 @@ const CheckoutPage = () => {
       />
     );
   }
+
+  const getUserData = (field: number) => {
+    return (user && user.displayName?.split(' ')[field]) || '';
+  };
 
   const onSubmit = async () => {
     const orderId = uuidv4();
@@ -112,22 +125,28 @@ const CheckoutPage = () => {
                   placeholder={t('email')}
                   errors={errors}
                   register={register}
-                  label='Email adress'
+                  label={tCart('email').toString()}
                   value={user?.email || undefined}
+                  required
                 />
-                <div className='flex flex-row items-end gap-2'>
+                <div className='flex flex-row items-start gap-2'>
                   <Input
                     name={'name'}
                     placeholder={t('name')}
                     errors={errors}
                     register={register}
-                    label='User details'
+                    label={tCart('userDetails').toString()}
+                    value={user?.displayName ? getUserData(0) : undefined}
+                    required
                   />
                   <Input
                     name={'surname'}
                     placeholder={t('surname')}
                     errors={errors}
                     register={register}
+                    label='&nbsp;'
+                    value={user?.displayName ? getUserData(1) : undefined}
+                    required
                   />
                 </div>
                 <Input
@@ -135,15 +154,17 @@ const CheckoutPage = () => {
                   placeholder={tCart('street')}
                   errors={errors}
                   register={register}
-                  label='Delivery adress'
+                  label={tCart('deliveryAddress').toString()}
+                  required
                 />
-                <div className='flex flex-row items-end gap-2'>
+                <div className='flex flex-row items-start gap-2'>
                   <Input
                     name={'buildingNumber'}
                     placeholder={tCart('buildingNumber')}
                     errors={errors}
                     register={register}
                     className='w-40'
+                    required
                   />
                   <Input
                     name={'flatNumber'}
@@ -153,7 +174,7 @@ const CheckoutPage = () => {
                     className='w-60'
                   />
                 </div>
-                <div className='flex flex-row items-end gap-2'>
+                <div className='flex flex-row items-start gap-2'>
                   <Input
                     name={'zipCode'}
                     placeholder={tCart('zipCode')}
@@ -161,6 +182,7 @@ const CheckoutPage = () => {
                     register={register}
                     className='w-40'
                     maxLength={6}
+                    required
                   />
                   <Input
                     name={'town'}
@@ -168,12 +190,17 @@ const CheckoutPage = () => {
                     errors={errors}
                     register={register}
                     className='w-60'
+                    required
                   />
                 </div>
                 <div className='flex flex-col'>
-                  <label className='font-medium'>Delivery methods</label>
+                  <label className='font-medium'>
+                    {tCart('deliveryMethods')}
+                  </label>
                   {deliveryError && (
-                    <p className='text-primary-100'>Choose delivery method</p>
+                    <p className='text-primary-100'>
+                      {tValidation('chooseDelivery')}
+                    </p>
                   )}
                   {deliveryTypes.map((item, index) => (
                     <DeliveryCard

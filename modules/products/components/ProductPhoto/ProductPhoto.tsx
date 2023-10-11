@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { CSSProperties, FC, ReactNode } from 'react';
 
 import classNames from 'classnames';
 import Image from 'next/image';
@@ -9,6 +9,7 @@ interface IProductPhotoProps {
   alt: string;
   children?: ReactNode;
   className?: string;
+  style?: CSSProperties | undefined;
 }
 
 const ProductPhoto: FC<IProductPhotoProps> = ({
@@ -17,6 +18,7 @@ const ProductPhoto: FC<IProductPhotoProps> = ({
   alt,
   children,
   className,
+  style,
 }) => {
   const classes = classNames('relative', padding, className);
 
@@ -27,10 +29,11 @@ const ProductPhoto: FC<IProductPhotoProps> = ({
           src={src}
           alt={alt}
           width='312'
-          height='268'
+          height='215'
           //   layout='fill'
-          objectFit='contain'
+          //   objectFit='contain'
           className='rounded-lg'
+          style={style}
         />
       ) : (
         <div

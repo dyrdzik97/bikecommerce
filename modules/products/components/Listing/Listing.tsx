@@ -13,7 +13,7 @@ export const TRACKABLE_LISTING_ITEM_KEY = 'TRACKABLE_LISTING_ITEM';
 export interface IListingProps {}
 
 let trackableId: string | null = '';
-const listingPlaceholderHeight: string = '320px';
+const listingPlaceholderHeight: string = '380px';
 
 const Listing: FC<IListingProps> = ({}) => {
   const router = useRouter();
@@ -68,7 +68,7 @@ const Listing: FC<IListingProps> = ({}) => {
     <div className={'flex flex-col items-center justify-center gap-5'}>
       <ListingHeader />
       <ListingTotalInfo total={isLoading ? '...' : items.length.toString()} />
-      <div className='grid grid-cols-1 gap-1 md:grid-cols-4 md:gap-4'>
+      <div className='grid grid-cols-1 gap-5 md:grid-cols-4 md:gap-4'>
         {items.map((item, index) => (
           <ListingItem
             key={`${item.productName}-${index}`}

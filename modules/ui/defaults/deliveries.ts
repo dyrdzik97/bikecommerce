@@ -6,7 +6,7 @@ export const deliveryTypes = [
     promoPrice: null,
   },
   {
-    type: 'DHP',
+    type: 'DHL',
     details: 'Dostawa za 5 dni',
     price: 20,
     promoPrice: null,

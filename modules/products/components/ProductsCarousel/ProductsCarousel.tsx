@@ -89,17 +89,15 @@ const ProductsCarousel = ({
           items.map((item, index) => {
             return (
               <SwiperSlide
-                className='child:bg-[#000] relative m-0 mr-0 flex h-[290px] justify-center p-2'
+                className='child:bg-[#000] relative m-0 mr-0 flex h-[300px] justify-center p-2'
                 key={index}
                 style={{
-                  //   height: '300px',
                   width: '320px',
-                  //   marginRight: '0 !important',
                 }}
               >
                 <ListingItem
                   size={isMobile ? 'small' : 'regular'}
-                  height={'290px'}
+                  height={'300px'}
                   {...item}
                 />
               </SwiperSlide>

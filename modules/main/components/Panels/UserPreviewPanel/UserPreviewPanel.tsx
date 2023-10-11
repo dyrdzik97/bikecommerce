@@ -49,20 +49,32 @@ const UserPreviewPanel = ({ isOpen, setIsOpen }: IUserPreviewPanelProps) => {
           }}
         />
       ) : (
-        <GenericButton
-          label={t('logout')}
-          onClick={async () => {
-            setLoading(true);
-            setIsOpen(false);
-            await logout();
-            toast(t('logoutSuccess'), {
-              hideProgressBar: true,
-              type: 'success',
-            });
-            setLoading(false);
-          }}
-          className='absolute bottom-0 left-0'
-        />
+        <>
+          <GenericButton
+            label={t('yourProfile')}
+            href={`/${tRoutes('userProfile')}`}
+            linkButton
+            onClick={async () => {
+              setIsOpen(false);
+            }}
+            filled
+            className='absolute bottom-12 left-0'
+          />
+          <GenericButton
+            label={t('logout')}
+            onClick={async () => {
+              setLoading(true);
+              setIsOpen(false);
+              await logout();
+              toast(t('logoutSuccess'), {
+                hideProgressBar: true,
+                type: 'success',
+              });
+              setLoading(false);
+            }}
+            className='absolute bottom-0 left-0'
+          />
+        </>
       )}
     </Drawer>
   );

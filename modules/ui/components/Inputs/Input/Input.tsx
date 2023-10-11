@@ -12,6 +12,7 @@ interface IInputProps {
   pattern?: string;
   maxLength?: number;
   value?: string;
+  required?: boolean;
 }
 
 const Input = ({
@@ -26,6 +27,7 @@ const Input = ({
   pattern,
   maxLength,
   value,
+  required = false,
 }: IInputProps): JSX.Element => {
   return (
     <div
@@ -35,19 +37,21 @@ const Input = ({
     >
       {label && <label className='font-medium'>{label}</label>}
       <input
-        className={`my-2 block w-full rounded-xl border bg-white p-2 outline-none ${inputClassName}`}
+        className={`my-2 block w-full rounded-xl border bg-white p-2 outline-none ${inputClassName} ${
+          errors[name] ? 'border border-[#ff0000]' : ''
+        }`}
         type={type}
         placeholder={placeholder}
         {...register(name)}
         pattern={pattern}
         maxLength={maxLength}
         value={value}
-        required
+        required={required}
       />
 
       {errors[name] && (
         <p
-          className='absolute bottom-[-20px]'
+          className='relative m-5'
           style={{ color: 'red', marginTop: 1, fontSize: 10 }}
         >
           {errors[name]?.message?.toString()}

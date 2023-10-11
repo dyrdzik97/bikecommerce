@@ -18,7 +18,7 @@ const Breadcrumbs = (): JSX.Element => {
     <nav className='flex'>
       <ol role='list' className='flex items-center'>
         <li className='text-left'>
-          <div className='-m-1'>
+          <div className='m-1'>
             <Link
               href='/'
               passHref
@@ -33,7 +33,7 @@ const Breadcrumbs = (): JSX.Element => {
         <li className='text-left'>
           <div className='flex items-center'>
             <span className='text-gray-400 mx-2'>/</span>
-            <div className='-m-1'>
+            <div className='m-1'>
               <Link
                 href={`/${t('category')}`}
                 className='text-gray-600 focus:text-gray-900 hover:text-gray-800 focus:shadow rounded-md p-1 text-sm font-medium'
@@ -48,7 +48,7 @@ const Breadcrumbs = (): JSX.Element => {
         <li className='text-left'>
           <div className='flex items-center'>
             <span className='text-gray-400 mx-2'>/</span>
-            <div className='-m-1'>
+            <div className='m-1 h-[23px] overflow-hidden'>
               {' '}
               {/* TODO handle only name of product without ID */}
               {router.query.product}{' '}

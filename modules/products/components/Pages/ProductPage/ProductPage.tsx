@@ -5,6 +5,8 @@ import { useCart } from '../../../../../context/CartContext';
 import IconCart from '../../../../main/utils/Icons/IconCart/IconCart';
 import Breadcrumbs from '../../../../ui/components/Breadcrumbs/Breadcrumbs';
 import GenericButton from '../../../../ui/components/Buttons/GenericButton/GenericButton';
+import BrowserView from '../../../../ui/components/Views/BrowserView/BrowserView';
+import MobileView from '../../../../ui/components/Views/MobileView/MobileView';
 import { IProductDTO } from '../../../dto/productDTO';
 import CollapsedSection from '../../CollapsedSection/CollapsedSection';
 import DeliveryInfo from '../../DeliveryInfo/DeliveryInfo';
@@ -52,14 +54,24 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
 
   return (
     <div
-      style={{ height: 'min-content', maxWidth: '1920px' }}
-      className='mt-[100px] flex w-full'
+      style={{
+        height: 'min-content',
+        maxWidth: '1920px',
+        paddingTop: '0 !important',
+      }}
+      className='mt-[20px] flex w-full'
       key={`product-${product.id}`}
     >
       <section style={{ height: 'min-content' }} className='w-full'>
         <section className='flex items-center justify-center sm:py-4'>
           <div className='max-w-screen-2xl  px-4'>
             <Breadcrumbs />
+            <MobileView>
+              <div className='flex justify-between gap-5'>
+                <ProductTitle title={productName} />
+                <ProductRating />
+              </div>
+            </MobileView>
             <div className='md:col-gap-12 md:col-gap-16 mt-8 grid grid-cols-1 gap-12 md:mt-12 md:grid-cols-2 lg:gap-16'>
               <div className='lg:col-span-3 lg:row-end-1'>
                 <div className='lg:flex lg:items-start'>
@@ -83,8 +95,10 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
                 className='sticky top-0 lg:col-span-2 lg:row-span-2 lg:row-end-2 lg:w-[416px]'
                 style={{ height: 'min-content' }}
               >
-                <ProductTitle title={productName} />
-                <ProductRating />
+                <BrowserView>
+                  <ProductTitle title={productName} />
+                  <ProductRating />
+                </BrowserView>
 
                 <div className='mt-5 flex flex-col items-start justify-between gap-5 space-y-4 py-4  sm:space-y-0'>
                   <ProductPrice size={'regular'} {...price} />

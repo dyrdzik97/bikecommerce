@@ -20,15 +20,13 @@ export const useProductSeo = () => {
       };
     }
 
-    console.warn({ product });
-
     const condition = 'NewCondition';
 
     return {
       id: product.id,
       name: product.productName,
       description: product.productDescription,
-      ogDescription: stripHtmlTags(product.description || '').replace(
+      ogDescription: stripHtmlTags(product.productDescription || '').replace(
         /&nbsp;/g,
         ' '
       ),

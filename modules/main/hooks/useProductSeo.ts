@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { stripHtmlTags } from '../../../utils/stripHTMLTags';
+import { stripHtmlTags } from '../../../utils/stripHtmlTags';
 import { useProductSWR } from '../../products/hooks/useProductSWR';
 import { toKebabCase } from '../../products/mappers';
 

@@ -71,7 +71,7 @@ const ProductsCarousel = ({
   }, [isMobile, items, itemsWidth]);
 
   return (
-    <div className='relative flex min-h-fit w-full items-center justify-center justify-center md:px-10 md:py-5'>
+    <div className='relative flex w-full items-center justify-center justify-center md:px-10 md:py-5'>
       <BrowserView>
         <FloatingArrowButton left='0.5rem' top='50%' onClick={onPrevious} />
       </BrowserView>
@@ -89,17 +89,17 @@ const ProductsCarousel = ({
           items.map((item, index) => {
             return (
               <SwiperSlide
-                className='child:bg-[#000] relative m-0 mr-0 flex justify-center p-2'
+                className='child:bg-[#000] relative m-0 mr-0 flex h-[290px] justify-center p-2'
                 key={index}
                 style={{
-                  height: '335px',
+                  //   height: '300px',
                   width: '320px',
                   //   marginRight: '0 !important',
                 }}
               >
                 <ListingItem
                   size={isMobile ? 'small' : 'regular'}
-                  height={'335px'}
+                  height={'290px'}
                   {...item}
                 />
               </SwiperSlide>

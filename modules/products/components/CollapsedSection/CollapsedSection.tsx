@@ -24,7 +24,7 @@ const CollapsedSection = ({
       <h2 id='accordion-collapse-heading-1'>
         <button
           type='button'
-          className='text-gray-500 text-gray-400 hover:bg-gray-100 hover:bg-gray-800 mt-10 flex w-full items-center justify-between border-t border-b p-5 text-left font-medium'
+          className='text-gray-500 text-gray-400 hover:bg-gray-100 hover:bg-gray-800 mt-10 flex w-full items-center justify-between border-t p-5 text-left font-medium'
           data-accordion-target='#accordion-collapse-body-1'
           aria-expanded='true'
           aria-controls='accordion-collapse-body-1'

@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import { categoryTiles } from '../../../../utils/categories';
+import { useBreakpoint } from '../../hooks/useBreakpoint';
 
 const HeroSection = dynamic(
   () => import('../../../ui/components/HeroSection/HeroSection'),
@@ -29,6 +30,7 @@ const ProductsCarousel = dynamic(
 
 const HomePage = (): JSX.Element => {
   const { t } = useTranslation('common');
+  const { isMobile } = useBreakpoint();
   return (
     <>
       <HeroSection />
@@ -54,7 +56,7 @@ const HomePage = (): JSX.Element => {
         subtitle='Check out what interesting we have here!'
       >
         <div className='max-w-full'>
-          <ProductsCarousel itemHeight='335px' />
+          <ProductsCarousel itemHeight={isMobile ? '355px' : '400px'} />
         </div>
       </Page>
     </>

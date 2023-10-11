@@ -1,25 +1,33 @@
 import { collection, getDocs } from 'firebase/firestore';
 import { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import UserPage from '../../modules/main/components/Pages/UserPage/UserPage';
 import PageLoader from '../../modules/ui/components/PageLoader/PageLoader';
 import { IOrderProps } from '../../modules/ui/models';
 import { db } from '../../services/firebaseConfig';
 
-interface IThankYouProps {
+interface IUserProps {
   orders: IOrderProps[];
 }
 
-const ThankYou = ({ orders }: IThankYouProps) => {
-  const { isFallback } = useRouter();
+const User = ({ orders }: IUserProps) => {
+  const { push, isFallback } = useRouter();
   const { user } = useAuth();
+  const { t } = useTranslation('routes');
 
   let currentUserOrders = [];
 
   currentUserOrders = orders.filter((order) => order.userId === user?.uid);
-  console.warn(currentUserOrders, orders, user?.uid);
+
+  useEffect(() => {
+    if (!user) {
+      push(`/${t('login')}?redirect=${t('userProfile')}`);
+    }
+  }, [t, user]);
 
   if (isFallback) {
     return <PageLoader />;
@@ -63,4 +71,4 @@ export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {
   }
 };
 
-export default ThankYou;
+export default User;

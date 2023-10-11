@@ -24,6 +24,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {
         'validations',
         'nav',
         'footer',
+        'cart',
       ]),
     ]);
 

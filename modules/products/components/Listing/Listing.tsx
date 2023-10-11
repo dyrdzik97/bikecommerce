@@ -13,7 +13,7 @@ export const TRACKABLE_LISTING_ITEM_KEY = 'TRACKABLE_LISTING_ITEM';
 export interface IListingProps {}
 
 let trackableId: string | null = '';
-const listingPlaceholderHeight: string = '350px';
+const listingPlaceholderHeight: string = '320px';
 
 const Listing: FC<IListingProps> = ({}) => {
   const router = useRouter();

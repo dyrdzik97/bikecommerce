@@ -19,6 +19,8 @@ const ProductSeoHead: FC = () => {
       <meta property='og:url' content={''} />
       <meta property='og:description' content={seo.ogDescription} />
       <meta property='og:image' content={seo.photosUrls} />
+      <meta property='og:image:width' content='400' />
+      <meta property='og:image:height' content='400' />
       <script type='application/ld+json'>
         {`{
                     "@context": "https://schema.org/",

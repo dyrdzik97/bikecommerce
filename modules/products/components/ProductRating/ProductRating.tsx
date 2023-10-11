@@ -58,7 +58,7 @@ const ProductRating = (): JSX.Element => {
           ></path>
         </svg>
       </div>
-      <p className='text-gray-500 ml-2 text-sm font-medium'>1,209 Reviews</p>
+      <p className='text-gray-500 ml-2 text-sm font-medium'>300</p>
     </div>
   );
 };

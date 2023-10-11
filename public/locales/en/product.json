@@ -1,4 +1,13 @@
 {
   "addToCart": "Add to cart",
-  "productAddedToCart": "Added to cart successfully!"
+  "productAddedToCart": "Added to cart successfully!",
+  "freeShipping": "Free shipping on all products",
+  "freeReturn": "Free return to 14 days",
+  "productDetails": "Specification",
+  "tyres": "Tires",
+  "frameSize": "Size",
+  "speed": "Speed",
+  "drivetrain": "Drive train",
+  "weight": "Weight",
+  "wheel": "Wheels"
 }

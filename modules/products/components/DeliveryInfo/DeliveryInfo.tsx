@@ -1,7 +1,10 @@
+import { useTranslation } from 'next-i18next';
+
 const DeliveryInfo = (): JSX.Element => {
+  const { t } = useTranslation('product');
   return (
     <ul className='mt-8 space-y-2'>
-      <li className='text-gray-600 flex items-center text-left text-sm font-medium'>
+      <li className='text-gray-600 flex w-fit items-center rounded-lg bg-[#32CD32] p-1 text-left text-sm font-medium'>
         <svg
           className='h-5 text-gray-500 mr-2 block w-5 align-middle'
           xmlns='http://www.w3.org/2000/svg'
@@ -17,7 +20,7 @@ const DeliveryInfo = (): JSX.Element => {
             className=''
           ></path>
         </svg>
-        Free shipping worldwide
+        {t('freeShipping')}
       </li>
 
       <li className='text-gray-600 flex items-center text-left text-sm font-medium'>
@@ -36,7 +39,7 @@ const DeliveryInfo = (): JSX.Element => {
             className=''
           ></path>
         </svg>
-        Cancel Anytime
+        {t('freeReturn')}
       </li>
     </ul>
   );

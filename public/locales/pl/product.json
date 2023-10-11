@@ -1,4 +1,13 @@
 {
   "addToCart": "Dodaj do koszyka",
-  "productAddedToCart": "Produkt dodany do koszyka!"
+  "productAddedToCart": "Produkt dodany do koszyka!",
+  "freeShipping": "Darmowa dostawa na wszystkie produkty",
+  "freeReturn": "Bezpłatny zwrot produktu do 14 dni",
+  "productDetails": "Specyfikacja",
+  "tyres": "Opony",
+  "frameSize": "Rozmiar ramy",
+  "speed": "Kaseta",
+  "drivetrain": "Osprzęt",
+  "weight": "Waga [kg]",
+  "wheel": "Koła"
 }

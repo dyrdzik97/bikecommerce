@@ -34,10 +34,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
   const onAddToCart = async () => {
     try {
       addToCart(product);
-      toast(t('product:productAddedToCart'), {
-        type: 'success',
-        autoClose: 2000,
-      });
+
       setIsAddingProduct(true);
     } catch (error) {
       toast(t('validations:somethingWentWrong'), {
@@ -45,6 +42,10 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
         autoClose: 2000,
       });
     } finally {
+      toast(t('product:productAddedToCart'), {
+        type: 'success',
+        autoClose: 2000,
+      });
       setTimeout(() => setIsAddingProduct(false), 2000);
     }
   };
@@ -85,7 +86,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
                 <ProductTitle title={productName} />
                 <ProductRating />
 
-                <div className='mt-10 flex flex-col items-start justify-between gap-10 space-y-4 py-4  sm:space-y-0'>
+                <div className='mt-5 flex flex-col items-start justify-between gap-5 space-y-4 py-4  sm:space-y-0'>
                   <ProductPrice size={'regular'} {...price} />
                   <GenericButton
                     label={t('addToCart')}
@@ -97,7 +98,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
                 </div>
 
                 <DeliveryInfo />
-                <CollapsedSection title={'Details'} collapsed={true}>
+                <CollapsedSection title={t('productDetails')} collapsed={true}>
                   <SpecificationItem items={specification} />
                 </CollapsedSection>
               </div>

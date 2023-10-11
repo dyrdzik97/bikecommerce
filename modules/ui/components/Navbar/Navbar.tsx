@@ -20,8 +20,8 @@ const Navbar = ({
       <div className='container mx-auto flex items-center justify-between py-2 px-5'>
         <Link href='/' passHref className='flex items-center'>
           <img
-            src='https://flowbite.com/docs/images/logo.svg'
-            className='h-6 sm:h-9 mr-3'
+            src='/Pictogrammers-Material-Bike-fast.svg'
+            className='sm:h-9 mr-3 h-[30px]'
             alt='Bikecommerce Logo'
           />
           <span className='self-center whitespace-nowrap text-xl font-semibold text-black'>

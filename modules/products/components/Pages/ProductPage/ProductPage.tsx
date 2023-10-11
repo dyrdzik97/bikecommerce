@@ -50,6 +50,8 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
     }
   };
 
+  console.warn(product);
+
   return (
     <div
       style={{ height: 'min-content', maxWidth: '1920px' }}

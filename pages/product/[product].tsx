@@ -8,6 +8,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ProductContextProvider } from '../../context/ProductContext';
 import ProductPage from '../../modules/products/components/Pages/ProductPage/ProductPage';
+import ProductSeoHead from '../../modules/products/components/ProductSeoHead/ProductSeoHead';
 import { IProductDTO } from '../../modules/products/dto/productDTO';
 import { useProductSWR } from '../../modules/products/hooks/useProductSWR';
 import { getProductHref } from '../../modules/products/mappers';
@@ -36,6 +37,7 @@ const Product: FC<IProductProps> = ({ product }) => {
       }}
     >
       <ProductContextProvider>
+        <ProductSeoHead />
         <ProductPage product={product} key={product.id} />
       </ProductContextProvider>
     </SWRConfig>

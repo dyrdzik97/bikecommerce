@@ -10,7 +10,12 @@ const ProductSeoHead: FC = () => {
 
   return (
     <Head>
-      <title>{`${seo.name} - ${seo.category} - yestersen`}</title>
+      <title>{`${seo.name} - ${seo.category} - bikecommerce`}</title>
+      <link
+        rel='shortcut icon'
+        type='image/svg'
+        href='/public/images/favicon.ico'
+      />
       <meta
         name='viewport'
         content='width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0'

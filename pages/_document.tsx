@@ -7,8 +7,8 @@ export default class MyDocument extends Document {
         <Head>
           <link
             rel='shortcut icon'
-            type='image/x-icon'
-            href='/public/Pictogrammers-Material-Bike-fast.svg'
+            type='image/svg'
+            href='/public/images/favicon.ico'
           />
         </Head>
         <body>

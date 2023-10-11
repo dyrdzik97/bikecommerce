@@ -2,7 +2,7 @@ import { IProductDTO } from '../modules/products/dto/productDTO';
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_API_KEY);
 
-const pageURL = 'https://bikecommerce-git-main-dyrdzik97.vercel.app/pl;';
+const pageURL = 'https://bikecommerce-git-main-dyrdzik97.vercel.app/pl';
 
 const useToStripePayment = async (
   orderId: string,

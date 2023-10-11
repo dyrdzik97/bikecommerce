@@ -18,7 +18,6 @@ import {
 import ProductPreview from '../../../../products/components/ProductPreview/ProductPreview';
 import DeliveryCard from '../../../../ui/components/DeliveryCard/DeliveryCard';
 import EmptyCartInfo from '../../../../ui/components/EmptyCartInfo/EmptyCartInfo';
-import InfoText from '../../../../ui/components/InfoText/InfoText';
 import Input from '../../../../ui/components/Inputs/Input/Input';
 import { deliveryTypes } from '../../../../ui/defaults/deliveries';
 import CartPreviewSummaryPanel from '../../Panels/CartPreviewSummaryPanel/CartPreviewSummaryPanel';
@@ -28,7 +27,7 @@ const { v4: uuidv4 } = require('uuid');
 const CheckoutPage = () => {
   const { items, totalPrice, setDeliveryPrice, deliveryPrice } = useCart();
   const { user } = useAuth();
-  const [activeDelivery, setActiveDelivery] = useState<number>(deliveryPrice);
+  const [activeDelivery, setActiveDelivery] = useState<number>();
   const [deliveryError, setDeliveryError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -70,17 +69,6 @@ const CheckoutPage = () => {
 
   if (items.length === 0) {
     return <EmptyCartInfo />;
-  } else if (user === null) {
-    return (
-      <InfoText
-        content={t('notLoggedInUserInfo')}
-        hasButton
-        buttonTitle={t('login')}
-        onClick={() => {
-          router.push(`/${tRoutes('login')}?redirect=checkout`);
-        }}
-      />
-    );
   }
 
   const getUserData = (field: number) => {

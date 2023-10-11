@@ -21,7 +21,8 @@ interface IProductPageProps {
 
 const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
   const { images, productName, price, productDetails } = product;
-  const { t, i18n } = useTranslation(['product', 'validations']);
+  const { t, i18n } = useTranslation('product');
+  const { t: tValidations } = useTranslation('validations');
   const [isAddingProduct, setIsAddingProduct] = useState(false);
 
   const { addToCart } = useCart();
@@ -39,7 +40,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
 
       setIsAddingProduct(true);
     } catch (error) {
-      toast(t('validations:somethingWentWrong'), {
+      toast(tValidations('somethingWentWrong'), {
         type: 'error',
         autoClose: 2000,
       });
@@ -67,7 +68,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
           <div className='max-w-screen-2xl  px-4'>
             <Breadcrumbs />
             <MobileView>
-              <div className='flex justify-between gap-5'>
+              <div className='flex items-end justify-between gap-5'>
                 <ProductTitle title={productName} />
                 <ProductRating />
               </div>
@@ -90,7 +91,6 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
                   </div>
                 </div>
               </div>
-
               <div
                 className='sticky top-0 lg:col-span-2 lg:row-span-2 lg:row-end-2 lg:w-[416px]'
                 style={{ height: 'min-content' }}
@@ -99,7 +99,6 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
                   <ProductTitle title={productName} />
                   <ProductRating />
                 </BrowserView>
-
                 <div className='mt-5 flex flex-col items-start justify-between gap-5 space-y-4 py-4  sm:space-y-0'>
                   <ProductPrice size={'regular'} {...price} />
                   <GenericButton
@@ -110,7 +109,6 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
                     icon={isAddingProduct ? null : <IconCart />}
                   />
                 </div>
-
                 <DeliveryInfo />
                 <CollapsedSection title={t('productDetails')} collapsed={true}>
                   <SpecificationItem items={specification} />

@@ -1,9 +1,15 @@
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PageSeo from '../../modules/main/components/PageSeo/PageSeo';
 import CheckoutPage from '../../modules/main/components/Pages/CheckoutPage/CheckoutPage';
 
 const Checkout = () => {
-  return <CheckoutPage />;
+  return (
+    <>
+      <PageSeo title={'checkout'} />
+      <CheckoutPage />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {

@@ -1,17 +1,25 @@
 import { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
+import PageSeo from '../../modules/main/components/PageSeo/PageSeo';
 import LoginPage from '../../modules/main/components/Pages/LoginPage/LoginPage';
 import PageLoader from '../../modules/ui/components/PageLoader/PageLoader';
 
 const Login = () => {
   const { isFallback } = useRouter();
+  const { t } = useTranslation('auth');
 
   if (isFallback) {
     return <PageLoader />;
   }
 
-  return <LoginPage />;
+  return (
+    <>
+      <PageSeo title={t('login')} />
+      <LoginPage />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {

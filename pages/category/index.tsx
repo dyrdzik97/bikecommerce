@@ -1,6 +1,8 @@
 import { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import Page from '../../modules/main/components/LayoutPage/LayoutPage';
 
 const Listing = dynamic(
@@ -11,9 +13,12 @@ const Listing = dynamic(
 );
 
 const Category = (): JSX.Element => {
+  const { t } = useTranslation('listing');
   return (
     <Page size='wide'>
-      {/* TODO add breadcrumbs */}
+      <Head>
+        <title>Bikecommerce - {t('allProducts')}</title>
+      </Head>
       <Listing />
     </Page>
   );

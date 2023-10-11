@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import { useMemo } from 'react';
 import { stripHtmlTags } from '../../../utils/stripHtmlTags';
 import { useProductSWR } from '../../products/hooks/useProductSWR';
@@ -5,6 +6,7 @@ import { toKebabCase } from '../../products/mappers';
 
 export const useProductSeo = () => {
   const product = useProductSWR();
+  const { t } = useTranslation('nav');
 
   return useMemo(() => {
     if (!product) {
@@ -39,9 +41,9 @@ export const useProductSeo = () => {
       offerUrl: `https://${process.env.URL}/${toKebabCase(
         `${product.productName || ''}`
       )}-${product.id}`,
-      category: product.categories[0] || '',
+      category: t(`${product.categories[0]}`) || '',
       itemCondition: `https://schema.org/${condition}`,
-      // in future change availability for live value from database and stock count
+      // TODO in future change availability for live value from database and stock count
       availability: `https://schema.org/InStock}`,
     };
   }, [product]);

@@ -1,9 +1,17 @@
 import { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PageSeo from '../../modules/main/components/PageSeo/PageSeo';
 import RegisterPage from '../../modules/main/components/Pages/RegisterPage/RegisterPage';
 
 const Register = () => {
-  return <RegisterPage />;
+  const { t } = useTranslation('auth');
+  return (
+    <>
+      <PageSeo title={t('register')} />
+      <RegisterPage />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {

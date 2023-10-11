@@ -1,7 +1,9 @@
 import { DocumentData, collection, getDocs } from 'firebase/firestore';
 import { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Page from '../../modules/main/components/LayoutPage/LayoutPage';
 import PageLoader from '../../modules/ui/components/PageLoader/PageLoader';
@@ -16,6 +18,8 @@ const Listing = dynamic(
 
 const Category = (): JSX.Element => {
   const { isFallback } = useRouter();
+  const router = useRouter();
+  const { t } = useTranslation('nav');
 
   if (isFallback) {
     return <PageLoader />;
@@ -23,6 +27,11 @@ const Category = (): JSX.Element => {
 
   return (
     <Page size='wide'>
+      <Head>
+        <title>
+          Bikecommerce - {t('bikes')} - {t(`${router.query.category}`)}
+        </title>
+      </Head>
       <Listing />
     </Page>
   );

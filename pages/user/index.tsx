@@ -3,8 +3,9 @@ import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import PageSeo from '../../modules/main/components/PageSeo/PageSeo';
 import UserPage from '../../modules/main/components/Pages/UserPage/UserPage';
 import PageLoader from '../../modules/ui/components/PageLoader/PageLoader';
 import { IOrderProps } from '../../modules/ui/models';
@@ -19,11 +20,8 @@ const User = ({ orders }: IUserProps) => {
   const { user } = useAuth();
   const { t } = useTranslation('routes');
 
-  let currentUserOrders = [];
-
-  currentUserOrders = orders.filter((order) => order.userId === user?.uid);
-
-  console.warn(user?.uid);
+  const [currentUserOrders, setCurrentUserOrders] =
+    useState<IOrderProps[]>(orders);
 
   useEffect(() => {
     if (user?.uid === undefined) {
@@ -31,11 +29,21 @@ const User = ({ orders }: IUserProps) => {
     }
   }, [t, user]);
 
+  useEffect(() => {
+    const userOrders = orders.filter((order) => order.userId === user?.uid);
+    setCurrentUserOrders(userOrders);
+  }, [orders]);
+
   if (isFallback) {
     return <PageLoader />;
   }
 
-  return <UserPage orders={currentUserOrders} />;
+  return (
+    <>
+      <PageSeo title={t('userProfile')} />
+      <UserPage orders={currentUserOrders} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale = '' }) => {

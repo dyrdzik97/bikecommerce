@@ -6,16 +6,9 @@ import { useProductSeo } from '../../../main/hooks/useProductSeo';
 const ProductSeoHead: FC = () => {
   const seo = useProductSeo();
 
-  console.warn({ seo });
-
   return (
     <Head>
       <title>{`${seo.name} - ${seo.category} - bikecommerce`}</title>
-      <link
-        rel='shortcut icon'
-        type='image/svg'
-        href='/public/images/favicon.ico'
-      />
       <meta
         name='viewport'
         content='width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0'

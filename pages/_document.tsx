@@ -5,11 +5,8 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link
-            rel='shortcut icon'
-            type='image/svg'
-            href='/public/images/favicon.ico'
-          />
+          <link rel='shortcut icon' href='/images/favicon.ico' />
+          <title>Bikecommerce - bikes</title>
         </Head>
         <body>
           <Main />

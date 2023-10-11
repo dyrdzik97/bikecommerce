@@ -44,7 +44,7 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
         autoClose: 2000,
       });
     } finally {
-      toast(t('product:productAddedToCart'), {
+      toast(t('productAddedToCart'), {
         type: 'success',
         autoClose: 2000,
       });

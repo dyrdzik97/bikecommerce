@@ -75,7 +75,7 @@ const ListingItem: FC<IListingItemProps> = ({
     setTimeout(() => {
       setLoading(false);
     }, 200);
-    toast(t('product:productAddedToCart'), {
+    toast(t('productAddedToCart'), {
       type: 'success',
       autoClose: 2000,
     });

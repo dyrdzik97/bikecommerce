@@ -24,7 +24,7 @@ const User = ({ orders }: IUserProps) => {
   currentUserOrders = orders.filter((order) => order.userId === user?.uid);
 
   useEffect(() => {
-    if (!user) {
+    if (user?.uid === null) {
       push(`/${t('login')}?redirect=${t('userProfile')}`);
     }
   }, [t, user]);

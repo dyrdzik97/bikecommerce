@@ -50,8 +50,6 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
     }
   };
 
-  console.warn(product);
-
   return (
     <div
       style={{ height: 'min-content', maxWidth: '1920px' }}
@@ -102,6 +100,16 @@ const ProductPage = ({ product }: IProductPageProps): JSX.Element => {
                 <DeliveryInfo />
                 <CollapsedSection title={t('productDetails')} collapsed={true}>
                   <SpecificationItem items={specification} />
+                </CollapsedSection>
+                <CollapsedSection
+                  title={t('productDescription')}
+                  collapsed={true}
+                >
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: product.productDescription,
+                    }}
+                  />
                 </CollapsedSection>
               </div>
             </div>

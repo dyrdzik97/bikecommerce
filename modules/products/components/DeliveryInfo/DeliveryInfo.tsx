@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 const DeliveryInfo = (): JSX.Element => {
   const { t } = useTranslation('product');
   return (
-    <ul className='mt-8 space-y-2'>
+    <ul className='my-8 space-y-2'>
       <li className='text-gray-600 flex w-fit items-center rounded-lg bg-[#32CD32] p-1 text-left text-sm font-medium'>
         <svg
           className='h-5 text-gray-500 mr-2 block w-5 align-middle'

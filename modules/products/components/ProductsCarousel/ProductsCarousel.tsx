@@ -28,9 +28,9 @@ const ProductsCarousel = ({
     setItemsWidth(width);
   };
 
-  useResizeObserver(itemsRef, (entry) =>
-    updateItemsWidth(entry.contentRect.width)
-  );
+  useResizeObserver(itemsRef, (entry) => {
+    return updateItemsWidth(entry.contentRect.width);
+  });
 
   const onNext = () => {
     if (!itemsRef.current) {
@@ -50,7 +50,7 @@ const ProductsCarousel = ({
 
   const slidesPerView = useMemo(() => {
     if (isMobile) {
-      return 1.2;
+      return 1.5;
     }
     const minItems = Math.min(4, items.length);
     const current = minItems;
@@ -71,7 +71,7 @@ const ProductsCarousel = ({
   }, [isMobile, items, itemsWidth]);
 
   return (
-    <div className='relative flex min-h-fit w-full justify-center md:p-10'>
+    <div className='relative flex min-h-fit w-full items-center justify-center justify-center md:px-10 md:py-5'>
       <BrowserView>
         <FloatingArrowButton left='0.5rem' top='50%' onClick={onPrevious} />
       </BrowserView>
@@ -79,23 +79,27 @@ const ProductsCarousel = ({
         ref={itemsRef}
         slidesPerView={slidesPerView}
         spaceBetween={isMobile ? 16 : 32}
-        style={{ marginRight: '0 !important' }}
+        style={{
+          maxWidth: '100vw',
+          justifyItems: 'center',
+          marginRight: '0 !important',
+        }}
       >
         {items &&
           items.map((item, index) => {
             return (
               <SwiperSlide
-                className='child:bg-[#000] relative m-0 mr-0 p-2'
+                className='child:bg-[#000] relative m-0 mr-0 flex justify-center p-2'
                 key={index}
                 style={{
-                  height: '350px',
-                  width: '250px',
-                  marginRight: '0 !important',
+                  height: '335px',
+                  width: '320px',
+                  //   marginRight: '0 !important',
                 }}
               >
                 <ListingItem
                   size={isMobile ? 'small' : 'regular'}
-                  height={'320px'}
+                  height={'335px'}
                   {...item}
                 />
               </SwiperSlide>

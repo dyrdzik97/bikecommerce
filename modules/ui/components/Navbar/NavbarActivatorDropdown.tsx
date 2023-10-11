@@ -88,7 +88,6 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
             <div className='relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8'>
               {item.children.map((child: IChild, itemIndex: number) => (
                 <Link
-                  legacyBehavior
                   key={`${child.key}-${itemIndex}`}
                   href={`/${tRoutes('category')}/${child.href[interfaceCode]}`}
                   locale={router.locale}
@@ -96,18 +95,16 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
                   passHref
                   onClick={onClickItem}
                 >
-                  <a>
-                    <div className='ml-4'>
-                      <p className='text-gray-900 text-base font-medium'>
-                        {t(child.key)}
+                  <div className='ml-4'>
+                    <p className='text-gray-900 text-base font-medium'>
+                      {t(child.key)}
+                    </p>
+                    {child.subText && (
+                      <p className='text-gray-500 mt-1 text-sm'>
+                        {t(child.subText)}
                       </p>
-                      {child.subText && (
-                        <p className='text-gray-500 mt-1 text-sm'>
-                          {t(child.subText)}
-                        </p>
-                      )}
-                    </div>
-                  </a>
+                    )}
+                  </div>
                 </Link>
               ))}
             </div>

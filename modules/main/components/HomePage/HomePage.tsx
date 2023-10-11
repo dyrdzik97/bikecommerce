@@ -53,7 +53,9 @@ const HomePage = (): JSX.Element => {
         title='Todays Bikes'
         subtitle='Check out what interesting we have here!'
       >
-        <ProductsCarousel itemHeight='350px' />
+        <div className='max-w-full'>
+          <ProductsCarousel itemHeight='335px' />
+        </div>
       </Page>
     </>
   );

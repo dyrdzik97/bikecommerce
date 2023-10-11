@@ -86,35 +86,38 @@ const ListingItem: FC<IListingItemProps> = ({
   }
 
   return (
-    <Link href={href} prefetch={false} legacyBehavior>
-      <a href={href} ref={trackableRefCallback as undefined} onClick={onClick}>
-        <div>
-          <div
-            className={`${
-              height ? `h-[${height}]` : 'h-[350px]'
-            } card md:shadow-none flex flex-col justify-start rounded-lg bg-white shadow-custom transition duration-200 ease-in-out hover:shadow-custom md:hover:scale-105`}
-          >
-            <div className='prod-img'>
-              <ProductPhoto src={mainImage} alt={productName} />
+    <Link
+      ref={trackableRefCallback as undefined}
+      href={href}
+      prefetch={false}
+      onClick={onClick}
+    >
+      <div>
+        <div
+          className={`${
+            height ? `h-[${height}]` : 'h-[350px]'
+          } card md:shadow-none flex flex-col justify-start rounded-lg bg-white shadow-custom transition duration-200 ease-in-out hover:shadow-custom md:hover:scale-105`}
+        >
+          <div className='prod-img'>
+            <ProductPhoto src={mainImage} alt={productName} />
+          </div>
+          <div className='flex flex-col px-5 pt-5'>
+            <div>
+              {/* add variants in future */}
+              {/* {variants.length !== 0 && <ColorVariants items={variants.color} />} */}
             </div>
-            <div className='flex flex-col px-5 pt-5'>
-              <div>
-                {/* add variants in future */}
-                {/* {variants.length !== 0 && <ColorVariants items={variants.color} />} */}
+            <div className='prod-title'>
+              <div className='text-gray-900 text-2xl font-bold uppercase'>
+                <ListingItemTitle title={productName} />
               </div>
-              <div className='prod-title'>
-                <div className='text-gray-900 text-2xl font-bold uppercase'>
-                  <ListingItemTitle title={productName} />
-                </div>
-              </div>
-              <div className='text-gray-900 flex flex-row items-center justify-between md:flex-row'>
-                <ProductPrice {...price} />
-                <AddToCartButton onClick={onAddToCart} isLoading={loading} />
-              </div>
+            </div>
+            <div className='text-gray-900 flex flex-row items-center justify-between md:flex-row'>
+              <ProductPrice {...price} />
+              <AddToCartButton onClick={onAddToCart} isLoading={loading} />
             </div>
           </div>
         </div>
-      </a>
+      </div>
     </Link>
     // <div className='border-gray-100 group my-10 flex w-full max-w-xs flex-col rounded-lg border bg-white shadow-md'>
     //   <a className='h-60 relative flex rounded-lg' href='#'>

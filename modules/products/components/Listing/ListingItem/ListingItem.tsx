@@ -102,7 +102,11 @@ const ListingItem: FC<IListingItemProps> = ({
             <ProductPhoto
               src={mainImage}
               alt={productName}
-              style={{ minHeight: '215px', objectFit: 'cover' }}
+              style={{
+                minHeight: '215px',
+                height: '215px',
+                objectFit: 'cover',
+              }}
             />
           </div>
           <div className='flex flex-col p-5'>

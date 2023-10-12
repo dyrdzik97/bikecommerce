@@ -32,7 +32,7 @@ export const useProductSeo = () => {
         /&nbsp;/g,
         ' '
       ),
-      photosUrls: product.mainImage,
+      photosUrls: `${product.mainImage}`,
       price: product.price.promoPrice
         ? product.price.promoPrice
         : product.price.regular,

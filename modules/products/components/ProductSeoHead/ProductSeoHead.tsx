@@ -8,6 +8,8 @@ const ProductSeoHead: FC = () => {
   const seo = useProductSeo();
   const router = useRouter();
 
+  console.warn(seo.photosUrls);
+
   return (
     <Head>
       <title>{`${seo.name} - ${seo.category} - bikecommerce`}</title>
@@ -21,15 +23,16 @@ const ProductSeoHead: FC = () => {
       <meta property='og:type' content='website' />
       <meta property='og:site_name' content={`Bikecommerce - ${seo.name}`} />
       <meta property='og:url' content={`${process.env.URL}${router.asPath}`} />
-      <meta property='og:description' content={seo.ogDescription} />
+      <meta property='og:description' content={seo.description} />
       <meta property='og:image' content={seo.photosUrls} />
+      <meta property='og:image' content={'/2022-Giant-Trance-X-58bfe3a.jpg'} />
       <meta property='og:image:alt' content={'Alternative text'} />
       <meta property='og:image:width' content='1200' />
       <meta property='og:image:height' content='800' />
       <meta property='og:image:type' content='image/jpg' />
       <meta property='twitter:title' content={seo.name} />
       <meta property='twitter:card' content='summary_large_image' />
-      <meta property='twitter:description' content={seo.ogDescription} />
+      <meta property='twitter:description' content={seo.description} />
       <meta property='twitter:image' content={seo.photosUrls} />
       <meta property='twitter:image:width' content='1200' />
       <meta property='twitter:image:height' content='800' />

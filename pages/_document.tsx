@@ -6,7 +6,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link rel='shortcut icon' href='/images/favicon.ico' />
-          <title>Bikecommerce - bikes</title>
+          <meta httpEquiv='content-type' content='text/html; charset=utf-8' />
         </Head>
         <body>
           <Main />

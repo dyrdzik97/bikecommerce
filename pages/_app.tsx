@@ -6,6 +6,7 @@ import { AuthProvider } from '../context/AuthContext';
 import DefaultLayout from '../modules/ui/components/DefaultLayout/DefaultLayout';
 import { setCurrentLocale } from '../utils/localeDetection';
 
+import Head from 'next/head';
 import 'react-toastify/dist/ReactToastify.css';
 import { CartContextProvider } from '../context/CartContext';
 import '../styles/global.css';
@@ -18,6 +19,9 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <AuthProvider>
       <CartContextProvider>
+        <Head>
+          <title>Bikecommerce - bikes</title>
+        </Head>
         <DefaultLayout>
           <Component {...pageProps} router={router.asPath} />
           <ToastContainer

@@ -15,7 +15,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   setCurrentLocale(router.locale);
 
-  const isMainPage: boolean = router.basePath === '/';
+  const isMainPage: boolean = router.asPath === '/';
 
   return (
     <AuthProvider>

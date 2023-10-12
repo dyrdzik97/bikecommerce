@@ -29,7 +29,7 @@ const Category = (): JSX.Element => {
     <Page size='wide'>
       <Head>
         <title>
-          Bikecommerce - {t('bikes')} - {t(`${router.query.category}`)}
+          Bikecommerce {t('bikes')} - {t(`${router.query.category}`)}
         </title>
       </Head>
       <Listing />

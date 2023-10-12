@@ -15,10 +15,12 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   setCurrentLocale(router.locale);
 
+  const isMainPage: boolean = router.basePath === '/';
+
   return (
     <AuthProvider>
       <CartContextProvider>
-        <PageSeo />
+        {isMainPage && <PageSeo />}
         <DefaultLayout>
           <Component {...pageProps} router={router.asPath} />
           <ToastContainer

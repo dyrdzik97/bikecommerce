@@ -33,7 +33,10 @@ const PageSeo = ({ title }: IPageSeoProps) => {
       <meta property='og:image:width' content='1200' />
       <meta property='og:image:height' content='800' />
       <meta property='og:image:type' content='image/jpg' />
-      <meta property='twitter:title' content={`Bikecommerce - ${title}`} />
+      <meta
+        property='twitter:title'
+        content={`Bikecommerce  ${title ? `- ${title}` : ''}`}
+      />
       <meta property='twitter:card' content='summary_large_image' />
       <meta
         property='twitter:description'

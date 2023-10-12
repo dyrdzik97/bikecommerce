@@ -3,15 +3,17 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 interface IPageSeoProps {
-  title: string;
+  title?: string;
 }
 
-const PageSeo = ({ title }: IPageSeoProps) => {
+const PageSeo = ({ title = 'bikes' }: IPageSeoProps) => {
   const { t } = useTranslation('');
   const router = useRouter();
   return (
     <Head>
       <title>Bikecommerce - {title}</title>
+      <link rel='shortcut icon' href='/images/favicon.ico' />
+      <meta httpEquiv='content-type' content='text/html; charset=utf-8' />
       <meta property='og:locale' content={'pl-PL'} />
       <meta property='og:type' content='website' />
       <meta property='og:site_name' content={`Bikecommerce - ${t('bikes')}`} />

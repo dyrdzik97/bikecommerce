@@ -1,11 +1,11 @@
 import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from '../context/AuthContext';
 import { CartContextProvider } from '../context/CartContext';
+import PageSeo from '../modules/main/components/PageSeo/PageSeo';
 import DefaultLayout from '../modules/ui/components/DefaultLayout/DefaultLayout';
 import '../styles/global.css';
 import { setCurrentLocale } from '../utils/localeDetection';
@@ -18,11 +18,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <AuthProvider>
       <CartContextProvider>
-        <Head>
-          <title>Bikecommerce - bikes</title>
-          <link rel='shortcut icon' href='/images/favicon.ico' />
-          <meta httpEquiv='content-type' content='text/html; charset=utf-8' />
-        </Head>
+        <PageSeo />
         <DefaultLayout>
           <Component {...pageProps} router={router.asPath} />
           <ToastContainer

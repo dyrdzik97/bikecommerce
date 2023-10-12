@@ -1,13 +1,11 @@
-import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 interface IPageSeoProps {
-  title?: string;
+  title?: string | null;
 }
 
-const PageSeo = ({ title = 'bikes' }: IPageSeoProps) => {
-  const { t } = useTranslation('');
+const PageSeo = ({ title }: IPageSeoProps) => {
   const router = useRouter();
   return (
     <Head>
@@ -16,7 +14,7 @@ const PageSeo = ({ title = 'bikes' }: IPageSeoProps) => {
       <meta httpEquiv='content-type' content='text/html; charset=utf-8' />
       <meta property='og:locale' content={'pl-PL'} />
       <meta property='og:type' content='website' />
-      <meta property='og:site_name' content={`Bikecommerce - ${t('bikes')}`} />
+      <meta property='og:site_name' content={`Bikecommerce - ${title}`} />
       <meta property='og:url' content={`${process.env.URL}${router.asPath}`} />
       <meta
         property='og:description'

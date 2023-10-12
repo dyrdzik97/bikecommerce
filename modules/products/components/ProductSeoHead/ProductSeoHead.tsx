@@ -19,6 +19,7 @@ const ProductSeoHead: FC = () => {
       />
       <meta name='description' content={seo.description} />
       <meta property='og:title' content={seo.name} />
+      <meta property='og:locale' content={'pl-PL'} />
       <meta property='og:type' content='website' />
       <meta property='og:site_name' content={`Bikecommerce - ${seo.name}`} />
       <meta property='og:url' content={`${process.env.URL}${router.asPath}`} />

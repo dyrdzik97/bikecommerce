@@ -113,7 +113,7 @@ const CheckoutPage = () => {
                   placeholder={t('email')}
                   errors={errors}
                   register={register}
-                  label={tCart('email').toString()}
+                  label={t('email').toString()}
                   value={user?.email || undefined}
                   required
                 />

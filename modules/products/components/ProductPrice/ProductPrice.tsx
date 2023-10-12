@@ -9,6 +9,7 @@ export interface IProductPriceProps {
   promoPrice?: number | null;
   negotiation?: boolean;
   size?: 'regular' | 'small';
+  className?: string;
 }
 
 const ProductPrice: FC<IProductPriceProps> = ({
@@ -17,6 +18,7 @@ const ProductPrice: FC<IProductPriceProps> = ({
   promoPrice,
   negotiation,
   size = 'small',
+  className,
 }) => {
   const hasPromotion =
     Boolean(promoPrice !== null && promoPrice! > 0) && promoPrice !== price;
@@ -35,6 +37,7 @@ const ProductPrice: FC<IProductPriceProps> = ({
     'text-promo': hasPromotion,
     'text-base': size === 'small',
     'text-3xl': size === 'regular',
+    className,
   });
 
   return (

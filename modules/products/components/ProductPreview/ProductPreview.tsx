@@ -60,7 +60,7 @@ const ProductPreview = (item: IProductPreviewProps): JSX.Element => {
       </div>
       <div className='h-full flex flex-col justify-start gap-3'>
         <div className='text-wrap flex flex-row gap-4'>
-          <ProductPrice {...price} />
+          <ProductPrice {...price} className='justify-end' />
         </div>
         <div className='text-gray-900 flex flex-row items-center justify-end '>
           <QuantityButton

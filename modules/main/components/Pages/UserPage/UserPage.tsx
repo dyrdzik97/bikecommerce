@@ -1,8 +1,6 @@
 import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
 import { useAuth } from '../../../../../context/AuthContext';
 import OrderTile from '../../../../products/components/OrderTile/OrderTile';
-import InfoText from '../../../../ui/components/InfoText/InfoText';
 import { IOrderProps } from '../../../../ui/models';
 
 interface IUserPageProps {
@@ -11,23 +9,7 @@ interface IUserPageProps {
 
 const UserPage = ({ orders }: IUserPageProps) => {
   const { t } = useTranslation('thankyou');
-  const { t: tAuth } = useTranslation('auth');
-  const { t: tRoutes } = useTranslation('routes');
-  const router = useRouter();
   const { user } = useAuth();
-
-  if (!user) {
-    return (
-      <InfoText
-        content={tAuth('notLoggedInUserInfo')}
-        hasButton
-        buttonTitle={tRoutes('login')}
-        onClick={() => {
-          router.push(`/${tRoutes('login')}?redirect=account`);
-        }}
-      />
-    );
-  }
 
   return (
     <div className='bg-gray-100 p-2'>
@@ -49,7 +31,7 @@ const UserPage = ({ orders }: IUserPageProps) => {
                 {user?.displayName}
               </h1>
               <h3 className='text-gray-600 font-lg text-semibold leading-6'>
-                {user.email}
+                {user?.email}
               </h3>
             </div>
           </div>

@@ -2,8 +2,8 @@ import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import Page from '../../modules/main/components/LayoutPage/LayoutPage';
+import PageSeo from '../../modules/main/components/PageSeo/PageSeo';
 
 const Listing = dynamic(
   () => import('../../modules/products/components/Listing/Listing'),
@@ -16,9 +16,7 @@ const Category = (): JSX.Element => {
   const { t } = useTranslation('listing');
   return (
     <Page size='wide'>
-      <Head>
-        <title>Bikecommerce - {t('allProducts')}</title>
-      </Head>
+      <PageSeo />
       <Listing />
     </Page>
   );

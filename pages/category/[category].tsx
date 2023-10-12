@@ -3,9 +3,9 @@ import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Page from '../../modules/main/components/LayoutPage/LayoutPage';
+import PageSeo from '../../modules/main/components/PageSeo/PageSeo';
 import PageLoader from '../../modules/ui/components/PageLoader/PageLoader';
 import { db } from '../../services/firebaseConfig';
 
@@ -27,11 +27,7 @@ const Category = (): JSX.Element => {
 
   return (
     <Page size='wide'>
-      <Head>
-        <title>
-          Bikecommerce {t('bikes')} - {t(`${router.query.category}`)}
-        </title>
-      </Head>
+      <PageSeo title={`${t('bikes')} - ${t(`${router.query.category}`)}`} />
       <Listing />
     </Page>
   );

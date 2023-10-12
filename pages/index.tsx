@@ -3,6 +3,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { SWRConfig } from 'swr';
+import PageSeo from '../modules/main/components/PageSeo/PageSeo';
 import PageLoader from '../modules/ui/components/PageLoader/PageLoader';
 import { setCurrentLocale } from '../utils/localeDetection';
 
@@ -22,6 +23,7 @@ const Home = (): JSX.Element => {
 
   return (
     <SWRConfig>
+      <PageSeo />
       <HomePage />
     </SWRConfig>
   );

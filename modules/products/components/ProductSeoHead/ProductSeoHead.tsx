@@ -22,7 +22,10 @@ const ProductSeoHead: FC = () => {
       <meta property='og:site_name' content={`Bikecommerce - ${seo.name}`} />
       <meta property='og:url' content={`${process.env.URL}${router.asPath}`} />
       <meta property='og:description' content={seo.ogDescription} />
-      <meta property='og:image' content={seo.photosUrls} />
+      <meta
+        property='og:image'
+        content={'https://og-examples.vercel.sh/api/static'}
+      />
       <meta property='og:image:width' content='400' />
       <meta property='og:image:height' content='400' />
       <meta property='twitter:title' content={seo.name} />

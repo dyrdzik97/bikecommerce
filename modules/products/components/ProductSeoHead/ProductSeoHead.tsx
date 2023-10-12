@@ -24,15 +24,15 @@ const ProductSeoHead: FC = () => {
       <meta property='og:description' content={seo.ogDescription} />
       <meta property='og:image' content={seo.photosUrls} />
       <meta property='og:image:alt' content={'Alternative text'} />
-      <meta property='og:image:width' content='400' />
-      <meta property='og:image:height' content='400' />
+      <meta property='og:image:width' content='1200' />
+      <meta property='og:image:height' content='800' />
       <meta property='og:image:type' content='image/jpg' />
       <meta property='twitter:title' content={seo.name} />
       <meta property='twitter:card' content='summary_large_image' />
       <meta property='twitter:description' content={seo.ogDescription} />
       <meta property='twitter:image' content={seo.photosUrls} />
-      <meta property='twitter:image:width' content='400' />
-      <meta property='twitter:image:height' content='400' />
+      <meta property='twitter:image:width' content='1200' />
+      <meta property='twitter:image:height' content='800' />
       <script type='application/ld+json'>
         {`{
                     "@context": "https://schema.org",

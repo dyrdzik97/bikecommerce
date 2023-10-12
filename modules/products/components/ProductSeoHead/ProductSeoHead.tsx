@@ -20,7 +20,7 @@ const ProductSeoHead: FC = () => {
       <meta name='description' content={seo.description} />
       <meta property='og:title' content={seo.name} />
       <meta property='og:type' content='website' />
-      <meta property='og:site_name' content={`Bikecommerce - ${t('bikes')}`} />
+      <meta property='og:site_name' content={`Bikecommerce - ${seo.name}`} />
       <meta property='og:url' content={`${process.env.URL}${router.asPath}`} />
       <meta property='og:description' content={seo.ogDescription} />
       <meta property='og:image' content={seo.photosUrls} />

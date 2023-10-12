@@ -25,7 +25,6 @@ const ProductSeoHead: FC = () => {
       <meta property='og:url' content={`${process.env.URL}${router.asPath}`} />
       <meta property='og:description' content={seo.description} />
       <meta property='og:image' content={seo.photosUrls} />
-      <meta property='og:image' content={'/2022-Giant-Trance-X-58bfe3a.jpg'} />
       <meta property='og:image:alt' content={'Alternative text'} />
       <meta property='og:image:width' content='1200' />
       <meta property='og:image:height' content='800' />

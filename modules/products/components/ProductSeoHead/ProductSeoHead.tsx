@@ -1,6 +1,5 @@
 import { FC } from 'react';
 
-import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useProductSeo } from '../../../main/hooks/useProductSeo';
@@ -8,7 +7,6 @@ import { useProductSeo } from '../../../main/hooks/useProductSeo';
 const ProductSeoHead: FC = () => {
   const seo = useProductSeo();
   const router = useRouter();
-  const { t } = useTranslation('nav');
 
   return (
     <Head>

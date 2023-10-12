@@ -6,7 +6,9 @@ import { useBreakpoint } from '../../../main/hooks/useBreakpoint';
 const Footer = (): JSX.Element => {
   const { t } = useTranslation('footer');
   const { t: tRoutes } = useTranslation('routes');
+  const { t: tNav } = useTranslation('nav');
   const { isMobile } = useBreakpoint();
+
   return (
     <footer
       className='mt-10 bg-[#edeef4] bg-gray bg-gray md:mt-20 md:px-36'
@@ -42,22 +44,39 @@ const Footer = (): JSX.Element => {
 
         <div>
           <h2 className='text-gray-500 text-gray-400 mb-6 text-sm font-semibold uppercase'>
-            To Be Added
+            {tNav('bikes')}
           </h2>
           <ul className='text-gray-500 text-gray-400'>
             <li className='mb-4'>
-              <Link href='#' className='hover:underline'>
-                To be Added{' '}
+              <Link
+                href={`/${tRoutes('category')}/${t('road')}`}
+                className='hover:underline'
+              >
+                {tNav('road')}
               </Link>
             </li>
             <li className='mb-4'>
-              <Link href='#' className='hover:underline'>
-                To be Added
+              <Link
+                href={`/${tRoutes('category')}/${t('gravel')}`}
+                className='hover:underline'
+              >
+                {tNav('gravel')}
               </Link>
             </li>
             <li className='mb-4'>
-              <Link href='#' className='hover:underline'>
-                To be Added{' '}
+              <Link
+                href={`/${tRoutes('category')}/${t('cross')}`}
+                className='hover:underline'
+              >
+                {tNav('cross')}
+              </Link>
+            </li>
+            <li className='mb-4'>
+              <Link
+                href={`/${tRoutes('category')}/${t('street')}`}
+                className='hover:underline'
+              >
+                {tNav('street')}
               </Link>
             </li>
           </ul>

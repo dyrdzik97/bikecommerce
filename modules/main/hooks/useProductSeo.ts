@@ -15,7 +15,7 @@ export const useProductSeo = () => {
         description: '',
         ogDescription: '',
         name: '',
-        photosUrls: [],
+        photosUrls: '',
         price: 0,
         currency: '',
         offerUrl: '',

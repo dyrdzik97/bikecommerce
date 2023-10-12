@@ -8,8 +8,6 @@ const ProductSeoHead: FC = () => {
   const seo = useProductSeo();
   const router = useRouter();
 
-  console.warn(seo.photosUrls);
-
   return (
     <Head>
       <title>{`${seo.name} - ${seo.category} - bikecommerce`}</title>

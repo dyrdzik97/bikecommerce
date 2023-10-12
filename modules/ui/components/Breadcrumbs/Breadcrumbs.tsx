@@ -12,8 +12,6 @@ const Breadcrumbs = (): JSX.Element => {
     /product\/([A-F\d-]+)\?/
   );
 
-  console.warn(test);
-
   return (
     <nav className='flex'>
       <ol role='list' className='flex items-center'>

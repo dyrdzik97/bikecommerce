@@ -26,6 +26,7 @@ const ProductSeoHead: FC = () => {
         property='og:image'
         content={'https://og-examples.vercel.sh/api/static'}
       />
+      <meta property='og:image:alt' content={'Alternative text'} />
       <meta property='og:image:width' content='400' />
       <meta property='og:image:height' content='400' />
       <meta property='twitter:title' content={seo.name} />

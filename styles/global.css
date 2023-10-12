@@ -213,6 +213,5 @@ input:-webkit-autofill:focus {
 .Toastify__toast-container {
   margin-bottom: 20px;
   display: block;
-  width: 90vw;
   margin-left: 20px;
 }

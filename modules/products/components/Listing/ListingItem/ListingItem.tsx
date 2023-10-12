@@ -52,7 +52,7 @@ const ListingItem: FC<IListingItemProps> = ({
   trackableRefCallback,
 }) => {
   const { addToCart } = useCart();
-  const { t, i18n } = useTranslation(['validations']);
+  const { t } = useTranslation('product');
   const [loading, setLoading] = useState(false);
   const onClick = () => {
     if (trackable) {

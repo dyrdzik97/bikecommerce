@@ -8,8 +8,6 @@ const ProductSeoHead: FC = () => {
   const seo = useProductSeo();
   const router = useRouter();
 
-  console.warn(seo.photosUrls);
-
   return (
     <Head>
       <title>{`${seo.name} - ${seo.category} - bikecommerce`}</title>
@@ -40,7 +38,7 @@ const ProductSeoHead: FC = () => {
                     "@context": "https://schema.org",
                     "@type": "Product",
                     "name": "${seo.name}",
-                    "image": [${seo.photosUrls}],
+                    "image": ["${seo.photosUrls}"],
                     "description": "${seo.ogDescription}",
                     "sku": "${seo.id}",
                     "mpn": "${seo.id}",

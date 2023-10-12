@@ -44,7 +44,7 @@ export const useProductSeo = () => {
       category: t(`${product.categories[0]}`) || '',
       itemCondition: `https://schema.org/${condition}`,
       // TODO in future change availability for live value from database and stock count
-      availability: `https://schema.org/InStock}`,
+      availability: `https://schema.org/InStock`,
     };
   }, [product]);
 };

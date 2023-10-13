@@ -54,12 +54,8 @@ const DefaultLayout = ({ children }: IDefaultLayoutProps): JSX.Element => {
     setDropdownIsActive((prev) => !prev);
   };
 
-  // reach out of this function - mobile nav
-  //   useCloseOnRouteChange(onActivateDropdown);
-
   return (
     <Layout>
-      {/* <Navbar2 /> */}
       <Navbar
         isDropdownActive={isDropdownActive}
         onActivateDropdown={onActivateDropdown}

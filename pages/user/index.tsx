@@ -23,6 +23,10 @@ const User = ({ orders }: IUserProps) => {
   const [currentUserOrders, setCurrentUserOrders] =
     useState<IOrderProps[]>(orders);
 
+  if (isFallback) {
+    return <PageLoader />;
+  }
+
   useEffect(() => {
     if (user?.uid === undefined) {
       push(`/${t('login')}?redirect=${t('userProfile')}`);
@@ -33,10 +37,6 @@ const User = ({ orders }: IUserProps) => {
     const userOrders = orders.filter((order) => order.userId === user?.uid);
     setCurrentUserOrders(userOrders);
   }, [orders]);
-
-  if (isFallback) {
-    return <PageLoader />;
-  }
 
   return (
     <>

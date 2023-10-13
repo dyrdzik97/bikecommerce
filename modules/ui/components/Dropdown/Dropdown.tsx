@@ -13,11 +13,6 @@ const DropdownMobile = ({
   isUserLoggedIn = false,
 }: IDropdownMobileProps): JSX.Element => {
   const items = useMemo(() => {
-    // Handle it after adding user account
-    // if (!user) {
-    //     return [];
-    // }
-
     const favouritesItem = {
       title: 'favorites',
       href: '/favorites',
@@ -67,8 +62,8 @@ const DropdownMobile = ({
       className={`divide-gray-100 bg-gray-700 divide-gray-600 ${
         isActive ? '' : 'hidden'
       }
-        absolute top-8 right-5 z-50 my-4
-      list-none divide-y rounded-lg bg-gray text-base shadow`}
+        shadow absolute top-8 right-5 z-50
+      my-4 list-none divide-y rounded-lg bg-gray text-base`}
       id='user-dropdown'
     >
       {isUserLoggedIn && (

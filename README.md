@@ -1,5 +1,43 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Bikecommerce Bikes Store
+
+<img width="1677" alt="image" src="https://github.com/dyrdzik97/bikecommerce/assets/62518046/56784101-00d7-403a-9833-50e0370ef1be">
+
+## Tech Stack
+  - [Next.js](https://nextjs.org/)
+  - [Tailwind CSS](https://tailwindcss.com/)
+  - [Firebase](https://firebase.google.com/)
+  - [Firestore Database](https://firebase.google.com/docs/firestore?hl=pl)
+  - [Stripe Payments](https://stripe.com/en-pl)
+
+## MVP features
+  - [x] Basic features of buiyng and exploring products
+  - [x] Filters on products listing as positions in menu (all categories mentioned - easily searching)
+  - [x] Products carousel
+  - [x] User Panel
+  - [x] Login, Register
+  - [x] Creating Account
+
+## Test payment on Stripe
+  - Credit card
+    *  number: 4242 4242 4242 4242
+    *  expiration date: 12/24
+    *  CCV: 567
+    *  user details: John Doe
+  - Logged users can see their all orders
+  - For Guest users only available to see order number
+
+## Features to be implemented
+  - [ ] Product variants
+  - [ ] Filters
+  - [ ] User Panel edition
+  - [ ] Blog
+  - [ ] Last viewed product carousel
+
+
+## Happy shopping! 🥳 🛒
+
 ## Getting Started
 
 First, run the development server:

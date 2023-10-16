@@ -1,6 +1,6 @@
 export enum Categories {
   gravel = 'gravel',
-  city = 'city',
+  street = 'street',
   road = 'road',
   cross = 'cross',
 }

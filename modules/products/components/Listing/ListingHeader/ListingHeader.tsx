@@ -26,7 +26,7 @@ const ListingHeader = ({}: IListingHeaderProps): JSX.Element => {
     }
 
     return t('allProducts');
-  }, []);
+  }, [router.query.category, hasCategoryInQuery]);
 
   return (
     <div>

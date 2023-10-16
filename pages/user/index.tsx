@@ -23,12 +23,14 @@ const User = ({ orders }: IUserProps) => {
   const [currentUserOrders, setCurrentUserOrders] =
     useState<IOrderProps[]>(orders);
 
-  if (isFallback) {
+  const userLoggedIn: boolean = !user?.uid === undefined;
+
+  if (isFallback || userLoggedIn) {
     return <PageLoader />;
   }
 
   useEffect(() => {
-    if (user?.uid === undefined) {
+    if (!userLoggedIn) {
       push(`/${t('login')}?redirect=${t('userProfile')}`);
     }
   }, [t, user]);

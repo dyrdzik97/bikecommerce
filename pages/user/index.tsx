@@ -23,22 +23,24 @@ const User = ({ orders }: IUserProps) => {
   const [currentUserOrders, setCurrentUserOrders] =
     useState<IOrderProps[]>(orders);
 
-  const userLoggedIn: boolean = !user?.uid === undefined;
-
-  if (isFallback || userLoggedIn) {
-    return <PageLoader />;
-  }
+  const userLoggedIn: boolean = user?.uid !== undefined;
 
   useEffect(() => {
     if (!userLoggedIn) {
       push(`/${t('login')}?redirect=${t('userProfile')}`);
+    } else {
+      push('/konto');
     }
-  }, [t, user]);
+  }, [t, userLoggedIn]);
 
   useEffect(() => {
     const userOrders = orders.filter((order) => order.userId === user?.uid);
     setCurrentUserOrders(userOrders);
   }, [orders]);
+
+  if (isFallback || !userLoggedIn) {
+    return <PageLoader />;
+  }
 
   return (
     <>

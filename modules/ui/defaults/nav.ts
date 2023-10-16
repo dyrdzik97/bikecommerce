@@ -34,11 +34,11 @@ export const CATEGORY_TREE = [
         subText: 'gravelSubText',
       },
       {
-        key: 'street',
+        key: 'city',
         imageUrl: null,
         href: {
-          en: 'street',
-          pl: 'street',
+          en: 'city',
+          pl: 'city',
         },
         subText: 'streetSubText',
       },

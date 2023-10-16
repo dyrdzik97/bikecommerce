@@ -69,11 +69,8 @@ const MenuMobile = ({
         <Link onClick={() => onHideDropdown()} href={`/${t('category')}/road`}>
           {tNav('road')}
         </Link>
-        <Link
-          onClick={() => onHideDropdown()}
-          href={`/${t('category')}/street`}
-        >
-          {tNav('street')}
+        <Link onClick={() => onHideDropdown()} href={`/${t('category')}/city`}>
+          {tNav('city')}
         </Link>
         <Link onClick={() => onHideDropdown()} href={`/${t('category')}/cross`}>
           {tNav('cross')}

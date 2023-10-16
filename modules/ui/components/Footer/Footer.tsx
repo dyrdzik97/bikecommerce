@@ -73,10 +73,10 @@ const Footer = (): JSX.Element => {
             </li>
             <li className='mb-4'>
               <Link
-                href={`/${tRoutes('category')}/${t('street')}`}
+                href={`/${tRoutes('category')}/${t('city')}`}
                 className='hover:underline'
               >
-                {tNav('street')}
+                {tNav('city')}
               </Link>
             </li>
           </ul>

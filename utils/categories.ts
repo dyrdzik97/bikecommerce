@@ -38,7 +38,7 @@ export const categoryTiles = () => {
     },
     {
       title: 'Street',
-      url: 'category/street',
+      url: 'category/city',
       subtitle: t('streetTileInfo'),
       imageSrc: 'https://pinupgirl.pl/img/products/26/25/1_max.jpg',
       buttonText: t('streetTileButton'),

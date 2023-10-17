@@ -17,7 +17,6 @@ const MenuMobile = ({
 }: IMenuMobileProps): JSX.Element => {
   const { items, itemsInCartCount } = useCart();
   const itemsInCart = items.length > 0;
-
   const router = useRouter();
   const { t } = useTranslation('routes');
   const { t: tNav } = useTranslation('nav');

@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useBreakpoint } from '../../../main/hooks/useBreakpoint';
 
+const telephoneNumber: string = '+48 123 456 899';
+
 const Footer = (): JSX.Element => {
   const { t } = useTranslation('footer');
   const { t: tRoutes } = useTranslation('routes');
@@ -96,7 +98,7 @@ const Footer = (): JSX.Element => {
             </li>
             <li className='mb-4'>
               <Link href='tel:+48123456899' className='underline'>
-                +48 123 456 899
+                {telephoneNumber}
               </Link>
             </li>
             <li className='mb-4'>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useBreakpoint } from '../../../main/hooks/useBreakpoint';
 
 const telephoneNumber: string = '+48 123 456 899';
+const mail: string = 'bikecommerce@gmail.com';
 
 const Footer = (): JSX.Element => {
   const { t } = useTranslation('footer');
@@ -93,7 +94,7 @@ const Footer = (): JSX.Element => {
             </li>
             <li className='mb-4'>
               <Link href='mailto:bikecommerce@gmail.com' className='underline'>
-                bikecommerce@gmail.com
+                {mail}
               </Link>
             </li>
             <li className='mb-4'>

@@ -104,6 +104,7 @@ const Footer = (): JSX.Element => {
             </li>
             <li className='mb-4'>
               <Link
+                // add correct location in future
                 href='http://maps.google.com/?q=1200 Pennsylvania Ave SE, Washington, District of Columbia, 20003'
                 target='_blank'
                 className='hover:underline'

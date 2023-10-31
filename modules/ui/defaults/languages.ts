@@ -3,7 +3,6 @@ interface ILanguage {
 }
 
 export const getLanguageCodes = (locale = ''): ILanguage => {
-  // TODO: Think about better handling for default locale
   const defaultShippingTo = 'pl';
   const defaultSelectedLanguage = 'pl';
   const [

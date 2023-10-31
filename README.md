@@ -49,6 +49,6 @@
     - this project learned me how to deal with your ideas and imagination
     - i've consolidated my knowledge
 
-## Happy shopping! 🥳 🛒
+## Happy shopping folks! 🥳 🛒
 
 

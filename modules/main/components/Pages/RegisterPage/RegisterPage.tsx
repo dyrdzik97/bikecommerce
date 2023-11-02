@@ -24,7 +24,6 @@ const RegisterPage = () => {
   const { t: tValidations } = useTranslation('validations');
 
   const schema = yup.object().shape({
-    // TODO stringValidation("Name", minLength)
     name: yup
       .string()
       .required(`${tValidations('requiredErrorMessage')}`)
@@ -88,7 +87,7 @@ const RegisterPage = () => {
 
   return (
     <section className='bg-gray-50 m-10 flex min-h-screen items-center justify-center'>
-      <div className='bg-gray-100 relative flex max-w-3xl items-center rounded-2xl p-5 shadow'>
+      <div className='bg-gray-100 shadow relative flex max-w-3xl items-center rounded-2xl p-5'>
         <div className='px-8 md:w-1/2 md:px-8'>
           <h2 className='text-2xl font-bold text-[#002D74]'>{t('register')}</h2>
           <p className='my-4 text-xs text-[#002D74]'>

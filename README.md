@@ -48,6 +48,7 @@
   - [x] Couple words after implementing own ecommerce
     - this project learned me how to deal with your ideas and imagination
     - i've consolidated my knowledge
+    - here i still a lot of opportunities to improve my shop
 
 ## Happy shopping folks! 🥳 🛒
 

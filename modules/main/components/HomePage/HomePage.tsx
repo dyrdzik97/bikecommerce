@@ -31,6 +31,7 @@ const ProductsCarousel = dynamic(
 const HomePage = (): JSX.Element => {
   const { t } = useTranslation('common');
   const { isMobile } = useBreakpoint();
+
   return (
     <>
       <HeroSection />
@@ -55,7 +56,7 @@ const HomePage = (): JSX.Element => {
         title='Todays Bikes'
         subtitle='Check out what interesting we have here!'
       >
-        <div className='max-w-full'>
+        <div className='max-w-[1200px]'>
           <ProductsCarousel itemHeight={isMobile ? '355px' : '400px'} />
         </div>
       </Page>

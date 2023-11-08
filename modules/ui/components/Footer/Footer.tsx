@@ -121,7 +121,7 @@ const Footer = (): JSX.Element => {
               src='https://wallpaperaccess.com/full/4447020.jpg'
               fill
               sizes='100%'
-              className='rounded-2xl'
+              className='rounded-2xl object-cover'
             />
           </div>
         )}

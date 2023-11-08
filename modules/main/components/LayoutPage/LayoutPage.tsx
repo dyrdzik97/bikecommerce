@@ -17,7 +17,9 @@ const LayoutPage = ({
 }: ILayoutPageProps): JSX.Element => {
   return (
     <div
-      className={`'md:p-20 relative col-span-6 flex shrink-0 flex-col gap-2 p-4 md:items-center md:justify-center  ${padding}
+      className={`'md:p-20 relative col-span-6 flex shrink-0 flex-col gap-2 p-4 md:items-center md:justify-center ${
+        padding ? padding : 'p-0'
+      }
       ${size !== 'narrow' ? 'w-full' : 'lg::11/12 md:w-9/12'}`}
     >
       <div className={'flex flex-col items-center justify-center'}>

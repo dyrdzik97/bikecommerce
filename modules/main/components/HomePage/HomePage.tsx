@@ -53,8 +53,8 @@ const HomePage = (): JSX.Element => {
         </div>
       </Page>
       <Page
-        title='Todays Bikes'
-        subtitle='Check out what interesting we have here!'
+        title={`${t('todaysBikesTitle')}`}
+        subtitle={`${t('todaysBikesSubTitle')}`}
       >
         <div className='max-w-[1200px]'>
           <ProductsCarousel itemHeight={isMobile ? '355px' : '400px'} />

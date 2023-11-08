@@ -1,4 +1,4 @@
-## Bikecommerce Bikes Store
+## Bikecommerce Store
 
 <img width="1677" alt="image" src="https://github.com/dyrdzik97/bikecommerce/assets/62518046/56784101-00d7-403a-9833-50e0370ef1be">
 

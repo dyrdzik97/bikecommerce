@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useBreakpoint } from '../../../main/hooks/useBreakpoint';
 
 const telephoneNumber: string = '+48 123 456 899';
-const mail: string = 'bikecommerce@bcommerce.com';
+const mail: string = 'bcomm@bike.com';
 
 const Footer = (): JSX.Element => {
   const { t } = useTranslation('footer');
@@ -128,11 +128,9 @@ const Footer = (): JSX.Element => {
       </div>
       <div className='bg-gray-100 bg-gray-700 px-4 py-6 md:flex md:items-center md:justify-between'>
         <span className='text-gray-500 text-gray-300 text-sm sm:text-center'>
-          © 2023{' '}
           <Link href='https://github.com/dyrdzik97/bikecommerce'>
-            Bikecommerce
+            © 2024 Bikecommerce. All Rights Reserved.
           </Link>
-          . All Rights Reserved.
         </span>
         <div className='mt-4 flex space-x-6 sm:justify-center md:mt-0'>
           <Link

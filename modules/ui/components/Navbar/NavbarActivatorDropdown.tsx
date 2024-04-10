@@ -2,7 +2,6 @@ import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC, useState } from 'react';
-import { CURRENT_LOCALE } from '../../../../utils/localeDetection';
 
 import classNames from 'classnames';
 import IconChevron from '../../../main/utils/Icons/IconChevron/IconChevron';
@@ -31,7 +30,7 @@ const NavbarActivatorDropdown: FC<INavBarDropdownActivatorProps> = ({
   const { t } = useTranslation('nav');
   const { t: tRoutes } = useTranslation('routes');
   const [flyer, setFlyer] = useState(false);
-  const { interfaceCode } = getLanguageCodes(CURRENT_LOCALE);
+  const { interfaceCode } = getLanguageCodes(router.locale);
 
   const onClickItem = () => {
     setFlyer((prev) => !prev);

@@ -9,7 +9,7 @@ const PageSeo = ({ title }: IPageSeoProps) => {
   const router = useRouter();
   return (
     <Head>
-      <title>Bikecommerce {title ? `- ${title}` : ''}</title>
+      <title>{title ? `Bikecommerce - ${title}` : 'Bikecommerce'}</title>
       <link rel='shortcut icon' href='/images/favicon.ico' />
       <meta httpEquiv='content-type' content='text/html; charset=utf-8' />
       <meta property='og:locale' content={'pl-PL'} />

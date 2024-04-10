@@ -29,7 +29,7 @@ const User = ({ orders }: IUserProps) => {
     if (!userLoggedIn) {
       push(`/${t('login')}?redirect=${t('userProfile')}`);
     } else {
-      push('/konto');
+      push(`/${t('userProfile')}`);
     }
   }, [t, userLoggedIn]);
 

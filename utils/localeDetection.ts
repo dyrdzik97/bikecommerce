@@ -6,6 +6,6 @@ export const setCurrentLocale = (locale?: string) => {
   }
 
   if (locale !== CURRENT_LOCALE) {
-    CURRENT_LOCALE = locale;
+    return (CURRENT_LOCALE = locale);
   }
 };

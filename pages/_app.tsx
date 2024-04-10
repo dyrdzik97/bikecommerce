@@ -26,7 +26,6 @@ const App = ({ Component, pageProps }: AppProps) => {
           <ToastContainer
             position='bottom-right'
             autoClose={5000}
-            hideProgressBar={false}
             newestOnTop={false}
             closeOnClick
             rtl={false}
@@ -34,6 +33,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             draggable
             pauseOnHover
             theme='light'
+            style={{ maxWidth: '90vw' }}
           />
         </DefaultLayout>
       </CartContextProvider>
